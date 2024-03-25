@@ -1,3 +1,3 @@
 # FrontEnd
 
-Repositório destinado a armazenar design e estilização.
+Repositório destinado ao desenvolvimento FrontEnd, design e estilização.
