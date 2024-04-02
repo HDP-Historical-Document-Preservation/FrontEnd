@@ -1,45 +1,42 @@
 <!DOCTYPE html>
-<html lang="ptbr">
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Document</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-    <div class="login">
-        <h2>Login</h2>
-        <input type="text" id="ipt_user" placeholder="Usuário">
-        <input type="password" id="ipt_senha" placeholder="Senha"><br>
-        <button onclick="autenticar()">Login</button><br><br>
-        <div id="div_mensagem"></div>
-        <div id="div_tentativa"></div>
+    <div class="pagina">
+        <img src="image.png" alt="logo" style="background-color: rgb(87, 62, 39); display: flex; flex-direction: column; margin-right: 1rem;">
+    <div class="pagina__registro">
+        <div><h1 class="cabecalho"><B>LOGIN</B></h1> </div>
+        <div class="pagina__registro__row">
+            <p class="pagina__registro__row__texto"> <b>Email</b></p>
+            <input type="text" id="input_email" class="pagina__registro__row__caixa">
+        </div>
+        <div class="pagina__registro__row">
+            <p class="pagina__registro__row__texto"> <b>Senha</b></p>
+            <input type="text" id="input_senha" class="pagina__registro__row__caixa">
+        </div>
+        <div class="pagina__botao__posicao">
+        <button onclick="login()" class="pagina__botao"><b>login</b></button>
+        </div>
+        
+        
+    <div id="mensagem"></div>
     </div>
+    </div>
+    
 </body>
-
 </html>
+
 <script>
-    var tentativas = 3;
+    function login() {
+        var email = input_email.value
+        var senha = input_senha.value
 
-    function autenticar() {
-        var user = ipt_user.value;
-        var senha = ipt_senha.value;
-
-        if(user == 'FernandoBrandao' && senha == 'sprint2'){
-            div_mensagem.innerHTML = `Autenticação bem-sucedida!`;
-            div_tentativa.innerHTML = ``;
-            tentativas = 3;
-        } else {
-            tentativas--;
-            if (tentativas <= 0){
-                div_mensagem.innerHTML = `Falha de autenticação: Usuário BLOQUEADO!`;
-                div_tentativa.innerHTML = ``;
-            } else {
-                div_mensagem.innerHTML = `Falha na autenticação!`;
-                div_tentativa.innerHTML = `Você ainda tem ${tentativas} tentativa(s)`;
-            }
-        }
+        if (email== 'julia@sptech.school' && senha =='algoritmos') mensagem.innerHTML= ` Conta acessada!`
+        else mensagem.innerHTML = `Email ou senha errado! Digite novamente.`
     }
 </script>
