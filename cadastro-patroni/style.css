@@ -1,0 +1,67 @@
+.pagina {
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+    height: 100vh;
+    background-color: rgb(87, 62, 39);
+
+}
+
+
+.cabecalho {
+    display: flex;
+    align-items:center;
+    flex-direction: column;
+}
+
+.pagina__registro {
+    display: flex;
+    flex-direction: column;
+    align-items: left; 
+    padding: 100px; 
+    border-radius: 40px; 
+    border: 5px solid black; 
+    background-color: rgb(255, 186, 151);
+    width: 650px;
+    height:550px;
+}
+
+.pagina__registro__row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.pagina__registro__row__texto {
+    padding: 1rem 3rem 0.5rem 2rem;
+    border: 1px solid #d3d3d3;
+    background: rgb(239, 206, 193);
+    margin-right: 1rem;
+    border-radius: 16px;
+    border: 2px solid black;
+}
+
+.pagina__registro__row__caixa {
+    height: 20%;
+    margin-right: 20px;
+    border: 1px solid rgb(87, 62, 38);
+    border-radius: 15px;
+    width: 150px;
+    height: 30px;
+    position: end;
+}
+
+.pagina__botao__posicao {
+    text-align: center;
+}
+
+.pagina__botao {
+    background-color: black;
+    border: 1px solid #000000;
+    color: white;
+    border-radius: 24px;
+    padding: 15px 0;
+    width: 150px;
+    text-align: center;
+
+}
