@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro</title>
+</head>
+
+<body style="background-image: url(/home/aluno/Imagens/back.png); background-size: cover;">
+  <h1 style="text-align: left; color: aliceblue;">HDP</h1>
+  <center>
+    
+    <hr><br><br><br><br>
+    <div style="background-color: #ffe3af91;border-radius: 10%; width: 500px; padding: 30px; border: 5px solid; border-color: rgb(201, 208, 214);">
+
+      <h3>Cadastro</h3>
+      <div style="text-align: left;">
+        Nome completo: <input type="text" id="input_nomeC"><br><br>
+        Data de nascimento: <input type="text" id="input_dtNasc"><br><br>
+        CPF: <input type="number" id="input_cpf"><br><br>
+        E-mail: <input type="text" id="input_email"><br><br>
+        Senha: <input type="text" id="input_senha"><br><br>
+        Confirmar senha: <input type="text" id="input_Csenha"><br><br>
+      </div>
+        <button onclick="cadastrar()">CADASTRAR</button>
+        <a href="/home/aluno/Área de Trabalho/KamillyLogin/Login.html"><button>LOGIN</button></a>
+        
+        <button onclick="window.location.reload()">LIMPAR</button>
+      
+    </div>
+  </center>
+  <div id="div_mensagem"></div>
+</body>
+
+</html>
+<script>
+  function cadastrar(){
+    alert ('Cadastrado com sucesso! Vá para login')
+  }
+    
+  
+</script>
