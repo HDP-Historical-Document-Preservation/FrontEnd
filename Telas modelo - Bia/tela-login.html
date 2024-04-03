@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ptbr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Login-HDP</title>
+    <link rel="stylesheet" href="style-login.css">
+</head>
+<body>
+
+    <div></div>
+        <div class="blocoLogin flex-item">
+            <h2>LOGIN</h2>
+            <br>
+            <div>
+                <input class="input1" type="text" id="input_email" placeholder="Email:">
+            </div>
+            <br><br>
+            <div>
+                <input class="input1" type="password" id="input_senha" placeholder="Senha:">
+            </div>
+            <br><br><br>
+            <b><button onclick="verificar()">ENTRAR</button></b>
+            <p>Esqueceu a senha?</p>
+        </div>
+        
+    
+</body>
+</html>
+
+<script>
+    function verificar() {
+        var email = input_email.value;
+        var senha = input_senha.value;
+
+        if (email == 'fernando.brandao@sptech.school' && senha == '123456') 
+        alert('USUÁRIO AUTENTICADO');
+    }
+</script>
