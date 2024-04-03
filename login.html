@@ -3,40 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
     <link rel="stylesheet" href="style.css">
+    <title>Document</title>
 </head>
 <body>
-    <div class="pagina">
-        <img src="image.png" alt="logo" style="background-color: rgb(87, 62, 39); display: flex; flex-direction: column; margin-right: 1rem;">
-    <div class="pagina__registro">
-        <div><h1 class="cabecalho"><B>LOGIN</B></h1> </div>
-        <div class="pagina__registro__row">
-            <p class="pagina__registro__row__texto"> <b>Email</b></p>
-            <input type="text" id="input_email" class="pagina__registro__row__caixa">
-        </div>
-        <div class="pagina__registro__row">
-            <p class="pagina__registro__row__texto"> <b>Senha</b></p>
-            <input type="text" id="input_senha" class="pagina__registro__row__caixa">
-        </div>
-        <div class="pagina__botao__posicao">
-        <button onclick="login()" class="pagina__botao"><b>login</b></button>
-        </div>
-        
-        
-    <div id="mensagem"></div>
-    </div>
-    </div>
-    
+   
+   <h1> Faça seu cadastro!</h1>
+   <div class="blocopai">
+
+  Nome: <input id="demo2" type="text" id="input_nome"> <br>
+
+  Email:<input id="demo3" type="text" id="input_email"> <br>
+
+   CPF:<input id="demo4" type="text" id="input_cpf"> <br>
+
+   Senha:<input id="demo5" type="text" id="input_senha"> <br>
+   <div id="div_mensagem"></div>
+</div>
+
+<button onclick="entrar()" class="botao">Entrar</button>
 </body>
 </html>
-
 <script>
-    function login() {
-        var email = input_email.value
-        var senha = input_senha.value
 
-        if (email== 'julia@sptech.school' && senha =='algoritmos') mensagem.innerHTML= ` Conta acessada!`
-        else mensagem.innerHTML = `Email ou senha errado! Digite novamente.`
-    }
+function entrar(){
+var nome=input_nome.value;
+var email=input_email.value;
+var cpf=input_cpf.value;
+var senha=input_senha.value;
+
+if(nome ==`Fernando` && senha==`sptech`) div_mensagem.innerHTML=`Seja bem vindo Sr. Fernando`
+else div_mensagem.innerHTML= `Tente novamente`
+}
+
+
 </script>
