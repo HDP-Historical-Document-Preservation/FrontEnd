@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ptbr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="style-cadastro.css">
+</head>
+
+<body>
+    <div class="cadastro">
+        <h2>Cadastre-se</h2>
+        <div class="caixa1">
+            <input type="text" id="ipt_user" placeholder="Usuário">
+            <input type="text" id="ipt_cpf" placeholder="CPF">
+            <input type="text" id="ipt_cep" placeholder="CEP">
+            <input type="text" id="ipt_telefone" placeholder="Telefone">
+            <select id="select_empresa">
+                <option value="a">A</option>
+                <option value="b">B'</option>
+                <option value="c">C</option>
+                <option value="d">D</option>
+                <option value="e">E</option>
+            </select>
+            <input type="text" id="ipt_repSenha" placeholder="Repetir senha">
+        </div>
+        <div class="caixa2"></div>
+        <input type="text" id="ipt_email" placeholder="E-mail">
+        <input type="text" id="ipt_cnpj" placeholder="CNPJ">
+        <input type="text" id="ipt_endereco" placeholder="Endereço">
+        <input type="password" id="ipt_senha" placeholder="Senha">
+        <button onclick="autenticar()">Login</button><br><br>
+        <div id="div_mensagem"></div>
+        <div id="div_tentativa"></div>
+    </div>
+</body>
+
+</html>
+<script>
+
+    function autenticar() {
+        var user = ipt_user.value;
+        var senha = ipt_senha.value;
+
+        if(user == 'FernandoBrandao' && senha == 'sprint2'){
+            div_mensagem.innerHTML = `Autenticação bem-sucedida!`;
+            div_tentativa.innerHTML = ``;
+            tentativas = 3;
+        } else {
+            tentativas--;
+            if (tentativas <= 0){
+                div_mensagem.innerHTML = `Falha de autenticação: Usuário BLOQUEADO!`;
+                div_tentativa.innerHTML = ``;
+            } else {
+                div_mensagem.innerHTML = `Falha na autenticação!`;
+                div_tentativa.innerHTML = `Você ainda tem ${tentativas} tentativa(s)`;
+            }
+        }
+    }
+</script>
