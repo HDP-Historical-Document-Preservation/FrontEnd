@@ -1,4 +1,4 @@
-body{
+body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     margin: 0;
     padding: 0;
@@ -10,6 +10,7 @@ body{
     background-position: center;
     background-size: 100%;
 }
+
 .cadastro {
     width: 300px;
     padding: 20px;
@@ -17,10 +18,9 @@ body{
     border-radius: 5px;
     box-shadow: 0 0 10px black;
     background-color: #1E371B;
-    flex-direction: row;
-
 }
-.cadastro input, .cadastro button, .cadastro select{
+
+.cadastro input, .cadastro button{
     width: calc(100% - 20px);
     padding: 10px;
     margin-top: 10px;
@@ -28,20 +28,27 @@ body{
     margin-left: auto;
     margin-right: auto;
 }
-button:hover{
+.cadastro select{
+    width: 304px;
+    height: 39px;
+    padding: 10px;
+    margin-top: 10px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+button:hover {
     background-color: #ffbf00;
 }
-#div_mensagem{
-    color:#fbff00;
+
+#div_mensagem {
+    color: #fbff00;
     margin-top: 10px;
     text-align: center;
 }
-#div_tentativa{
-    color: red;
-    margin-top: 10px;
-    text-align: center;
-}
-h2{
+
+h2 {
     text-align: center;
     color: #ffbf00;
 }

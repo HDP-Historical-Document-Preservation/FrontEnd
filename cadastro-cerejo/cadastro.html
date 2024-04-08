@@ -4,58 +4,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Cadastro</title>
     <link rel="stylesheet" href="style-cadastro.css">
 </head>
 
 <body>
     <div class="cadastro">
-        <h2>Cadastre-se</h2>
-        <div class="caixa1">
-            <input type="text" id="ipt_user" placeholder="Usuário">
-            <input type="text" id="ipt_cpf" placeholder="CPF">
-            <input type="text" id="ipt_cep" placeholder="CEP">
-            <input type="text" id="ipt_telefone" placeholder="Telefone">
-            <select id="select_empresa">
-                <option value="a">A</option>
-                <option value="b">B'</option>
-                <option value="c">C</option>
-                <option value="d">D</option>
-                <option value="e">E</option>
-            </select>
-            <input type="text" id="ipt_repSenha" placeholder="Repetir senha">
-        </div>
-        <div class="caixa2"></div>
-        <input type="text" id="ipt_email" placeholder="E-mail">
-        <input type="text" id="ipt_cnpj" placeholder="CNPJ">
-        <input type="text" id="ipt_endereco" placeholder="Endereço">
+        <h2>Cadastro</h2>
+        <input type="text" id="ipt_nome" placeholder="Nome">
+        <input type="text" id="ipt_cpf" placeholder="CPF">
+        <input type="text" id="ipt_telefone" placeholder="Telefone">
+        <input type="email" id="ipt_email" placeholder="Email">
         <input type="password" id="ipt_senha" placeholder="Senha">
-        <button onclick="autenticar()">Login</button><br><br>
+        <input type="password" id="ipt_confirmarSenha" placeholder="Confirmar Senha">
+        <input type="date" id="ipt_dataNascimento" placeholder="Data de Nascimento">
+        <select id="select_empresaParceira">
+            <option value="">Selecione uma empresa parceira</option>
+            <option value="empresa1">Empresa 1</option>
+            <option value="empresa2">Empresa 2</option>
+            <option value="empresa3">Empresa 3</option>
+        </select><br><br>
+        <button onclick="registrar()">Registrar</button><br><br>
         <div id="div_mensagem"></div>
-        <div id="div_tentativa"></div>
     </div>
+
+    <script>
+        function registrar() {
+            var nome = ipt_nome.value;
+            var cpf = ipt_cpf.value;
+            var telefone = ipt_telefone.value;
+            var email = ipt_email.value;
+            var senha = ipt_senha.value;
+            var confirmarSenha = ipt_confirmarSenha.value;
+            var dataNascimento = ipt_dataNascimento.value;
+            var empresaParceira = select_empresaParceira.value;
+
+            // Verifica se todos os campos foram preenchidos
+            if (nome === '' || cpf === '' || telefone === '' || email === '' || senha === '' || confirmarSenha === '' || dataNascimento === '' || empresaParceira === '') {
+                div_mensagem.innerHTML = '<p style="color: red">Por favor, preencha todos os campos.</p>';
+                return;
+            }
+
+            // Verifica se a senha e a confirmação de senha coincidem
+            if (senha !== confirmarSenha) {
+                div_mensagem.innerHTML = '<p style="color: red">Confirmação de senha incorreta!</p>';
+                return;
+            }
+
+            // Simula o envio do formulário (aqui você pode adicionar o código para enviar os dados para o servidor)
+            div_mensagem.innerHTML = 'Cadastro realizado com sucesso!';
+            // Limpa os campos após o cadastro
+            limparCampos();
+        }
+
+        function limparCampos() {
+            ipt_nome.value = '';
+            ipt_cpf.value = '';
+            ipt_telefone.value = '';
+            ipt_email.value = '';
+            ipt_senha.value = '';
+            ipt_confirmarSenha.value = '';
+            ipt_dataNascimento.value = '';
+            select_empresaParceira.value = '';
+        }
+    </script>
 </body>
 
 </html>
-<script>
-
-    function autenticar() {
-        var user = ipt_user.value;
-        var senha = ipt_senha.value;
-
-        if(user == 'FernandoBrandao' && senha == 'sprint2'){
-            div_mensagem.innerHTML = `Autenticação bem-sucedida!`;
-            div_tentativa.innerHTML = ``;
-            tentativas = 3;
-        } else {
-            tentativas--;
-            if (tentativas <= 0){
-                div_mensagem.innerHTML = `Falha de autenticação: Usuário BLOQUEADO!`;
-                div_tentativa.innerHTML = ``;
-            } else {
-                div_mensagem.innerHTML = `Falha na autenticação!`;
-                div_tentativa.innerHTML = `Você ainda tem ${tentativas} tentativa(s)`;
-            }
-        }
-    }
-</script>
