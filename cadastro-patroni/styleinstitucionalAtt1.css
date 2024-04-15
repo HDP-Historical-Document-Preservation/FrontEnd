@@ -1,0 +1,153 @@
+body{
+    margin: 0%;
+    padding: 0;
+    background-image: url(Captura\ de\ tela\ 2024-04-02\ 152446\ \(1\).png);
+    
+  }
+    .header {
+    background: rgb(255,255,255);
+    display: flex;
+    flex-direction: row;
+    border-radius: 0px 50px 50px 0px ;
+    padding: 1rem 2rem;
+    position: fixed;
+    width: 3000px;
+    border-bottom: black 5px solid;
+    
+  }
+  
+  .container {
+    display: flex;
+    margin: auto;
+    border-radius: 45px;
+    align-items: center; 
+  }
+  
+  .header .container {
+    justify-content: space-evenly;
+  
+  }
+  
+
+  .navbar {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    width: 300px;
+    justify-content: space-between;
+    color: #e3b062;
+    align-items: end; 
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    
+  }
+
+  .pagina1_bloco {
+    display: flex;
+    flex-direction: row;
+    padding: 70px; 
+    background-color: #1e371b;
+    width: 100px;
+    height: 700px;
+    }
+
+  .logo {
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+  .img1 {
+    width: 500px;
+    height: 500px;
+    align-items: flex-start;
+    margin-top: 150px;
+  }
+  
+  .texto1 {
+    margin-left: 350px;
+    font-family: Arial, sans-serif;  
+    line-height: 1.5; 
+    letter-spacing: 1px; 
+    text-align: justify;
+    color: white;
+    width: 400px;
+    margin-left: 400px;
+    margin-top: 400px;
+  }
+
+  .pagina1final {
+    border-top: black 5px solid;
+  }
+
+  .banner {
+    background-color: white;
+    padding: 100px;
+    }
+
+  .teste1{
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+  
+      }
+
+  .foto1 {
+      display: flex;
+      margin-left: 250px;
+  }
+
+  .paragrafo1 {
+    margin-left: 300px;
+    margin-right: 150px;
+    font-family: Arial, sans-serif;  
+    line-height: 1.5; 
+    letter-spacing: 1px; 
+    text-align: justify;
+  }
+  
+  .img2 {
+  width: 500px;
+  border: #e3b062 solid 4px;
+  }
+
+
+  .teste2{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    justify-content: space-around;
+    }
+
+  .img3 {
+    width: 250px;
+    align-items: center;
+  }
+
+  .img4 {
+    width: 250px;
+    align-items: center;
+  }
+
+  .img5 {
+    width: 250px;
+    align-items: center;
+  }
+
+  .texto2 {
+    display: flex;
+    font-family: Arial, sans-serif;  
+    line-height: 1.5; 
+    letter-spacing: 1px; 
+    text-align: justify;
+    color: black;
+    justify-content: space-between;
+    text-align: center;
+    align-items: center;
+    width: 300px;
+  }
+
+  .temp {
+    align-items: center;
+    text-align: center;
+  }
+
