@@ -12,7 +12,8 @@ body {
 }
 
 .cadastro {
-    width: 300px;
+    width: 700px;
+    height: 400px;
     padding: 20px;
     border: 1px solid black;
     border-radius: 5px;
@@ -20,22 +21,21 @@ body {
     background-color: #1E371B;
 }
 
-.cadastro input, .cadastro button{
-    width: calc(100% - 20px);
-    padding: 10px;
-    margin-top: 10px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
-.cadastro select{
+.cadastro input,
+.cadastro button {
     width: 304px;
-    height: 39px;
+    height: 20px;
     padding: 10px;
     margin-top: 10px;
     display: block;
-    margin-left: auto;
-    margin-right: auto;
+}
+
+.cadastro select {
+    width: 326px;
+    height: 42px;
+    padding: 10px;
+    margin-top: 10px;
+    display: block;
 }
 
 button:hover {
@@ -51,4 +51,26 @@ button:hover {
 h2 {
     text-align: center;
     color: #ffbf00;
+}
+
+.formulario {
+    display: flex;
+    justify-content: space-between;
+}
+
+.card {
+    justify-content: center;
+    padding: 20px;
+    height: 40vh;
+    margin: auto;
+}
+
+.botao {
+    display: flex;
+    justify-content: center;
+}
+
+.botao button {
+    margin: 20px;
+    height: 100%;
 }

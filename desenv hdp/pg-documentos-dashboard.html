@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DASHBOARD | Documentos</title>
+</head>
+<body>
+    <div class="header">
+        <ul class="navbar">
+            <li>Início</li>
+            <li>Sobre Nós</li>
+            <li>|</li>
+            <li style="color: rgb(221, 148, 13);">Dashboard</li>
+            <li>Sair</li>
+        </ul>
+    </div>
+    <div class="container">
+        <div class="menu">
+            <img src="" alt="perfil">
+            <h5>Fernando Brandão</h5>
+            <p>fernando.brandao@sptech</p>
+            <button><a href="">HOME</a></button>
+            <button><a href="pg-inicial-dashboard.html">DASHBOARD</a></button>
+        </div>
+        <div class="conteudo">
+            <div class="contTopDoc">
+                <p><strong>Percentual de Livros e Documentos em Risco</strong></p>
+                <p>Seus livros e documentos estão próximos a sair do percentual aceitável de quantidade em risco.</p>
+                <div class="infoDoc">
+                    <h1>40%</h1>
+                    <h4>200 | 500</h4>
+                    <h5>Documentos</h5>
+                </div>
+            </div>
+            <select id="select_ordemExibicao">
+                <option selected disabled value="0">Ordem de Exibição</option>
+                <option value="1">Maior para Menor</option>
+                <option value="2">Menor para Maior</option>
+            </select>
+            <select id="select_condicaoDoc">
+                <option selected disabled value="0">Condição do Documento</option>
+                <option value="1">Boa</option>
+                <option value="2">Média</option>
+                <option value="2">Ruim</option>
+            </select>
+            <input id="input_busca" type="text" placeholder="Busca">
+            <h3>DASHBOARD - detalhes</h3>
+            <div class="contBottomDoc">
+                <div>
+                    <h2><strong>Documentos Danificados</strong></h2>
+                    <div id="div_mensagem"></div>
+                </div>
+                <div>
+                    <h2><strong>Condição dos Documentos</strong></h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

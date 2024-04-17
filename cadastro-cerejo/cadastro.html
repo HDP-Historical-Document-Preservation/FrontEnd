@@ -5,38 +5,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro</title>
-    <link rel="stylesheet" href="style-cadastro.css">
+    <link rel="stylesheet" href="styleTeste.css">
 </head>
 
 <body>
     <div class="cadastro">
-        <h2>Cadastro</h2>
-        <input type="text" id="ipt_nome" placeholder="Nome">
-        <input type="text" id="ipt_cpf" placeholder="CPF">
-        <input type="text" id="ipt_telefone" placeholder="Telefone">
-        <input type="email" id="ipt_email" placeholder="Email">
-        <input type="password" id="ipt_senha" placeholder="Senha">
-        <input type="password" id="ipt_confirmarSenha" placeholder="Confirmar Senha">
-        <input type="date" id="ipt_dataNascimento" placeholder="Data de Nascimento">
-        <select id="select_empresaParceira">
-            <option value="">Selecione uma empresa parceira</option>
-            <option value="empresa1">Empresa 1</option>
-            <option value="empresa2">Empresa 2</option>
-            <option value="empresa3">Empresa 3</option>
-        </select><br><br>
-        <button onclick="registrar()">Registrar</button><br><br>
-        <div id="div_mensagem"></div>
+        <div class="card">
+            <h2>Cadastre-se</h2>
+            <div class="formulario">
+                <div class="campo">
+                    <input type="text" id="ipt_nome" placeholder="Nome">
+                    <input type="email" id="ipt_email" placeholder="E-mail">
+                    <input type="date" id="ipt_dtNasc" placeholder="Data de Nascimento">
+                    <input type="password" id="ipt_senha" placeholder="Senha">
+                </div>
+                <div class="campo">
+                    <input type="text" id="ipt_cpf" placeholder="CPF">
+                    <input type="text" id="ipt_telefone" placeholder="Telefone">
+                    <select id="select_empresaParceira">
+                        <option value="0">Selecione um opção</option>
+                        <option value="1">Empresa 1</option>
+                        <option value="2">Empresa 2</option>
+                        <option value="3">Empresa 3</option>
+                    </select>
+                    <input type="text" id="ipt_confirmarSenha" placeholder="Repetir Senha">
+                </div>
+            </div>
+            <div class="botao">
+                <button onclick="cadastrar()">Cadastrar</button>
+            </div>
+        </div>
     </div>
 
     <script>
-        function registrar() {
+        function cadastrar() {
             var nome = ipt_nome.value;
             var cpf = ipt_cpf.value;
             var telefone = ipt_telefone.value;
             var email = ipt_email.value;
             var senha = ipt_senha.value;
             var confirmarSenha = ipt_confirmarSenha.value;
-            var dataNascimento = ipt_dataNascimento.value;
+            var dataNascimento = ipt_dtNasc.value;
             var empresaParceira = select_empresaParceira.value;
 
             // Verifica se todos os campos foram preenchidos
@@ -51,10 +60,9 @@
                 return;
             }
 
-            // Simula o envio do formulário (aqui você pode adicionar o código para enviar os dados para o servidor)
             div_mensagem.innerHTML = 'Cadastro realizado com sucesso!';
-            // Limpa os campos após o cadastro
             limparCampos();
+
         }
 
         function limparCampos() {
