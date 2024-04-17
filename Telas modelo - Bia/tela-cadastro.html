@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=, initial-scale=1.0">
-    <title>SIGN UP-HDP</title>
+    <title>Sign Up-HDP</title>
     <link rel="stylesheet" href="style-cadastro.css">
 </head>
 <body>
@@ -26,11 +26,13 @@
                 <input class="input1" type="password" id="input_senha" placeholder="Senha:">
                 <input type="password" id="input_confSenha" placeholder="Confirmar senha:">
             </div>
-            <br><br>
             <br>
-            <b><button onclick="verificar()">CADASTRAR</button></b>
+            <div id="div_mensagem"></div>
+            <br>
+            <a href="tela-login.html"><b><button onclick="verificar()">CADASTRAR</button></b></a>
             
         </div>
+        
         
         
     
@@ -45,6 +47,22 @@
         var tel = input_tel.value;
         var senha = input_senha.value;
         var confSenha = input_confSenha.value;
+        var tamanho_senha = senha.length;
+
+        if(senha.length < 8) {
+            div_mensagem.innerHTML = '<p style="color: red;">Sua senha deve possuir ao menos 8 caracteres</p>';
+        } else {
+            div_mensagem.innerHTML = '';
+        }
+
+        var tem_caracteres_especiais = senha.indexOf ('@') >= 0 || senha.indexOf('#') >= 0|| senha.indexOf('&') >=  0 || senha.indexOf('%') >=0 || senha.indexOf('$') >=0
+        var quantos_especiais = tem_caracteres_especiais.length;
+
+        if(tem_caracteres_especiais.length >= 2) {
+            div_mensagem.innerHTML += '';
+        } else {
+            div_mensagem.innerHTML += 'Sua senha deve possuir ao menos 2 caracteres especiais'
+        }
 
         if (confSenha != senha) alert('O campo de "Senha" e "Confirmar senha" devem ser iguais.');
 
