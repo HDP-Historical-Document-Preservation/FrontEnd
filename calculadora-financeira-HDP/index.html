@@ -29,6 +29,7 @@
                     id="input_restauracao"><br>
                 <button onclick="calcular()">Calcular</button>
                 <button onclick="window.location.reload()">Limpar</button>
+                
 
             </div>
             <div id="div_mensagem"></div>
@@ -67,10 +68,10 @@
 
         // condições da temperatura
         if (temp < 16) {
-            div_mensagem.innerHTML = `<span style="font-size: 20px; font-weight: bold;">Temperatura abaixo do ideal! (Em " + diminuiGraus + " °C)</span>`;
+            div_mensagem.innerHTML = `<span style="font-size: 20px; font-weight: bold;">Temperatura abaixo do ideal! (Em ${diminuiGraus} °C)</span>`;
         }
         if (temp > 20) {
-            div_mensagem.innerHTML = `<span style="font-size: 20px; font-weight: bold;">Temperatura acima do ideal! (Em " + aumentoGraus + " °C)</span>`;
+            div_mensagem.innerHTML = `<span style="font-size: 20px; font-weight: bold;">Temperatura acima do ideal! (Em ${aumentoGraus} °C)</span>`;
         }
         if (temp >= 16) {
             if (temp <= 20) {
@@ -80,10 +81,10 @@
 
         // condições da umidade
         if (umid < 30) {
-            div_mensagem.innerHTML += `<span style="font-size: 20px; font-weight: bold;">Umidade abaixo do ideal! (Em " + diminuiUmid + "%)</span>`;
+            div_mensagem.innerHTML += `<span style="font-size: 20px; font-weight: bold;">Umidade abaixo do ideal! (Em ${diminuiUmid}%)</span>`;
         }
         if (umid > 60) {
-            div_mensagem.innerHTML += `<span style="font-size: 20px; font-weight: bold;">Umidade acima do ideal! (Em " + aumentoUmid + "%)</span>`;
+            div_mensagem.innerHTML += `<span style="font-size: 20px; font-weight: bold;">Umidade acima do ideal! (Em ${aumentoUmid}%)</span>`;
         }
         if (umid >= 30 && umid <= 60) {
             div_mensagem.innerHTML += `<br><span style="font-size: 20px; font-weight: bold;">Umidade boa! (Entre 30% e 60%)</span>`;
@@ -91,13 +92,34 @@
 
         // condições temperatura e umidade fora do recomendado
 
-        div_mensagem.innerHTML += "<br><br><br><span style='font-weight: bold; font-size: 20px; color: #1e371b;'>Sem a nossa solução</span>";
-        div_mensagem.innerHTML += "<br>Com as métricas de temperatura e umidade fora dos valores ideias, você estará colocando todos os seus " + qtdlivro + " livros de cada uma das " + qtdsala + " sala(s), ou seja, " + totallivro + " livros em risco. Do seu faturamento anual de <span style='color: green; font-weight: bold;'>" + lucroAnual.toLocaleString('pt-BR', {style: 'currency',currency: 'BRL',}) + "</span> você perderá <span style='color: red; font-weight: bold;'> " + restauracaoLivro.toLocaleString('pt-BR', {style: 'currency',currency: 'BRL',}) + " </span>, gerando um saldo de somente <span style='color: black; font-weight: bold;'>" + lucroAtual.toLocaleString('pt-BR', {style: 'currency',currency: 'BRL',}) + "</span>";
+        div_mensagem.innerHTML += "<br><br><span style='font-weight: bold; font-size: 20px; color: #1e371b;'>Sem a nossa solução</span>";
+        div_mensagem.innerHTML += "<br>Com as métricas de temperatura e umidade fora dos valores ideias, você estará colocando todos os seus " + qtdlivro + " livros de cada uma das " + qtdsala + " sala(s), ou seja, " + totallivro + " livros em risco. Do seu faturamento anual de <span style='color: green; font-weight: bold;'>" + lucroAnual.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL', }) + "</span> você perderá <span style='color: red; font-weight: bold;'> " + restauracaoLivro.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL', }) + " </span>, gerando um saldo de somente <span style='color: black; font-weight: bold;'>" + lucroAtual.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL', }) + "</span>";
 
 
-        div_mensagem.innerHTML += "<br><br><br><span style='font-weight: bold; font-size: 25px; color: #1e371b;'> Com a nossa solução</span>";
-        div_mensagem.innerHTML += "<br>Com a implementação das métricas de temperatura e umidade ideais, <span style='color: black; font-weight: bold;'>garantimos a preservação de 60% dos seus preciosos " + totallivro + " livros</span>, resultando em <span style='color: black; font-weight: bold;'>apenas " + totallivroSolucao + " livros em risco.</span> Nossa solução não apenas protege seu valioso acervo, mas também salvaguarda seu faturamento anual de <span style='color: green; font-weight: bold;'> " + lucroAnual.toLocaleString('pt-BR', {style: 'currency',currency: 'BRL',}) + "</span>, proporcionando um lucro sólido de <span style='color: green; font-weight: bold;'> " + lucroSolucao.toLocaleString('pt-BR', {style: 'currency',currency: 'BRL',}) + "</span>. Com nossa solução, você pode ficar tranquilo sabendo que seus <span style='color: black; font-weight: bold;'>livros estão protegidos e seu negócio continua a prosperar.</span>";
+        div_mensagem.innerHTML += "<br><br><span style='font-weight: bold; font-size: 25px; color: #1e371b;'> Com a nossa solução</span>";
+        div_mensagem.innerHTML += "<br>Com a implementação das métricas de temperatura e umidade ideais, <span style='color: black; font-weight: bold;'>garantimos a preservação de 60% dos seus preciosos " + totallivro + " livros</span>, resultando em <span style='color: black; font-weight: bold;'>apenas " + totallivroSolucao + " livros em risco.</span> Nossa solução não apenas protege seu valioso acervo, mas também salvaguarda seu faturamento anual de <span style='color: green; font-weight: bold;'> " + lucroAnual.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL', }) + "</span>, proporcionando um lucro que pode ultrapassar os <span style='color: green; font-weight: bold;'> " + lucroSolucao.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL', }) + "</span>. Com nossa solução, você pode ficar tranquilo sabendo que seus <span style='color: black; font-weight: bold;'>livros estão protegidos e seu negócio continua a prosperar.</span>";
+        div_mensagem.innerHTML += `<br><br><button onclick="mes()">Ver Solução Detalhada</button>`;
     }
+
+    function mes() {
+        var qtdlivro = Number(input_qtdlivro.value);
+        var qtdsala = Number(input_qtdsala.value);
+        var temp = Number(input_temp.value);
+        var umid = Number(input_umid.value);
+        var faturamento = Number(input_faturamento.value);
+        var restauracao = Number(input_restauracao.value);
+
+        div_mensagem.innerHTML = " ";
+
+        div_mensagem.innerHTML += "<span style='font-weight: bold; font-size: 35px; color: #1e371b;'> Com a nossa solução:</span>";
+        div_mensagem.innerHTML += "<br><br><span style='font-weight: bold;'>Você terá a possibilidade de aumentar o seu lucro em até 10% a cada mês!!!</span> <br >Veja o detalhamento de <span style='font-weight: bold;'>1 ano</span> com a nossa solução:<br><br>";
+
+        for (var cont = 1; cont <= 12; cont++) {
+            faturamento = faturamento + (faturamento * 0.1)
+            div_mensagem.innerHTML += `<span style='font-weight: bold;'>${cont}º Mês - Seu Lucro será de:</span><span style='font-weight: bold; color:green '> ${faturamento.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL', })}<br></span>`;
+        }
+    }
+
 
 
 </script>
