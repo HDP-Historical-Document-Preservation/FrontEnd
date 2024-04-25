@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informações Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="style-Inicial.css">
+</head>
+
+<body>
+    <div class="header">
+        <div class="container">
+            <div class="blocoNavbar">
+                <ul class="navbar">
+                    <li>Inicío</li>
+                    <li>Sobre nós</li>
+                    <li>|</li>
+                    <li style="color: rgb(221, 148, 13);">Dashboard</li>
+                    </a>
+                    <a href="index.html" style="text-decoration: none;">
+                        <li style="color: white;">Voltar</li>
+                    </a>
+                </ul>
+
+            </div>
+            <div class="trianguloDireita"></div>
+            <div class="logo"></div>
+        </div>
+
+    </div>
+    <div class="corpoGeral">
+        <div class="blocoLateral">
+            <div class="menu">
+                <div class="foto">
+                </div>
+                <div class="informacoes">
+                    <h5>FERNANDO BRANDÃO</h5>
+                    <p>fernando.brandao@sptech.school</p>
+                </div>
+                <div class="acesso">
+                    <h3>HOME</h>
+                        <h3 style="color: rgb(221, 148, 13);">DASHBOARD</h3>
+                </div>
+            </div>
+        </div>
+        <div class="conteudo">
+            <div class="avisoG">
+                <div class="blocoAviso">
+                    <span>Tempo que Salas Ficaram em Condições Inadequadas<p>Seus livros e documentos podem estar em risco devido ao grande período de tempo em condições inadequadas. Clique em cada uma das salas a baixo para
+                            ver detalhes de suas métricas.</p></span>
+
+                    <div class="blocoInterno">
+                        <div class="cardInt2">
+                            <h1 style="margin-bottom: 5%;">2hrs</h1>
+                            <h4 >4 | 6 </h4>
+                            <h4>Salas</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="abaOrdenar">
+                <div class="selecaoGeral">
+                </div>
+                <div class="titulo">
+                    <h4><strong>DASHBOARD</strong></h4>
+                    <p>DETAILS</p>
+                </div>
+
+            </div>
+            <div id="dadosGraficos" class="dados">
+                <div class="listaG">
+                    <div class="listasTU">
+                        <h3>Condição de Temperatura e Umidade nas salas</h3>
+                        <div class="scroll">
+                        <button style="color: red;" onclick="mudar3()"><b style="color: black;">3 - </b> Sala da história
+                            dos
+                            sobrenomes</button>
+                        <button style="color: red;" onclick="mudar5()"><b style="color: black;">5 - </b> Sala de Figuras Importantes no
+                            Brasil</button>
+                        <button style="color: red;" onclick="mudar6()"><b style="color: black;">6 - </b> Sala da história da música
+                            Brasileira</button>
+                        <button style="color: red;" onclick="mudar9()"><b style="color: black;">9 - </b> Sala de documentação da TV
+                            Brasileira</button>
+                        </div>
+                    </div>
+                    <div class="linha"></div>
+
+                    <div id="graficoG" style="text-align: center;">
+                        <h3>Percentual de Salas com registros Inadequados</h3>
+                        <div class="grafico">
+                            <canvas id="graficoSalas"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+<script>
+    const data1 = {
+  labels: [
+    'Salas com métricas inadequadas',
+    'Salas Totais'
+  ],
+  datasets: [{
+    label: 'GraficoGeral',
+    data: [4, 6],
+    backgroundColor: [
+      'rgb(255, 99, 132)',
+      'rgb(54, 162, 235)',
+      'rgb(255, 205, 86)'
+    ],
+    hoverOffset: 4
+    // options
+  }]
+};
+
+const config = {
+  type: 'pie',
+  data: data1,
+};
+
+    const myChart = new Chart(
+        document.getElementById('graficoSalas'),
+        config
+    );
+
+    
+</script>
+
+
+</html>
