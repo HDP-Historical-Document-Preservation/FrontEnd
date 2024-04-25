@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>DASHBOARD | Salas</title>
 </head>
 <body>
@@ -35,8 +36,8 @@
             </div>
             <select id="select_ordemExibicao">
                 <option selected disabled value="0">Ordem de Exibição</option>
-                <option value="1">Maior para Menor</option>
-                <option value="2">Menor para Maior</option>
+                <option onclick="ordem()" value="1">Maior para Menor</option>
+                <option onclick="ordem()" value="2">Menor para Maior</option>
             </select>
             <select id="select_condicaoDoc">
                 <option selected disabled value="0">Condição da Sala</option>
@@ -58,3 +59,21 @@
     </div>
 </body>
 </html>
+
+<script>
+    function ordem() {
+        var ordemExibicao = Number(select_ordemExibicao.value);
+
+        if(ordemExibicao == 1){
+            div_mensagem.innerHTML = `
+               1º Sala de Poemas Brasileiros   
+               2º Sala de Leis Brasileiras 
+                `;
+        } else {
+            div_mensagem.innerHTML = `
+               2º Sala de Leis Brasileiras                 
+               1º Sala de Poemas Brasileiros                                          
+            `;
+        }
+    }
+</script>

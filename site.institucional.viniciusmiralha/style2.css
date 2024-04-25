@@ -1,11 +1,17 @@
+.negra {
+  background-color: black;
+  opacity: 50%;
+}
+
 body{
   margin: 0%;
   padding: 0;
-  background-image: url(Captura\ de\ tela\ 2024-04-02\ 152446\ \(1\).png);
+  background-image: url(fundo.png);
+ 
   
 }
   .header {
-  background: #1e371b;
+ 
   display: flex;
   flex-direction: row;
   border-radius: 0px 50px 50px 0px ;
@@ -28,13 +34,16 @@ body{
 
 
 .navbar {
+  font-size: large;
+  position: fixed;
   display: flex;
   flex-direction: row;
   list-style: none;
   width: 400px;
   justify-content: space-between;
-  color: #e3b062; 
-  font-family: Georgia, 'Times New Roman', Times, serif;
+  color:whitesmoke; 
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  margin: 16px;
   
 }
 
@@ -42,7 +51,7 @@ body{
   display: flex;
   flex-direction: row;
   padding: 70px; 
-  background-color: #1e371b;
+  background-color: #0b382b;
   width: 120px;
   height: 700px;
   }
@@ -50,10 +59,12 @@ body{
 .logo {
   display: flex;
   justify-content: space-evenly;
+  
 }
 
 .img1 {
-  width: 500px;
+  align-self: start;
+  width: 620px;
   height: 500px;
   align-items: flex-start;
   margin-top: 100px;
@@ -150,7 +161,7 @@ body{
 }
 
 .banner2 {
-  background-color: #1e371b;
+  background-color: #0b382b;
   padding: 100px;
   }
 
@@ -175,6 +186,7 @@ body{
 
   .img7 {
     width: 30%;
+    height: 40%;
   }
 
   .texto4 {
@@ -205,9 +217,9 @@ body{
 
   .teste4 {
     font-family: Arial, sans-serif;
-    border: 1px solid #1e371b;
+    border: 1px solid  #0b382b;
     border-radius: 15px;
-    background-color: #1e371b;
+    background-color: #0b382b;
     color: white;
     font-size: medium;
     margin-top: 100px;
@@ -218,4 +230,7 @@ body{
   .texto6 {
     margin-left: 20%;
   }
-
+  
+p{
+  margin-right: 70px;
+}

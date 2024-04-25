@@ -1,11 +1,11 @@
 body {
-    background-image: url(https://raw.githubusercontent.com/ViniciusMiralha/meu-primeiro-repo/main/FUNDO-LOGIN.PNG);
+    background-image: url(file:///C:/Users/user/Downloads/Design%20sem%20nome.png);
     background-size: cover;
     background-repeat: no-repeat;
     }
     
     h1 {
-    margin: 1%;
+        margin: 1%;
     color:#f4d800 ;
     width:fit-content;
     }
@@ -32,15 +32,11 @@ body {
     }
     
     .botao {
-    border:100px;
-    margin: 1%;
-    font-size:25px;
+        margin: 1%;
+    font-size: larger;
     display: flex;
     color:white;
-    width:100px;
-    height:70px;
+    width:fit-content;
+    height:fit-content;
     background-color:#b3b309;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Courier New', Courier, monospace;
     }

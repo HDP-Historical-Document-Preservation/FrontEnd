@@ -1,8 +1,9 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f5f5f5;
+    background-color: #1e371b;
     margin: 0;
     padding: 0;
+    overflow: hidden;
 }
 
 #box {
@@ -13,6 +14,7 @@ body {
     width: 90%;
     height: 90%;
     margin: 50px auto;
+    margin-top: 90px;
 }
 
 center {
