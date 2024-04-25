@@ -1,0 +1,225 @@
+
+  body{
+    margin: 0%;
+    padding: 0;
+    background-image: url(fundo.png);
+   
+    
+  }
+    .header {
+   justify-content: space-between;
+    display: flex;
+    flex-direction: row;
+    border-radius: 0px 50px 50px 0px ;
+    padding: 1rem 2rem;
+    position: fixed;
+    height: 35px;
+    width: 100%;  
+    background-color: #370505;
+  }
+  
+  .container {
+    display: flex;
+    margin: auto;
+    border-radius: 45px;
+    align-items: center; 
+  }
+  
+  .header .container {
+    justify-content: space-evenly;
+  
+  }
+  
+  
+  .navbar {
+    font-size: small;
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    width: 400px;
+    justify-content: space-between;
+    color:whitesmoke; 
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    margin: 16px;
+    
+    
+  }
+  
+  .logo {
+    display: flex;
+    justify-content: space-evenly;
+    
+  }
+  
+  .img1 {
+    align-self: start;
+    width: 620px;
+    height: 500px;
+    align-items: flex-start;
+    margin-top: 100px;
+  }
+  
+  .texto1 {
+    align-items: center;
+    font-family: Arial, sans-serif;  
+    line-height: 1.5; 
+    letter-spacing: 1px; 
+    text-align: justify;
+    color:#ff8809;
+    width: 400px;
+    margin-left: 200px;
+    margin-top: 200px;
+    margin-right: 200px;
+    margin-bottom: 200px;
+  }
+  
+  .pagina1final {
+    border-top: black 5px solid;
+  }
+  
+  .banner {
+    background-color: white;
+    padding: 100px;
+    }
+  
+  .teste1{
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+  
+      }
+  
+  .foto1 {
+      display: flex;
+      margin-left: 100px;
+  }
+  
+  .paragrafo1 {
+    margin-left: 180px;
+    font-family: Arial, sans-serif;  
+    line-height: 1.5; 
+    letter-spacing: 1px; 
+    text-align: justify;
+  }
+  
+  .img2 {
+    width: 650px;
+    height: 350px;
+    border: #e3b062 solid 4px;
+  }
+  
+  
+  .teste2{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    justify-content: space-around;
+    }
+  
+  .img3 {
+    width: 55%;
+    align-items: center;
+  }
+  
+  .img4 {
+    width: 180px;
+    align-items: center;
+  }
+  
+  .img5 {
+    width: 75%;
+    align-items: center;
+  }
+  
+  .texto2 {
+    display: flex;
+    font-family: Arial, sans-serif;  
+    line-height: 1.5; 
+    letter-spacing: 1px;
+    margin-top: 20px; 
+    text-align: justify;
+    color: black;
+    justify-content: space-between;
+    align-items: center;
+    width: 400px;
+  }
+  
+  .temp {
+    align-items: center;
+    text-align: center;
+    margin-right: 2%;
+  }
+  
+  .banner2 {
+    background-color: #370505;
+    padding: 100px;
+    }
+  
+    .texto3 {
+      display: flex;
+      font-family: Arial, sans-serif;  
+      line-height: 1.5; 
+      letter-spacing: 1px;
+      margin-top: 20px; 
+      margin-right: 10%;
+      text-align: justify;
+      color: white;
+      justify-content: space-between;
+      align-items: center;
+      width: 400px;
+    }  
+  
+    .img6 {
+      width: 30%;
+    align-items: center;
+    }
+  
+    .img7 {
+      width: 30%;
+      height: 40%;
+    }
+  
+    .texto4 {
+      display: flex;
+      font-family: Arial, sans-serif; 
+      color:#e3b062; 
+      flex-direction: row;
+      font-size: 25px;
+      margin-left: 500px;
+    }  
+    
+    .teste3 {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+    }
+  
+    .texto5 {
+      flex-direction: row;
+      font-family: Arial, sans-serif;  
+      line-height: 1.5; 
+      letter-spacing: 1px;
+      text-align: justify;
+      align-items: center;
+      margin-left: 250px;
+      margin-bottom: 300px;
+    }
+  
+    .teste4 {
+      font-family: Arial, sans-serif;
+      border: 1px solid  #370505;
+      border-radius: 15px;
+      background-color:  #370505;
+      color: white;
+      font-size: medium;
+      margin-top: 100px;
+      width: 2000px;
+      height: 50px;
+    }
+    
+    .texto6 {
+      margin-left: 20%;
+    }
+    
