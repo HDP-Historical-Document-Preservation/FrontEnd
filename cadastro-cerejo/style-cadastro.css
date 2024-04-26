@@ -13,12 +13,12 @@ body {
 
 .cadastro {
     width: 700px;
-    height: 400px;
+    height: 450px;
     padding: 20px;
     border: 1px solid black;
     border-radius: 5px;
     box-shadow: 0 0 10px black;
-    background-color: #1E371B;
+    background-color: #370505;
 }
 
 .cadastro input,
@@ -40,6 +40,7 @@ body {
 
 button:hover {
     background-color: #ffbf00;
+    transition: 1s;
 }
 
 #div_mensagem {
@@ -73,4 +74,7 @@ h2 {
 .botao button {
     margin: 20px;
     height: 100%;
+    transition: 1s;
 }
+
+

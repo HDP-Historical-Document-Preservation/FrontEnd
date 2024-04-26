@@ -16,7 +16,7 @@ body{
     border: 1px solid black;
     border-radius: 5px;
     box-shadow: 0 0 10px black;
-    background-color: #1E371B;
+    background-color: #370505;
 }
 .login input, .login button{
     width: calc(100% - 20px);
@@ -25,9 +25,11 @@ body{
     display: block;
     margin-left: auto;
     margin-right: auto;
+    transition: 1s;
 }
 button:hover{
     background-color: #ffbf00;
+    transition: 1s;
 }
 #div_mensagem{
     color:#fbff00;
