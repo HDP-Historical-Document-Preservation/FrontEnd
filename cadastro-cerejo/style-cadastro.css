@@ -2,13 +2,45 @@ body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     margin: 0;
     padding: 0;
-    display: flex;
+    /* display: flex; */
     justify-content: center;
     align-items: center;
     height: 100vh;
     background-image: url("https://github.com/HDP-Historical-Document-Preservation/FrontEnd/blob/main/Telas%20modelo%20-%20Bia/Captura%20de%20tela%202024-04-02%20152446.png?raw=true");
     background-position: center;
     background-size: 100%;
+}
+
+.container{
+    display: flex;
+}
+
+.header {
+    background-color: beige;
+    display: flex;
+    flex-direction: row;
+    padding: 1rem 0rem;
+    width: 100vw;
+    border: 2px solid black;
+    height: 30px;
+    align-items: center;
+}
+
+.navbar{
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    width: 400px;
+    justify-content: space-between;
+    color: #370505;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 18px;
+    margin-left: 950px;
+}
+
+img{
+    width: 5%;
+    margin-left: 2%;
 }
 
 .cadastro {
