@@ -18,10 +18,10 @@
                     <input type="email" id="ipt_email" placeholder="E-mail">
                     <input type="password" id="ipt_senha" placeholder="Senha">
                     <select id="select_empresaParceira">
-                        <option value="0" disabled selected>Selecione um opção</option>
-                        <option value="1">Empresa 1</option>
-                        <option value="2">Empresa 2</option>
-                        <option value="3">Empresa 3</option>
+                        <option value="0" disabled selected>Selecione uma Empresa</option>
+                        <option value="Museu do Ipiranga">Museu do Ipiranga</option>
+                        <option value="Museu Nacional">Museu Nacional</option>
+                        <option value="Museu da Língua Portuguesa">Museu da Língua Portuguesa</option>
                     </select>
                 </div>
                 <div class="campo">
@@ -33,7 +33,9 @@
             </div>
             <div class="botao">
                 <button onclick="cadastrar()">Cadastrar</button>
+                <button onclick="window.location.reload()">Limpar</button>
             </div>
+            
             <div id="div_mensagem"></div>
         </div>
     </div>
@@ -69,62 +71,44 @@
 
             var fazerCadastro = true;
 
+            div_mensagem.innerHTML = ` `;
+
             if (indiceArrobaSenha < 0 && indiceCifraoSenha < 0 && indiceComercialSenha < 0 && indiceHashtagSenha < 0) {
                 div_mensagem.innerHTML += `<span style="color: red;"> - Senha inválida, tente novamente! (a senha precisa ter pelo menos 1 caractere especial entre essas opções: (@ - # - $ - &))</span><br><br>`;
                 fazerCadastro = false;
-                document.getElementById("botao").disabled = true;
             }
             if (cpfTamanho != 11) {
                 div_mensagem.innerHTML += `<span style="color: red;"> - CPF inválido, tente novamente! (quantidade de dígitos errada)</span><br><br>`;
                 fazerCadastro = false;
-                document.getElementById("botao").disabled = true;
             }
             if (telefoneTamanho != 11) {
                 div_mensagem.innerHTML += `<span style="color: red;"> - Telefone inválido, tente novamente! (quantidade de dígitos errada)</span><br><br>`;
                 fazerCadastro = false;
-                document.getElementById("botao").disabled = true;
             }
             if (senha != senhaConfirm) {
                 div_mensagem.innerHTML += `<span style="color: red;"> - Senha e senha de confirmação diferentes! Tente novamente</span><br><br>`;
                 fazerCadastro = false;
-                document.getElementById("botao").disabled = true;
             }
             if (tamanhoSenha < 5 || tamanhoSenha > 15) {
                 div_mensagem.innerHTML += `<span style="color: red;"> - Senha inválida, tente novamente! (a senha precisa ter pelo menos 5 caracteres e no máximo 15 caracteres)</span><br><br>`;
                 fazerCadastro = false;
-                document.getElementById("botao").disabled = true;
             }
             if (indiceArrobaEmail < 0 || terminaComPontoCom == false) {
                 div_mensagem.innerHTML += `<span style="color: red;"> - Email inválido, tente novamente! (o email precisa ter "@" e ".com")</span><br><br>`;
                 fazerCadastro = false;
-                document.getElementById("botao").disabled = true;
             }
             if (caixaBaixaEmpresa != "museu do ipiranga") {
                 div_mensagem.innerHTML += `<span style="color: red;"> - Empresa inválida! Essa empresa não está cadastrada em nosso sistema!</span><br><br>`;
                 fazerCadastro = false;
-                document.getElementById("botao").disabled = true;
+            }
+            if (codEmpresa != 1) {
+                div_mensagem.innerHTML += `<span style="color: red;"> - Empresa inválida! Código de segurança errado!</span><br><br>`;
+                fazerCadastro = false;
             }
 
             if (fazerCadastro == true) {
                 div_mensagem.innerHTML = `Cadastro feito com sucesso senhor(a) ${nome}!`;
-                document.getElementById("botao").disabled = true;
             }
-        }
-
-        function limpar() {
-            div_mensagem.innerHTML = ` `;
-
-            input_cpf.value = ` `;
-            input_dtNascimento.value = ` `;
-            input_email.value = ` `;
-            input_nome.value = ` `;
-            input_nomeEmpresa.value = ` `;
-            input_senha.value = ` `;
-            input_senhaConfirm.value = ` `;
-            input_telefone.value = ` `;
-
-            document.getElementById("botao").disabled = false;
-
         }
 
     </script>

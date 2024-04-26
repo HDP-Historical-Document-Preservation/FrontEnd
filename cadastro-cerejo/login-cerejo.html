@@ -13,7 +13,7 @@
         <h2>Login</h2>
         <input type="text" id="ipt_user" placeholder="Usuário">
         <input type="password" id="ipt_senha" placeholder="Senha"><br>
-        <button onclick="autenticar()">Login</button><br><br>
+        <button id="botao" onclick="autenticar()">Login</button><br><br>
         <div id="div_mensagem"></div>
         <div id="div_tentativa"></div>
     </div>
@@ -36,6 +36,7 @@
             if (tentativas <= 0){
                 div_mensagem.innerHTML = ``;
                 div_tentativa.innerHTML = `Falha de autenticação: Usuário BLOQUEADO temporariamente!`;
+                document.getElementById("botao").disabled = true;
             } else {
                 div_mensagem.innerHTML = ``;
                 div_tentativa.innerHTML = `Falha na autenticação!<br>Você ainda tem ${tentativas} tentativa(s)`;
