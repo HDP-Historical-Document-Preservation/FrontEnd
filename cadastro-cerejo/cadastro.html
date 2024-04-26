@@ -20,36 +20,36 @@
         </ul>
     </div>
     <div class="container">
-        <div class="cadastro">
-            <div class="card">
-                <h2>Cadastre-se</h2>
-                <div class="formulario">
-                    <div class="campo">
-                        <input type="text" id="ipt_nome" placeholder="Nome">
-                        <input type="email" id="ipt_email" placeholder="E-mail">
-                        <input type="password" id="ipt_senha" placeholder="Senha">
-                        <select id="select_empresaParceira">
-                            <option value="0" disabled selected>Selecione uma Empresa</option>
-                            <option value="Museu do Ipiranga">Museu do Ipiranga</option>
-                            <option value="Museu Nacional">Museu Nacional</option>
-                            <option value="Museu da Língua Portuguesa">Museu da Língua Portuguesa</option>
-                        </select>
+            <div class="cadastro">
+                <div class="card">
+                    <h2>Cadastre-se</h2>
+                    <div class="formulario">
+                        <div class="campo">
+                            <input type="text" id="ipt_nome" placeholder="Nome">
+                            <input type="email" id="ipt_email" placeholder="E-mail">
+                            <input type="password" id="ipt_senha" placeholder="Senha">
+                            <select id="select_empresaParceira">
+                                <option value="0" disabled selected>Selecione uma Empresa</option>
+                                <option value="Museu do Ipiranga">Museu do Ipiranga</option>
+                                <option value="Museu Nacional">Museu Nacional</option>
+                                <option value="Museu da Língua Portuguesa">Museu da Língua Portuguesa</option>
+                            </select>
+                        </div>
+                        <div class="campo">
+                            <input type="text" id="ipt_cpf" placeholder="CPF">
+                            <input type="text" id="ipt_telefone" placeholder="Telefone">
+                            <input type="password" id="ipt_confirmarSenha" placeholder="Repetir Senha">
+                            <input type="text" id="ipt_codEmpresa" placeholder="Código da empresa">
+                        </div>
                     </div>
-                    <div class="campo">
-                        <input type="text" id="ipt_cpf" placeholder="CPF">
-                        <input type="text" id="ipt_telefone" placeholder="Telefone">
-                        <input type="password" id="ipt_confirmarSenha" placeholder="Repetir Senha">
-                        <input type="text" id="ipt_codEmpresa" placeholder="Código da empresa">
+                    <div class="botao">
+                        <button onclick="cadastrar()">Cadastrar</button>
+                        <button onclick="window.location.reload()">Limpar</button>
                     </div>
-                </div>
-                <div class="botao">
-                    <button onclick="cadastrar()">Cadastrar</button>
-                    <button onclick="window.location.reload()">Limpar</button>
-                </div>
 
-                <div id="div_mensagem"></div>
+                    <div id="div_mensagem"></div>
+                </div>
             </div>
-        </div>
     </div>
     <script>
 
