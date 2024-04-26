@@ -431,7 +431,7 @@ button:hover {
   }
   
   .scroll::-webkit-scrollbar-track {
-    background: beige;        /* color of the tracking area */
+    background: beige;       /* color of the tracking area */
   }
   
   .scroll::-webkit-scrollbar-thumb {
