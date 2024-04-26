@@ -467,7 +467,7 @@ button:hover {
 
 .linha {
     margin-right: 1%;
-    height: 45.5vh;
+    height: 47.5vh;
     width: 0.25vw;
     background-color: #504e4e;
 }
@@ -481,3 +481,16 @@ button:hover {
     width: 35vw;
     height: 35vh;
 }
+
+
+.graficoG {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 3%;
+    margin-left: 2%;
+    width: 35vw;
+    height: 35vh;
+}
+
+

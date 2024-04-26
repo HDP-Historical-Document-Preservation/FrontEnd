@@ -71,10 +71,10 @@
             </div>
             <div id="dadosGraficos" class="dados">
                 <div class="listaG">
-                    <div class="listasTU">
+                    <div id="listatu" class="listasTU">
                         <h3>Condição de Temperatura e Umidade nas salas</h3>
                         <div class="scroll">
-                        <button style="color: red;" onclick="mudar3()"><b style="color: black;">3 - </b> Sala da história
+                        <button style="color: red;" onclick="mudar3G()"><b style="color: black;">3 - </b> Sala da história
                             dos
                             sobrenomes</button>
                         <button style="color: red;" onclick="mudar5()"><b style="color: black;">5 - </b> Sala de Figuras Importantes no
@@ -87,12 +87,18 @@
                     </div>
                     <div class="linha"></div>
 
-                    <div id="graficoG" style="text-align: center;">
+                    <div id="grafico" style="text-align: center;">
                         <h3>Percentual de Salas com registros Inadequados</h3>
-                        <div class="grafico">
-                            <canvas id="graficoSalas"></canvas>
+                        <div class="graficoG">
+                            <canvas id="graficoSalas"position= relative width="900" ; height="400"></canvas>
                         </div>
                     </div>
+                    <div id="grafico3G" style="text-align: center;">
+                        <h3>Métricas na Sala 9 - Sala de documentação da TV
+                            Brasileira</h3>
+                        <div class="graficoG">
+                            <canvas id="graficoSala3G" position="relative" width="2200" ; height="900"></canvas>
+                        </div>
                 </div>
             </div>
 
@@ -101,35 +107,89 @@
 </body>
 
 <script>
-    const data1 = {
+    const dataG = {
   labels: [
-    'Salas com métricas inadequadas',
-    'Salas Totais'
+    'Métricas inadequadas',
+    'Métricas inadequadas (+2hrs)'
   ],
   datasets: [{
     label: 'GraficoGeral',
-    data: [4, 6],
+    data: [2, 4],
     backgroundColor: [
-      'rgb(255, 99, 132)',
-      'rgb(54, 162, 235)',
-      'rgb(255, 205, 86)'
+      '#B62727',
+      '#ff8800'
     ],
     hoverOffset: 4
-    // options
+    
   }]
 };
 
 const config = {
   type: 'pie',
-  data: data1,
+  data: dataG,
 };
+
+// grafico da sala 3G do museu
+
+const labels3G = [
+        '10:00',
+        '11:00',
+        '12:00',
+        '13:00',
+        '14:00',
+        '15:00',
+        '16:00',
+        '17:00',
+        '18:00',
+        '19:00',
+        '20:00',
+        '21:00',
+        '22:00',
+    ];
+
+    const data3G = {
+        labels: labels3G,
+        datasets: [{
+            label: 'Temperatura (°C)',
+            backgroundColor: '#B62727',
+            borderColor: '#B62727',
+            data: [21, 22, 28, 32, 34, 33, 35, 33, 34],
+        },
+        {
+            label: 'Umidade (%)',
+            backgroundColor: '#ff8800',
+            borderColor: '#ff8800',
+            data: [56, 57, 62, 65, 67, 68, 65, 66, 65],
+        }
+        ]
+    };
+    const config3G = {
+        type: 'line',
+        data: data3G,
+        options: {}
+    };
+
+
 
     const myChart = new Chart(
         document.getElementById('graficoSalas'),
         config
     );
 
+    const myChart3G = new Chart(
+        document.getElementById('graficoSala3G'),
+        config3G
+    );
+
+    dadosGraficos.style.display = 'block';
+    grafico3G.style.display = 'none';
     
+
+    function mudar3G() {
+        grafico.style.display = 'none';
+        listatu.style.display = 'none';
+        grafico3G.style.display = 'block';
+    }
 </script>
 
 
