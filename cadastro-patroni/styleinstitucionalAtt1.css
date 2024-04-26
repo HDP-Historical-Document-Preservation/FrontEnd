@@ -1,17 +1,16 @@
 body{
   margin: 0%;
   padding: 0;
-  background-image: url(Captura\ de\ tela\ 2024-04-02\ 152446\ \(1\).png);
+  background-image: url(fundo-escuro.png);
   
 }
   .header {
-  background: #1e371b;
+  background: #370505;
   display: flex;
   flex-direction: row;
-  border-radius: 0px 50px 50px 0px ;
   padding: 1rem 2rem;
   position: fixed;
-  width: 100%;  
+  width: 1300px;  
 }
 
 .container {
@@ -33,42 +32,34 @@ body{
   list-style: none;
   width: 400px;
   justify-content: space-between;
-  color: #e3b062; 
+  color: #DD940D; 
   font-family: Georgia, 'Times New Roman', Times, serif;
-  
+  font-size: 18px;
+  margin-left: 600px;
 }
 
-.pagina1_bloco {
-  display: flex;
-  flex-direction: row;
-  padding: 70px; 
-  background-color: #1e371b;
-  width: 120px;
-  height: 700px;
-  }
+.navbar a {
+  text-decoration: none;
+  color: #DD940D;
+}
 
 .logo {
   display: flex;
   justify-content: space-evenly;
-}
-
-.img1 {
-  width: 500px;
-  height: 500px;
-  align-items: flex-start;
-  margin-top: 100px;
+  margin-bottom: 50px;
 }
 
 .texto1 {
-  margin-left: 350px;
   font-family: Arial, sans-serif;  
   line-height: 1.5; 
   letter-spacing: 1px; 
-  text-align: justify;
+  text-align: center;
   color: white;
-  width: 400px;
-  margin-left: 400px;
-  margin-top: 300px;
+  margin-top: 200px;
+  flex-direction: column;
+  font-weight: 1000;
+  color: #DD940D;
+  font-size: 35px;
 }
 
 .pagina1final {
@@ -77,43 +68,80 @@ body{
 
 .banner {
   background-color: white;
-  padding: 100px;
+  padding: 50px;
   }
+
+.titulo {
+  font-weight: 800;
+  color: #DD940D;
+  margin-left: 50px;
+
+}
 
 .teste1{
     display: flex;
     flex-direction: row;
     align-items: center;
-
-    }
-
-.foto1 {
-    display: flex;
-    margin-left: 100px;
 }
 
 .paragrafo1 {
-  margin-left: 180px;
+  margin-left: 50px;
   font-family: Arial, sans-serif;  
   line-height: 1.5; 
   letter-spacing: 1px; 
   text-align: justify;
+  width: 500px;
+  height: 300px;
 }
 
 .img2 {
-  width: 650px;
-  height: 350px;
+  width: 500px;
+  height: 300px;
   border: #e3b062 solid 4px;
+  margin-left: 100px;
 }
 
+.banner1 {
+  background-color: white;
+  padding: 70px;
+}
 
 .teste2{
   display: flex;
   flex-direction: row;
-  align-items: center;
-  justify-content: center;
   justify-content: space-around;
-  }
+  margin-left: 20px;
+}
+
+.temp1 {
+  text-align: center;
+  margin-right: 2%;
+  flex-direction: row;
+  border: 3px solid black;
+  padding: 15px;
+  background-color: #ffe6c0;
+  border-radius: 15px;
+}
+
+.temp2 {
+  text-align: center;
+  margin-right: 2%;
+  flex-direction: row;
+  border: 3px solid black;
+  padding: 15px;
+  background-color: #ffe6c0;
+  border-radius: 15px;
+}
+
+.temp3 {
+  text-align: center;
+  margin-right: 2%;
+  flex-direction: row;
+  border: 3px solid black;
+  padding: 10px;
+  background-color: #ffe6c0;
+  border-radius: 15px;
+}
 
 .img3 {
   width: 55%;
@@ -121,12 +149,12 @@ body{
 }
 
 .img4 {
-  width: 180px;
+  width: 40%;
   align-items: center;
 }
 
 .img5 {
-  width: 75%;
+  width: 70%;
   align-items: center;
 }
 
@@ -143,15 +171,9 @@ body{
   width: 400px;
 }
 
-.temp {
-  align-items: center;
-  text-align: center;
-  margin-right: 2%;
-}
-
 .banner2 {
-  background-color: #1e371b;
-  padding: 100px;
+  background-color: #f1bf62;
+  padding: 70px;
   }
 
   .texto3 {
@@ -162,10 +184,11 @@ body{
     margin-top: 20px; 
     margin-right: 10%;
     text-align: justify;
-    color: white;
+    color: black;
     justify-content: space-between;
     align-items: center;
     width: 400px;
+    font-weight: 800;
   }  
 
   .img6 {
@@ -173,8 +196,14 @@ body{
   align-items: center;
   }
 
+  .banner3 {
+    background-color: white;
+    padding: 50px;
+  }
+
   .img7 {
-    width: 30%;
+    width: 700px;
+    height: 400px;
   }
 
   .texto4 {
@@ -182,6 +211,7 @@ body{
     font-family: Arial, sans-serif; 
     color:#e3b062; 
     flex-direction: row;
+    font-weight: 800;
     font-size: 25px;
     margin-left: 500px;
   }  
@@ -199,8 +229,8 @@ body{
     letter-spacing: 1px;
     text-align: justify;
     align-items: center;
-    margin-left: 250px;
-    margin-bottom: 300px;
+    margin-left: 100px;
+    margin-right: 50px;
   }
 
   .teste4 {
@@ -210,9 +240,9 @@ body{
     background-color: #1e371b;
     color: white;
     font-size: medium;
-    margin-top: 100px;
     width: 2000px;
     height: 50px;
+    margin-top: 240px;
   }
   
   .texto6 {
