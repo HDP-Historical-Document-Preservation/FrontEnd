@@ -4,40 +4,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro</title>
+    <title>Cadastro | HDP</title>
     <link rel="stylesheet" href="style-cadastro.css">
 </head>
 
 <body>
-    <div class="cadastro">
-        <div class="card">
-            <h2>Cadastre-se</h2>
-            <div class="formulario">
-                <div class="campo">
-                    <input type="text" id="ipt_nome" placeholder="Nome">
-                    <input type="email" id="ipt_email" placeholder="E-mail">
-                    <input type="password" id="ipt_senha" placeholder="Senha">
-                    <select id="select_empresaParceira">
-                        <option value="0" disabled selected>Selecione uma Empresa</option>
-                        <option value="Museu do Ipiranga">Museu do Ipiranga</option>
-                        <option value="Museu Nacional">Museu Nacional</option>
-                        <option value="Museu da Língua Portuguesa">Museu da Língua Portuguesa</option>
-                    </select>
-                </div>
-                <div class="campo">
-                    <input type="text" id="ipt_cpf" placeholder="CPF">
-                    <input type="text" id="ipt_telefone" placeholder="Telefone">
-                    <input type="password" id="ipt_confirmarSenha" placeholder="Repetir Senha">
-                    <input type="text" id="ipt_codEmpresa" placeholder="Código da empresa">
+    <div class="header">
+        <img src="Captura_de_tela_de_2024-04-18_14-29-53-removebg-preview.png" alt="logo">
+        <ul class="navbar">
+            <li>Home</li>
+            <li>Sobre Nós</li>
+            <li>|</li>
+            <li>Cadastro</li>
+            <li>Login</li>
+        </ul>
+    </div>
+    <div class="container">
+            <div class="cadastro">
+                <div class="card">
+                    <h2>Cadastre-se</h2>
+                    <div class="formulario">
+                        <div class="campo">
+                            <input type="text" id="ipt_nome" placeholder="Nome">
+                            <input type="email" id="ipt_email" placeholder="E-mail">
+                            <input type="password" id="ipt_senha" placeholder="Senha">
+                            <select id="select_empresaParceira">
+                                <option value="0" disabled selected>Selecione uma Empresa</option>
+                                <option value="Museu do Ipiranga">Museu do Ipiranga</option>
+                                <option value="Museu Nacional">Museu Nacional</option>
+                                <option value="Museu da Língua Portuguesa">Museu da Língua Portuguesa</option>
+                            </select>
+                        </div>
+                        <div class="campo">
+                            <input type="text" id="ipt_cpf" placeholder="CPF">
+                            <input type="text" id="ipt_telefone" placeholder="Telefone">
+                            <input type="password" id="ipt_confirmarSenha" placeholder="Repetir Senha">
+                            <input type="text" id="ipt_codEmpresa" placeholder="Código da empresa">
+                        </div>
+                    </div>
+                    <div class="botao">
+                        <button onclick="cadastrar()">Cadastrar</button>
+                        <button onclick="window.location.reload()">Limpar</button>
+                    </div>
+
+                    <div id="div_mensagem"></div>
                 </div>
             </div>
-            <div class="botao">
-                <button onclick="cadastrar()">Cadastrar</button>
-                <button onclick="window.location.reload()">Limpar</button>
-            </div>
-            
-            <div id="div_mensagem"></div>
-        </div>
     </div>
     <script>
 
@@ -74,35 +86,39 @@
             div_mensagem.innerHTML = ` `;
 
             if (indiceArrobaSenha < 0 && indiceCifraoSenha < 0 && indiceComercialSenha < 0 && indiceHashtagSenha < 0) {
-                div_mensagem.innerHTML += `<span style="color: red;"> - Senha inválida, tente novamente! (a senha precisa ter pelo menos 1 caractere especial entre essas opções: (@ - # - $ - &))</span><br><br>`;
+                div_mensagem.innerHTML = `<span style="color: red;"> - Senha inválida, tente novamente! (a senha precisa ter pelo menos 1 caractere especial entre essas opções: (@ - # - $ - &))</span><br><br>`;
                 fazerCadastro = false;
             }
             if (cpfTamanho != 11) {
-                div_mensagem.innerHTML += `<span style="color: red;"> - CPF inválido, tente novamente! (quantidade de dígitos errada)</span><br><br>`;
+                div_mensagem.innerHTML = `<span style="color: red;"> - CPF inválido, tente novamente! (quantidade de dígitos errada)</span><br><br>`;
                 fazerCadastro = false;
             }
             if (telefoneTamanho != 11) {
-                div_mensagem.innerHTML += `<span style="color: red;"> - Telefone inválido, tente novamente! (quantidade de dígitos errada)</span><br><br>`;
+                div_mensagem.innerHTML = `<span style="color: red;"> - Telefone inválido, tente novamente! (quantidade de dígitos errada)</span><br><br>`;
                 fazerCadastro = false;
             }
             if (senha != senhaConfirm) {
-                div_mensagem.innerHTML += `<span style="color: red;"> - Senha e senha de confirmação diferentes! Tente novamente</span><br><br>`;
+                div_mensagem.innerHTML = `<span style="color: red;"> - Senha e senha de confirmação diferentes! Tente novamente</span><br><br>`;
                 fazerCadastro = false;
             }
             if (tamanhoSenha < 5 || tamanhoSenha > 15) {
-                div_mensagem.innerHTML += `<span style="color: red;"> - Senha inválida, tente novamente! (a senha precisa ter pelo menos 5 caracteres e no máximo 15 caracteres)</span><br><br>`;
+                div_mensagem.innerHTML = `<span style="color: red;"> - Senha inválida, tente novamente! (a senha precisa ter pelo menos 5 caracteres e no máximo 15 caracteres)</span><br><br>`;
                 fazerCadastro = false;
             }
             if (indiceArrobaEmail < 0 || terminaComPontoCom == false) {
-                div_mensagem.innerHTML += `<span style="color: red;"> - Email inválido, tente novamente! (o email precisa ter "@" e ".com")</span><br><br>`;
+                div_mensagem.innerHTML = `<span style="color: red;"> - Email inválido, tente novamente! (o email precisa ter "@" e ".com")</span><br><br>`;
                 fazerCadastro = false;
             }
             if (caixaBaixaEmpresa != "museu do ipiranga") {
-                div_mensagem.innerHTML += `<span style="color: red;"> - Empresa inválida! Essa empresa não está cadastrada em nosso sistema!</span><br><br>`;
+                div_mensagem.innerHTML = `<span style="color: red;"> - Empresa inválida! Essa empresa não está cadastrada em nosso sistema!</span><br><br>`;
                 fazerCadastro = false;
             }
             if (codEmpresa != 1) {
-                div_mensagem.innerHTML += `<span style="color: red;"> - Empresa inválida! Código de segurança errado!</span><br><br>`;
+                div_mensagem.innerHTML = `<span style="color: red;"> - Empresa inválida! Código de segurança errado!</span><br><br>`;
+                fazerCadastro = false;
+            }
+            if (nome == " " || cpf == " " || telefone == " " || email == " " || senha == " " || senhaConfirm == " " || nomeEmpresa == 0 || codEmpresa == " ") {
+                div_mensagem.innerHTML = `<span style="color: red;"> - Todos os campos tem que estar preenchidos!</span><br><br>`;
                 fazerCadastro = false;
             }
 
