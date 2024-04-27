@@ -36,7 +36,7 @@
                 <div class="foto">
                 </div>
                 <div class="informacoes">
-                    <h5>FERNANDO BRANDÃO</h5>
+                    <h5>Olá, Fernando Brandão</h5>
                     <p>fernando.brandao@sptech.school</p>
                 </div>
                 <div class="acesso">
@@ -48,13 +48,16 @@
         <div class="conteudo">
             <div class="avisoG">
                 <div class="blocoAviso">
-                    <span>Tempo que Salas Ficaram em Condições Inadequadas<p>Seus livros e documentos podem estar em risco devido ao grande período de tempo em condições inadequadas. Clique em cada uma das salas a baixo para
+                    <span>Tempo que Salas Ficaram em Condições Inadequadas<p>Seus livros e documentos podem estar em
+                            risco devido ao grande período de tempo (+2horas) em condições inadequadas. Clique em cada
+                            uma das
+                            salas a baixo para
                             ver detalhes de suas métricas.</p></span>
 
                     <div class="blocoInterno">
                         <div class="cardInt2">
                             <h1 style="margin-bottom: 5%;">2hrs</h1>
-                            <h4 >4 | 6 </h4>
+                            <h4>4 | 6 </h4>
                             <h4>Salas</h4>
                         </div>
                     </div>
@@ -74,64 +77,84 @@
                     <div id="listatu" class="listasTU">
                         <h3>Condição de Temperatura e Umidade nas salas</h3>
                         <div class="scroll">
-                        <button style="color: red;" onclick="mudar3G()"><b style="color: black;">3 - </b> Sala da história
-                            dos
-                            sobrenomes</button>
-                        <button style="color: red;" onclick="mudar5()"><b style="color: black;">5 - </b> Sala de Figuras Importantes no
-                            Brasil</button>
-                        <button style="color: red;" onclick="mudar6()"><b style="color: black;">6 - </b> Sala da história da música
-                            Brasileira</button>
-                        <button style="color: red;" onclick="mudar9()"><b style="color: black;">9 - </b> Sala de documentação da TV
-                            Brasileira</button>
+                            <button style="color: red;" onclick="mudar3G()"><b style="color: black;">3 - </b> Sala da
+                                história
+                                dos
+                                sobrenomes</button>
+                            <button style="color: red;" onclick="mudar5()"><b style="color: black;">5 - </b> Sala de
+                                Figuras Importantes no
+                                Brasil</button>
+                            <button style="color: red;" onclick="mudar6()"><b style="color: black;">6 - </b> Sala da
+                                história da música
+                                Brasileira</button>
+                            <button style="color: red;" onclick="mudar9()"><b style="color: black;">9 - </b> Sala de
+                                documentação da TV
+                                Brasileira</button>
                         </div>
                     </div>
                     <div class="linha"></div>
 
                     <div id="grafico" style="text-align: center;">
                         <h3>Percentual de Salas com registros Inadequados</h3>
-                        <div class="graficoG">
-                            <canvas id="graficoSalas"position= relative width="900" ; height="400"></canvas>
+                        <div class="grafico" style="    justify-content: center;
+                        ">
+                            <canvas id="graficoSalas" position=relative width="900" ; height="400"></canvas>
                         </div>
                     </div>
                     <div id="grafico3G" style="text-align: center;">
-                        <h3>Métricas na Sala 9 - Sala de documentação da TV
-                            Brasileira</h3>
+                        <!-- <button><img src="https://cdn-icons-png.flaticon.com/512/5312/5312138.png" alt=""></button> -->
+                        <div class="titulo2">
+                            <button><img src="https://cdn-icons-png.flaticon.com/512/17/17699.png" alt=""></button>
+                        <h3>Métricas na Sala 3 - Sala da história dos sobrenomes</h3>
+                    </div>
                         <div class="graficoG">
-                            <canvas id="graficoSala3G" position="relative" width="2200" ; height="900"></canvas>
+                            <canvas id="graficoSala3G" position="relative" width="3300" ; height="900"></canvas>
                         </div>
-                </div>
-            </div>
 
+                    </div>
+                </div>
+
+
+            </div>
         </div>
-    </div>
 </body>
 
 <script>
     const dataG = {
-  labels: [
-    'Métricas inadequadas',
-    'Métricas inadequadas (+2hrs)'
-  ],
-  datasets: [{
-    label: 'GraficoGeral',
-    data: [2, 4],
-    backgroundColor: [
-      '#B62727',
-      '#ff8800'
-    ],
-    hoverOffset: 4
-    
-  }]
-};
+        labels: [
+            'Métricas inadequadas',
+            'Métricas inadequadas (+2hrs)'
+        ],
+        datasets: [{
+            label: 'GraficoGeral',
+            data: [2, 4],
+            backgroundColor: [
+                '#B62727',
+                '#ff8800'
+            ],
+            hoverOffset: 4
 
-const config = {
-  type: 'pie',
-  data: dataG,
-};
+        }]
+    };
 
-// grafico da sala 3G do museu
+    const config = {
+        type: 'pie',
+        data: dataG,
+    };
 
-const labels3G = [
+    // grafico da sala 3G do museu
+
+    const labels3G = [
+        '00:00',
+        '01:00',
+        '02:00',
+        '03:00',
+        '04:00',
+        '05:00',
+        '06:00',
+        '07:00',
+        '08:00',
+        '09:00',
         '10:00',
         '11:00',
         '12:00',
@@ -145,6 +168,7 @@ const labels3G = [
         '20:00',
         '21:00',
         '22:00',
+        '23:00',
     ];
 
     const data3G = {
@@ -153,7 +177,7 @@ const labels3G = [
             label: 'Temperatura (°C)',
             backgroundColor: '#B62727',
             borderColor: '#B62727',
-            data: [21, 22, 28, 32, 34, 33, 35, 33, 34],
+            data: [15, 16, 15, 15, 17, 17, 18, 16, 18, 20, 21, 22, 28, 32, 34, 33, 35, 33, 34],
         },
         {
             label: 'Umidade (%)',
@@ -183,7 +207,7 @@ const labels3G = [
 
     dadosGraficos.style.display = 'block';
     grafico3G.style.display = 'none';
-    
+
 
     function mudar3G() {
         grafico.style.display = 'none';

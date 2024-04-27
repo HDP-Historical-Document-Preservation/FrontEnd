@@ -103,7 +103,7 @@ body {
 
 .informacoes h5 {
     margin-bottom: 5%;
-    font-size: 90%;
+    font-size: 95%;
     font-style: normal;
     font-family: Helvetica;
 }
@@ -487,10 +487,21 @@ button:hover {
     display: flex;
     flex-direction: row;
     justify-content: center;
+    align-items: center;
     margin-top: 3%;
     margin-left: 2%;
-    width: 35vw;
+    width: 65vw;
     height: 35vh;
 }
 
+.graficoG img {
+    height: 50%;
+}
+
+.graficoG button {
+    display: flex;
+    border: none;
+    height: 10vh;
+    background-color: #D9D9D9;
+}
 
