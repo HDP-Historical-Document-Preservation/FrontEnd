@@ -494,14 +494,4 @@ button:hover {
     height: 35vh;
 }
 
-.graficoG img {
-    height: 50%;
-}
-
-.graficoG button {
-    display: flex;
-    border: none;
-    height: 10vh;
-    background-color: #D9D9D9;
-}
 
