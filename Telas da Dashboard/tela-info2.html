@@ -73,6 +73,7 @@
 
             </div>
             <div id="dadosGraficos" class="dados">
+                <button id="voltar" class="botaoVoltar" onclick="voltarB()">Voltar</button>
                 <div class="listaG">
                     <div id="listatu" class="listasTU">
                         <h3>Condição de Temperatura e Umidade nas salas</h3>
@@ -397,12 +398,15 @@
     grafico5G.style.display = 'none';
     grafico6G.style.display = 'none';
     grafico9G.style.display = 'none';
+    voltar.style.display = 'none';
 
 
     function mudar3G() {
         grafico.style.display = 'none';
         listatu.style.display = 'none';
         grafico3G.style.display = 'block';
+        voltar.style.display = 'block';
+
     }
 
     function mudar5G() {
@@ -410,6 +414,8 @@
         listatu.style.display = 'none';
         grafico3G.style.display = 'none';
         grafico5G.style.display = 'block';
+        voltar.style.display = 'block';
+
     }
 
     function mudar6G() {
@@ -418,6 +424,8 @@
         grafico3G.style.display = 'none';
         grafico5G.style.display = 'none';
         grafico6G.style.display = 'block';
+        voltar.style.display = 'block';
+
     }
 
     function mudar9G() {
@@ -427,6 +435,18 @@
         grafico5G.style.display = 'none';
         grafico6G.style.display = 'none';
         grafico9G.style.display = 'block';
+        voltar.style.display = 'block';
+    }
+
+    function voltarB() {
+    dadosGraficos.style.display = 'block';
+    listatu.style.display = 'block';
+    grafico.style.display = 'block';
+    grafico3G.style.display = 'none';
+    grafico5G.style.display = 'none';
+    grafico6G.style.display = 'none';
+    grafico9G.style.display = 'none';
+    voltar.style.display = 'none';
     }
 </script>
 

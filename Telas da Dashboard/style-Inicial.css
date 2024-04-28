@@ -247,7 +247,7 @@ body {
     transition: 0.3s;
 }
 
-button:hover {
+.card button:hover {
     background-color: #ff8800;
 
 }
@@ -492,6 +492,20 @@ button:hover {
     margin-left: 2%;
     width: 65vw;
     height: 35vh;
+}
+
+
+.botaoVoltar{
+    height: 8%;
+    width: 8%;
+    border: none; 
+    background-color:beige; 
+    margin-left: 75px;
+    color: black;
+    font-size: large;
+    font-weight: bold;
+    cursor: pointer;
+    
 }
 
 
