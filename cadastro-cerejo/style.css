@@ -1,0 +1,38 @@
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url("https://raw.githubusercontent.com/GabrielCerejo/meu-primeiro-repo/main/desfoque.PNG");
+    background-position: center;
+    background-size: 100%;
+}
+
+.login {
+    width: 300px;
+    padding: 20px;
+    border: 1px solid black;
+    border-radius: 5px;
+    box-shadow: 0 0 10px gray;
+    background-color: #ccc;
+    opacity: 90%;
+}
+
+.login input, .login button{
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-top: 10px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#div_mensagem, #div_tentativa{
+    color: red;
+    margin-top: 10px;
+    text-align: center;
+}
+
