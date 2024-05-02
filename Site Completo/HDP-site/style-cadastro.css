@@ -1,0 +1,129 @@
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin: 0;
+    padding: 0;
+    /* display: flex; */
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url("fundoCadastro.png");
+    background-position: center;
+    background-size: 100%;
+    overflow: hidden;
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+.header {
+    background-color: #370505;
+    display: flex;
+    flex-direction: row;
+    padding: 1rem 0rem;
+    width: 100vw;
+    border: 2px solid black;
+    height: 26px;
+    align-items: center;
+}
+
+.agora {
+    font-weight: 500;
+    color: #ffbf00;
+}
+
+.navbar{
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    width: 400px;
+    justify-content: space-between;
+    color: beige;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 18px;
+    margin-left: 730px;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: beige;
+  }
+
+img{
+    width: 8%;
+    margin-left: 2%;
+}
+
+.cadastro {
+    width: 660px;
+    height: 440px;
+    padding: 20px;
+    border: 1px solid black;
+    border-radius: 5px;
+    box-shadow: 0 0 10px black;
+    background-color: #370505;
+}
+
+.cadastro input,
+.cadastro button {
+    width: 280px;
+    height: 20px;
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 10px;
+    display: block;
+}
+
+.cadastro select {
+    width: 304px;
+    height: 42px;
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 10px;
+    display: block;
+}
+
+button:hover {
+    background-color: #ffbf00;
+    transition: 1s;
+}
+
+#div_mensagem {
+    color: #fbff00;
+    margin-top: 10px;
+    text-align: center;
+}
+
+h2 {
+    text-align: center;
+    color: #ffbf00;
+}
+
+.formulario {
+    display: flex;
+    justify-content: space-between;
+}
+
+.card {
+    justify-content: center;
+    padding: 20px;
+    height: 40vh;
+    margin: auto;
+}
+
+.botao {
+    display: flex;
+    justify-content: center;
+}
+
+.botao button {
+    margin: 20px;
+    height: 100%;
+    transition: 1s;
+}
+
+

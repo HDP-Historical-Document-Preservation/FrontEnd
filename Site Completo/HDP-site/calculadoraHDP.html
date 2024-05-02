@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora | HDP</title>
+    <link rel="stylesheet" href="style-calculadora.css">
+</head>
+
+<body>
+    <div class="header">
+
+        <img src="logo.png" alt="logo">
+        <ul class="navbar">
+          <a href="siteHDP.html"><li>Home</li></a>
+            <li class="agora">Calculadora</li>
+          <li>|</li>
+          <a href="cadastroHDP.html">
+            <li>Cadastro</li>
+          </a>
+          <a href="loginHDP.html">
+            <li>Login</li>
+          </a>
+        </ul>
+      </div>
+    <div id="box">
+        <center>
+            <strong>Historical Document Preservation - Simulador Financeiro</strong><br><br>
+        </center>
+        <div id="box2">
+            <div id="conteudo">
+                <span id="iptA">Quantidade de livros e documentos por sala:</span><br><input type="text"
+                    id="input_qtdlivro"><br>
+                <span id="iptB">Quantidade de salas onde os livros e documentos estão armazenados:</span><br><input
+                    type="text" id="input_qtdsala"><br>
+                <span id="iptC">Temperatura média do mês dentro das salas (em Cº):</span><br><input type="text"
+                    id="input_temp"><br>
+                <span id="iptD">Umidade média do mês dentro das salas (em %):</span><br><input type="text"
+                    id="input_umid"><br>
+                <span id="iptE">Faturamento mensal do museu:</span><br><input type="text" id="input_faturamento"><br>
+                <span id="iptF">Valor de restauração de um livro ou documento:</span><br><input type="text"
+                    id="input_restauracao"><br>
+                <button onclick="calcular()">Calcular</button>
+                <button onclick="window.location.reload()">Limpar</button>
+
+
+            </div>
+            <div id="div_mensagem"></div>
+        </div>
+    </div>
+
+</body>
+
+</html>
+
+<script>
+
+    function calcular() {
+        var qtdlivro = Number(input_qtdlivro.value);
+        var qtdsala = Number(input_qtdsala.value);
+        var temp = Number(input_temp.value);
+        var umid = Number(input_umid.value);
+        var faturamento = Number(input_faturamento.value);
+        var restauracao = Number(input_restauracao.value);
+        var totallivro = qtdlivro * qtdsala;
+        var totallivroSolucao = totallivro * 0.4;
+        var restauracaoLivroSolucao = totallivroSolucao * restauracao;
+        var restauracaoLivro = (totallivro * restauracao);
+        var lucroAnual = faturamento * 12;
+        var lucroAtual = lucroAnual - restauracaoLivro; // Variável que calcula o lucro SEM nossa solução
+        var lucroSolucao = lucroAnual - restauracaoLivroSolucao; // Variável que calcula o lucro COM a solução
+
+        // calculando diferença de métricas (Temperatura)
+        var aumentoGraus = temp - 20;
+        var diminuiGraus = 16 - temp;
+
+        // calculando diferença de métricas (Umidade)
+        var aumentoUmid = umid - 60;
+        var diminuiUmid = 30 - umid;
+
+
+        // condições da temperatura
+        if (temp < 16) {
+            div_mensagem.innerHTML = `<span style="font-size: 20px; font-weight: bold;">Temperatura abaixo do ideal! (Em ${diminuiGraus} °C)</span>`;
+        }
+        if (temp > 20) {
+            div_mensagem.innerHTML = `<span style="font-size: 20px; font-weight: bold;">Temperatura acima do ideal! (Em ${aumentoGraus} °C)</span>`;
+        }
+        if (temp >= 16) {
+            if (temp <= 20) {
+                div_mensagem.innerHTML = `<span style="font-size: 20px; font-weight: bold;">Temperatura ideal! (Entre 16°C e 20°C)</span>`;
+            }
+        }
+
+        // condições da umidade
+        if (umid < 30) {
+            div_mensagem.innerHTML += `<span style="font-size: 20px; font-weight: bold;">Umidade abaixo do ideal! (Em ${diminuiUmid}%)</span>`;
+        }
+        if (umid > 60) {
+            div_mensagem.innerHTML += `<span style="font-size: 20px; font-weight: bold;">Umidade acima do ideal! (Em ${aumentoUmid}%)</span>`;
+        }
+        if (umid >= 30 && umid <= 60) {
+            div_mensagem.innerHTML += `<br><span style="font-size: 20px; font-weight: bold;">Umidade boa! (Entre 30% e 60%)</span>`;
+        }
+
+        // condições temperatura e umidade fora do recomendado
+
+        div_mensagem.innerHTML += "<br><br><span style='font-weight: bold; font-size: 20px; color: #1e371b;'>Sem a nossa solução</span>";
+        div_mensagem.innerHTML += "<br>Com as métricas de temperatura e umidade fora dos valores ideias, você estará colocando todos os seus " + qtdlivro + " livros de cada uma das " + qtdsala + " sala(s), ou seja, " + totallivro + " livros em risco. Do seu faturamento anual de <span style='color: green; font-weight: bold;'>" + lucroAnual.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL', }) + "</span> você perderá <span style='color: red; font-weight: bold;'> " + restauracaoLivro.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL', }) + " </span>, gerando um saldo de somente <span style='color: black; font-weight: bold;'>" + lucroAtual.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL', }) + "</span>";
+
+
+        div_mensagem.innerHTML += "<br><br><span style='font-weight: bold; font-size: 25px; color: #1e371b;'> Com a nossa solução</span>";
+        div_mensagem.innerHTML += "<br>Com a implementação das métricas de temperatura e umidade ideais, <span style='color: black; font-weight: bold;'>garantimos a preservação de 60% dos seus preciosos " + totallivro + " livros</span>, resultando em <span style='color: black; font-weight: bold;'>apenas " + totallivroSolucao + " livros em risco.</span> Nossa solução não apenas protege seu valioso acervo, mas também salvaguarda seu faturamento anual de <span style='color: green; font-weight: bold;'> " + lucroAnual.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL', }) + "</span>, proporcionando um lucro que pode ultrapassar os <span style='color: green; font-weight: bold;'> " + lucroSolucao.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL', }) + "</span>. Com nossa solução, você pode ficar tranquilo sabendo que seus <span style='color: black; font-weight: bold;'>livros estão protegidos e seu negócio continua a prosperar.</span>";
+        div_mensagem.innerHTML += `<br><br><button onclick="mes()">Ver Solução Detalhada</button>`;
+    }
+
+    function mes() {
+        var qtdlivro = Number(input_qtdlivro.value);
+        var qtdsala = Number(input_qtdsala.value);
+        var temp = Number(input_temp.value);
+        var umid = Number(input_umid.value);
+        var faturamento = Number(input_faturamento.value);
+        var restauracao = Number(input_restauracao.value);
+
+        div_mensagem.innerHTML = " ";
+
+        div_mensagem.innerHTML += "<span style='font-weight: bold; font-size: 35px; color: #1e371b;'> Com a nossa solução:</span>";
+        div_mensagem.innerHTML += "<br><br><span style='font-weight: bold;'>Você terá a possibilidade de aumentar o seu lucro em até 10% a cada mês!!!</span> <br >Veja o detalhamento de <span style='font-weight: bold;'>1 ano</span> com a nossa solução:<br><br>";
+
+        for (var cont = 1; cont <= 12; cont++) {
+            faturamento = faturamento + (faturamento * 0.1)
+            div_mensagem.innerHTML += `<span style='font-weight: bold;'>${cont}º Mês - Seu Lucro será de:</span><span style='font-weight: bold; color:green '> ${faturamento.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL', })}<br></span>`;
+        }
+    }
+
+
+
+</script>

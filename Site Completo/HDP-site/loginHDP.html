@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ptbr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | HDP</title>
+    <link rel="stylesheet" href="style-login.css">
+</head>
+
+<body>
+    <div class="header">
+        <img src="logohdp1.png" alt="logo">
+        <ul class="navbar">
+            <a href="siteHDP.html"><li>Home</li></a>
+            <a href="siteHDP.html #sobreNos"><li>Sobre nós</li></a>
+            <li>|</li>
+            <a href="cadastroHDP.html"  style="text-decoration: none; cursor: pointer; color: beige;"><li >Cadastro</li></a>
+            <li class="agora">Login</li>
+        </ul>
+    </div>
+    <div class="container">
+        <div class="login">
+            <h2>Login</h2>
+            <input type="text" id="ipt_user" placeholder="Usuário">
+            <input type="password" id="ipt_senha" placeholder="Senha"><br>
+            <button id="botao" onclick="autenticar()">Login</button><br><br>
+            <div id="div_mensagem"></div>
+            <div id="div_tentativa"></div>
+        </div>
+    </div>
+</body>
+
+</html>
+<script>
+    var tentativas = 3;
+
+    function autenticar() {
+        var user = ipt_user.value;
+        var senha = ipt_senha.value;
+
+        if (user == 'FernandoBrandao' && senha == 'sprint2') {
+            div_mensagem.innerHTML = `Autenticação bem-sucedida!`;
+            window.location.href = 'dashInicio.html';
+            div_tentativa.innerHTML = ``;
+            tentativas = 3;
+        } else {
+            tentativas--;
+            if (tentativas <= 0) {
+                div_mensagem.innerHTML = ``;
+                div_tentativa.innerHTML = `Falha de autenticação: Usuário BLOQUEADO temporariamente!`;
+                document.getElementById("botao").disabled = true;
+            } else {
+                div_mensagem.innerHTML = ``;
+                div_tentativa.innerHTML = `Falha na autenticação!<br>Você ainda tem ${tentativas} tentativa(s)`;
+            }
+        }
+    }
+</script>

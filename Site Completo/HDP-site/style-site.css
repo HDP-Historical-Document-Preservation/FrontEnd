@@ -1,0 +1,284 @@
+body {
+  display: flex;
+  flex-direction: column;
+  margin: 0%;
+  padding: 0%;
+  overflow-x: hidden;
+
+}
+
+
+.header {
+  background-color: #370505;
+    display: flex;
+    padding: 1rem 0rem;
+    width: 100vw;
+    border: 2px solid black;
+    height: 4vh;
+    align-items: center;
+    position: fixed;
+}
+
+.fundoInicial {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  background-image: url("fundo-escuro.png");
+  background-size: cover;
+}
+
+.agora {
+  font-weight: 500;
+  color: #ffbf00;
+}
+
+.navbar{
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  width: 400px;
+  justify-content: space-between;
+  color: beige;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 18px;
+  margin-left: 730px;
+}
+
+
+img{
+  width: 8%;
+  margin-left: 2%;
+}
+
+
+.navbar a {
+  text-decoration: none;
+  color: beige;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.texto1 {
+  font-family: Arial, sans-serif;
+  letter-spacing: 1px;
+  text-align: center;
+  color: white;
+  margin-top: 50px;
+  flex-direction: column;
+  font-weight: 1000;
+  color: #DD940D;
+  font-size: 50px;
+}
+
+
+
+ .banner {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  background-color: white;
+  width: 96vw;
+  height: 90vh;
+}
+
+.sobre {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  width: 35vw;
+  height: 90vh;
+  margin-left: 100px;
+  font-family: Arial, sans-serif;
+  line-height: 1.5;
+  letter-spacing: 1px;
+  text-align: justify;
+  
+}
+
+.sobre h1 {
+  color: #ffbf00;
+}
+
+.fundoSN {
+  background-image: url('imgSobreNos.webp');
+  background-size: cover;
+  width: 500px;
+  height: 300px;
+  border: #e3b062 solid 4px;
+  margin-top: 70px;
+}
+
+.banner2 {
+  display: flex; 
+  width: 100vw;
+  height: 70vh;
+  background-color: #ffffff;
+  flex-direction: column;
+  border-bottom: 2px solid black;
+
+}
+
+.container {
+  display: flex;
+  width: 100vw;
+  height: 70vh;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.box {
+  width: 25vw;
+  height: 45vh;
+  text-align: center;
+  justify-content: center;
+  margin-right: 2%;
+  flex-direction: row;
+  border: 2px solid #DD940D;
+  background-color: #d9d9d99a;
+  border-radius: 15px;
+}
+
+.box .img3 {
+  margin-top: 10px;
+  width: 55%;
+  align-items: center;
+}
+
+.box .img4 {
+  margin-top: 20px;
+  width: 40%;
+  align-items: center;
+}
+
+.box .img5 {
+  margin-top: 23px;
+  width: 70%;
+  align-items: center;
+}
+
+.box p {
+  display: flex;
+  font-family: Arial, sans-serif;
+  line-height: 1.5;
+  letter-spacing: 1px;
+  margin-top: 17px;
+  text-align: center;
+  color: black;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.missao {
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+  height: 80vh;
+  background-color: #370505;
+}
+
+.textoMissao {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 130vw;
+  height: 80vh;
+  font-family: Arial, sans-serif;
+  line-height: 1.5;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+.textoMissao h1 {
+  color: #ffbf00;
+}
+
+.textoMissao p {
+  color: #ffffff;
+  margin-left: 70px;
+
+}
+.imgMissao {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.imgMissao img {
+  width: 85%;
+}
+
+.banner3 {
+  display: flex;
+  flex-direction: row;
+  background-color: white;
+  width: 100vw;
+  height: 90vh;
+}
+
+.imgCalculadora {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50vw;
+  height: 90vh; 
+}
+
+.imgCalculadora img {
+  width: 30vw;
+  height: 60vh;
+  margin-top: 50px;
+}
+
+.containerCalculadora {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 50vw;
+  height: 90vh;
+}
+
+.containerCalculadora h2 {
+  font-family: Arial, sans-serif;
+  margin-top: 100px;
+  color: #DD940D;
+  margin-left: 30px;
+
+  
+}
+
+.containerCalculadora p {
+  font-family: Arial, sans-serif;
+  line-height: 1.5;
+  letter-spacing: 1px;
+  text-align: justify;
+  margin-left: 30px;
+  margin-right: 80px;
+  margin-top: 50px;
+}
+
+.containerCalculadora button{
+  font-family: Arial, sans-serif;
+  border: 1px solid #1e371b;
+  border-radius: 15px;
+  background-color: #1e371b;
+  color: white;
+  font-size: medium;
+  width: 15vw;
+  height: 7vh;
+  margin-top: 40px;
+  cursor: pointer;
+  margin-left: 200px;
+
+}
+

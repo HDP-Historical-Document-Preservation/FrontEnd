@@ -63,6 +63,14 @@ body {
     width: 300px;
     color: #ffffff;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.navbar li {
+    color: #ffffff;
+}
+
+a {
+    text-decoration: none;
 
 }
 
@@ -124,8 +132,8 @@ body {
     display: flex;
     margin: 10%;
     color: #ffffff;
-
 }
+
 
 .conteudo {
     display: flex;
