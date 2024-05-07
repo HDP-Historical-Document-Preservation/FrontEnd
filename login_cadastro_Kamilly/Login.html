@@ -1,33 +1,34 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login</title>
-</head>
+<!DOCTYPE html> // Declaração do tipo de documento HTML usado, neste caso, HTML5.
 
-<body style="background-image: url(back.png); background-size: cover;">
-  <h1 style="text-align: left; color: aliceblue;"> HDP</h1>
-  <center>
-    
-    <hr><br><br><br><br>
-    <div style="background-color: #ffe3af91;border-radius: 10%; width: 300px; padding: 30px; border: 8px solid; border-color: rgb(255, 255, 255);">
+- `<html lang="en">`: Define o idioma da página como inglês.
 
-      <h3>Login</h3>
-      <div style="text-align: left;">
-        E-mail: <input type="text" id="input_email"><br><br>
-        Senha: <input type="text" id="input_senha"><br><br>
-      </div>
-      
+- `<head>`: Esta seção contém metadados e links para recursos externos.
 
-      <button onclick="window.location.reload()">LIMPAR</button>
-      <button onclick="entrar()">ENTRAR</button><br><br>
-      <b>Caso não tenha cadastro: </b>
-      <a href="cadastro.html"><button>CADASTRAR</button></a>
+  - `<meta charset="UTF-8">`: Define o conjunto de caracteres como UTF-8 para suportar uma ampla gama de caracteres.
 
-    </div>
-  </center>
-</body>
+  - `<meta name="viewport" content="width=device-width, initial-scale=1.0">`: Define a escala inicial da página para corresponder à largura do dispositivo e impede o zoom automático.
 
-</html>
+  - `<title>Login</title>`: Define o título da página como "Login".
+
+- `<body>`: Contém o conteúdo visível da página.
+
+  - `style="background-image: url(back.png); background-size: cover;"`: Define uma imagem de fundo chamada "back.png" com o estilo "cover", que fará a imagem cobrir todo o fundo e dimensioná-la conforme necessário.
+
+  - `<h1 style="text-align: left; color: aliceblue;"> HDP</h1>`: Título da página com o texto "HDP", alinhado à esquerda e com a cor "aliceblue" (um tipo de azul claro).
+
+  - `<center>`: Define o conteúdo centralizado na página.
+
+    - `<div style="background-color: #ffe3af91;border-radius: 10%; width: 300px; padding: 30px; border: 8px solid; border-color: rgb(255, 255, 255);">`: Define um contêiner com um fundo de cor e borda arredondada, largura fixa, preenchimento e borda sólida.
+
+      - `<h3>Login</h3>`: Título "Login".
+
+      - Campos de entrada para e-mail e senha.
+
+      - Botões para limpar os campos de entrada, entrar e redirecionar para a página de cadastro.
+
+    - `<a href="cadastro.html"><button>CADASTRAR</button></a>`: Um link que direciona o usuário para a página "cadastro.html" quando o botão "CADASTRAR" é clicado.
+
+- `</body>`: Fim do conteúdo da página.
+
+- `</html>`: Fim do documento HTML.

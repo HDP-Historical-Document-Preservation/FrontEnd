@@ -136,6 +136,7 @@ img{
 }
 
 .box {
+  padding: 1%;
   width: 25vw;
   height: 45vh;
   text-align: center;

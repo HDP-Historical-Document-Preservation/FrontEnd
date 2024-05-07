@@ -26,7 +26,13 @@
         <button onclick="cadastrar()">CADASTRAR</button>
         <a href="Login.html"><button>LOGIN</button></a>
         
-        <button onclick="window.location.reload()">LIMPAR</button>
+        <button onclick="window.location.reload()">LIMPAR</button> //Essa função está associada ao botão "LIMPAR" na página HTML. 
+      Quando o botão é clicado, a função `window.location.reload()` é chamada. Essa função JavaScript, `window.location.reload()`, 
+      é usada para recarregar a página atual. Em outras palavras, quando o botão "LIMPAR" é clicado, a página inteira será recarregada, 
+      o que limpará os campos de entrada e redefinirá a página para o seu estado inicial. Essa funcionalidade é comumente usada para 
+      permitir que os usuários limpem os campos de entrada de um formulário ou redefinam o estado da página para algum estado padrão. 
+      No contexto de um formulário de login como este, pressionar o botão "LIMPAR" provavelmente limpará os campos de e-mail e senha, 
+      permitindo que o usuário comece novamente ao inserir suas credenciais de login.
       
     </div>
   </center>
@@ -34,7 +40,7 @@
 </body>
 
 </html>
-<script>
+
   function cadastrar(){
     alert ('Cadastrado com sucesso! Vá para login')
   }
