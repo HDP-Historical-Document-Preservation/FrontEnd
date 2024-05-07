@@ -1,7 +1,7 @@
 body {
     padding: 0;
     margin: 0;
-    background-color: beige;
+    background-color: white;
 
 }
 
@@ -46,6 +46,7 @@ body {
 }
 
 .trianguloBaixo {
+    display: flex;
     margin-top: 10%;
     width: 0; 
     height: 0; 
@@ -140,7 +141,7 @@ a {
     flex-direction: column;
     width: 95vw;
     height: 92vh;
-    background-color: beige;
+    background-color: #ffffff;
 
 }
 
@@ -348,6 +349,7 @@ a {
 .abaOrdenar {
     display: flex;
     flex-direction: row;
+    margin-bottom: 0%;
     width: 80vw;
     height: 13vh;
     justify-content: flex-end;
@@ -355,15 +357,6 @@ a {
 
 .abaOrdenar .titulo {
     margin-right: 3%;
-}
-
-.selecaoGeral {
-    display: flex;
-    flex-direction: row;
-    margin-top: 1%;
-    width: 50vw;
-    height: 15vh;
-    justify-content: flex-start;
 }
 
 .selecao {
@@ -441,7 +434,7 @@ a {
   }
   
   .scroll::-webkit-scrollbar-track {
-    background: beige;       /* cor da área que o scroll está inserido */
+    background: #ffffff;       /* cor da área que o scroll está inserido */
   }
   
   .scroll::-webkit-scrollbar-thumb {
@@ -476,7 +469,7 @@ a {
 }
 
 .linha {
-    margin-right: 1%;
+    margin-right: 3%;
     height: 47.5vh;
     width: 0.25vw;
     background-color: #504e4e;
@@ -488,8 +481,56 @@ a {
     flex-direction: row;
     margin-top: 3%;
     margin-left: 2%;
+    width: 30vw;
+    height: 30vh;
+}
+
+.graficoP {
+    display: flex;
+    flex-direction: row;
+    margin-top: 3%;
+    margin-left: 2%;
     width: 35vw;
     height: 35vh;
+}
+
+
+#grafico1 p {
+    color: green;
+    font-family: "Be VietnamLight";
+    font-size: small;
+    font-weight: bold;
+}
+
+#grafico3 p {
+    color: green;
+    font-family: "Be VietnamLight";
+    font-size: small;
+    font-weight: bold;
+}
+#grafico5 p {
+    color: green;
+    font-family: "Be VietnamLight";
+    font-size: small;
+    font-weight: bold;
+}
+#grafico6 p {
+    color: green;
+    font-family: "Be VietnamLight";
+    font-size: small;
+    font-weight: bold;
+}
+#grafico8 p {
+    color: green;
+    font-family: "Be VietnamLight";
+    font-size: small;
+    font-weight: bold;
+}
+#grafico9 p {
+    color: green;
+    font-family: "Be VietnamLight";
+    font-size: small;
+    font-weight: bold;
 }
 
 
@@ -498,10 +539,34 @@ a {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    margin-top: 3%;
-    margin-left: 2%;
     width: 65vw;
     height: 35vh;
+}
+
+
+#grafico3G p {
+    color: green;
+    font-family: "Be VietnamLight";
+    font-size: small;
+    font-weight: bold;
+}
+#grafico5G p {
+    color: green;
+    font-family: "Be VietnamLight";
+    font-size: small;
+    font-weight: bold;
+}
+#grafico6G p {
+    color: green;
+    font-family: "Be VietnamLight";
+    font-size: small;
+    font-weight: bold;
+}
+#grafico8G p {
+    color: green;
+    font-family: "Be VietnamLight";
+    font-size: small;
+    font-weight: bold;
 }
 
 
@@ -509,7 +574,7 @@ a {
     height: 8%;
     width: 8%;
     border: none; 
-    background-color:beige; 
+    background-color: #ffffff; 
     margin-left: 75px;
     color: black;
     font-size: large;

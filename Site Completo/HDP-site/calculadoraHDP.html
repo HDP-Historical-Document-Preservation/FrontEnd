@@ -72,36 +72,36 @@
         var lucroSolucao = lucroAnual - restauracaoLivroSolucao; // Variável que calcula o lucro COM a solução
 
         // calculando diferença de métricas (Temperatura)
-        var aumentoGraus = temp - 20;
-        var diminuiGraus = 16 - temp;
+        var aumentoGraus = temp - 25;
+        var diminuiGraus = 15 - temp;
 
         // calculando diferença de métricas (Umidade)
-        var aumentoUmid = umid - 60;
-        var diminuiUmid = 30 - umid;
+        var aumentoUmid = umid - 65;
+        var diminuiUmid = 55 - umid;
 
 
         // condições da temperatura
-        if (temp < 16) {
+        if (temp < 15) {
             div_mensagem.innerHTML = `<span style="font-size: 20px; font-weight: bold;">Temperatura abaixo do ideal! (Em ${diminuiGraus} °C)</span>`;
         }
-        if (temp > 20) {
+        if (temp > 25) {
             div_mensagem.innerHTML = `<span style="font-size: 20px; font-weight: bold;">Temperatura acima do ideal! (Em ${aumentoGraus} °C)</span>`;
         }
-        if (temp >= 16) {
-            if (temp <= 20) {
-                div_mensagem.innerHTML = `<span style="font-size: 20px; font-weight: bold;">Temperatura ideal! (Entre 16°C e 20°C)</span>`;
+        if (temp >= 15) {
+            if (temp <= 25) {
+                div_mensagem.innerHTML = `<span style="font-size: 20px; font-weight: bold;">Temperatura ideal! (Entre 15°C e 25°C)</span>`;
             }
         }
 
         // condições da umidade
-        if (umid < 30) {
+        if (umid < 55) {
             div_mensagem.innerHTML += `<span style="font-size: 20px; font-weight: bold;">Umidade abaixo do ideal! (Em ${diminuiUmid}%)</span>`;
         }
-        if (umid > 60) {
+        if (umid > 65) {
             div_mensagem.innerHTML += `<span style="font-size: 20px; font-weight: bold;">Umidade acima do ideal! (Em ${aumentoUmid}%)</span>`;
         }
-        if (umid >= 30 && umid <= 60) {
-            div_mensagem.innerHTML += `<br><span style="font-size: 20px; font-weight: bold;">Umidade boa! (Entre 30% e 60%)</span>`;
+        if (umid >= 55 && umid <= 65) {
+            div_mensagem.innerHTML += `<br><span style="font-size: 20px; font-weight: bold;">Umidade boa! (Entre 55% e 65%)</span>`;
         }
 
         // condições temperatura e umidade fora do recomendado

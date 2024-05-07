@@ -42,7 +42,7 @@ body {
     list-style: none;
     width: 400px;
     justify-content: space-between;
-    color: beige;
+    color: #ffffff;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 18px;
     margin-left: 730px;
@@ -50,7 +50,7 @@ body {
 
 .navbar a {
     text-decoration: none;
-    color: beige;
+    color: #ffffff;
   }
 
 img{
@@ -123,7 +123,7 @@ h2 {
 .botao button {
     margin: 20px;
     height: 100%;
-    transition: 1s;
+    transition: 0.3s;
 }
 
 

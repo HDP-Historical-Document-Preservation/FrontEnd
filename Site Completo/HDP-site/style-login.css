@@ -40,7 +40,7 @@ body{
     list-style: none;
     width: 400px;
     justify-content: space-between;
-    color: beige;
+    color: #ffffff;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 18px;
     margin-left: 730px;
@@ -48,7 +48,7 @@ body{
 
 .navbar a {
     text-decoration: none;
-    color: beige;
+    color: #ffffff;
   }
 
 img{
@@ -77,7 +77,7 @@ img{
 }
 button:hover{
     background-color: #ffbf00;
-    transition: 1s;
+    transition: 0.3s;
 }
 #div_mensagem{
     color:#fbff00;
@@ -85,7 +85,7 @@ button:hover{
     text-align: center;
 }
 #div_tentativa{
-    color: red;
+    color: yellow;
     margin-top: 10px;
     text-align: center;
 }

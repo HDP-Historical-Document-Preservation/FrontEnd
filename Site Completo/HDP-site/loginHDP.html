@@ -13,16 +13,16 @@
         <img src="logohdp1.png" alt="logo">
         <ul class="navbar">
             <a href="siteHDP.html"><li>Home</li></a>
-            <a href="siteHDP.html #sobreNos"><li>Sobre nós</li></a>
+            <a href="siteHDP.html #sobreNos"><li>Sobre Nós</li></a>
             <li>|</li>
-            <a href="cadastroHDP.html"  style="text-decoration: none; cursor: pointer; color: beige;"><li >Cadastro</li></a>
+            <a href="cadastroHDP.html"  style="text-decoration: none; cursor: pointer; color: #ffffff;"><li >Cadastro</li></a>
             <li class="agora">Login</li>
         </ul>
     </div>
     <div class="container">
         <div class="login">
             <h2>Login</h2>
-            <input type="text" id="ipt_user" placeholder="Usuário">
+            <input type="text" id="ipt_user" placeholder="E-mail">
             <input type="password" id="ipt_senha" placeholder="Senha"><br>
             <button id="botao" onclick="autenticar()">Login</button><br><br>
             <div id="div_mensagem"></div>
@@ -39,7 +39,7 @@
         var user = ipt_user.value;
         var senha = ipt_senha.value;
 
-        if (user == 'FernandoBrandao' && senha == 'sprint2') {
+        if (user == 'fernando.brandao@sptech.school' && senha == 'sprint2') {
             div_mensagem.innerHTML = `Autenticação bem-sucedida!`;
             window.location.href = 'dashInicio.html';
             div_tentativa.innerHTML = ``;

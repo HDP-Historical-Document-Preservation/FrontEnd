@@ -13,7 +13,7 @@
         <img src= "logohdp1.png" alt="logo">
         <ul class="navbar">
             <a href="siteHDP.html"><li>Home</li></a>
-            <a href="siteHDP.html #sobreNos"><li>Sobre nós</li></a>
+            <a href="siteHDP.html #sobreNos"><li>Sobre Nós</li></a>
             <li>|</li>
             <li class="agora">Cadastro</li>
             <a href="loginHDP.html" style="text-decoration: none; cursor: pointer; color: beige;"><li>Login</li></a>
@@ -86,44 +86,45 @@
             div_mensagem.innerHTML = ` `;
 
             if (indiceArrobaSenha < 0 && indiceCifraoSenha < 0 && indiceComercialSenha < 0 && indiceHashtagSenha < 0) {
-                div_mensagem.innerHTML = `<span style="color: red;"> - Senha inválida, tente novamente! (a senha precisa ter pelo menos 1 caractere especial entre essas opções: (@ - # - $ - &))</span><br><br>`;
+                div_mensagem.innerHTML = `<span style="color: yellow;"> - Senha inválida, tente novamente! (a senha precisa ter pelo menos 1 caractere especial entre essas opções: (@ - # - $ - &))</span><br><br>`;
                 fazerCadastro = false;
             }
             if (cpfTamanho != 11) {
-                div_mensagem.innerHTML = `<span style="color: red;"> - CPF inválido, tente novamente! (quantidade de dígitos errada)</span><br><br>`;
+                div_mensagem.innerHTML = `<span style="color: yellow;"> - CPF inválido, tente novamente! (quantidade de dígitos errada)</span><br><br>`;
                 fazerCadastro = false;
             }
             if (telefoneTamanho != 11) {
-                div_mensagem.innerHTML = `<span style="color: red;"> - Telefone inválido, tente novamente! (quantidade de dígitos errada)</span><br><br>`;
+                div_mensagem.innerHTML = `<span style="color: yellow;"> - Telefone inválido, tente novamente! (quantidade de dígitos errada)</span><br><br>`;
                 fazerCadastro = false;
             }
             if (senha != senhaConfirm) {
-                div_mensagem.innerHTML = `<span style="color: red;"> - Senha e senha de confirmação diferentes! Tente novamente</span><br><br>`;
+                div_mensagem.innerHTML = `<span style="color: yellow;"> - Senha e senha de confirmação diferentes! Tente novamente</span><br><br>`;
                 fazerCadastro = false;
             }
             if (tamanhoSenha < 5 || tamanhoSenha > 15) {
-                div_mensagem.innerHTML = `<span style="color: red;"> - Senha inválida, tente novamente! (a senha precisa ter pelo menos 5 caracteres e no máximo 15 caracteres)</span><br><br>`;
+                div_mensagem.innerHTML = `<span style="color: yellow;"> - Senha inválida, tente novamente! (a senha precisa ter pelo menos 5 caracteres e no máximo 15 caracteres)</span><br><br>`;
                 fazerCadastro = false;
             }
             if (indiceArrobaEmail < 0 || terminaComPontoCom == false) {
-                div_mensagem.innerHTML = `<span style="color: red;"> - Email inválido, tente novamente! (o email precisa ter "@" e ".com")</span><br><br>`;
+                div_mensagem.innerHTML = `<span style="color: yellow;"> - Email inválido, tente novamente! (o email precisa ter "@" e ".com")</span><br><br>`;
                 fazerCadastro = false;
             }
             if (caixaBaixaEmpresa != "museu do ipiranga") {
-                div_mensagem.innerHTML = `<span style="color: red;"> - Empresa inválida! Essa empresa não está cadastrada em nosso sistema!</span><br><br>`;
+                div_mensagem.innerHTML = `<span style="color: yellow;"> - Empresa inválida! Essa empresa não está cadastrada em nosso sistema!</span><br><br>`;
                 fazerCadastro = false;
             }
             if (codEmpresa != 1) {
-                div_mensagem.innerHTML = `<span style="color: red;"> - Empresa inválida! Código de segurança errado!</span><br><br>`;
+                div_mensagem.innerHTML = `<span style="color: yellow;"> - Empresa inválida! Código de segurança errado!</span><br><br>`;
                 fazerCadastro = false;
             }
             if (nome == " " || cpf == " " || telefone == " " || email == " " || senha == " " || senhaConfirm == " " || nomeEmpresa == 0 || codEmpresa == " ") {
-                div_mensagem.innerHTML = `<span style="color: red;"> - Todos os campos devem estar preenchidos!</span><br><br>`;
+                div_mensagem.innerHTML = `<span style="color: yellow;"> - Todos os campos devem estar preenchidos!</span><br><br>`;
                 fazerCadastro = false;
             }
 
             if (fazerCadastro == true) {
-                div_mensagem.innerHTML = `Cadastro feito com sucesso senhor(a) ${nome}!`;
+                window.location.href = 'loginHDP.html';
+
             }
         }
 
