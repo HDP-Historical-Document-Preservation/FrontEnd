@@ -74,6 +74,10 @@ img{
   color: #dd940dad
 }
 
+.navbar li:hover{
+  color: #ddbe0d
+}
+
 .texto1 {
   font-family: Arial, sans-serif;
   letter-spacing: 1px;
