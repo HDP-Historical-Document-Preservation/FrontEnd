@@ -37,6 +37,14 @@ body {
     font-size: 18px;
     margin-left: 730px;
   }
+
+  .navbar li:hover{
+    color: #ffbf00;
+  }
+
+  .navbar a:hover{
+    color: #ffbf00;
+  }
   
   
   .header img{

@@ -11,6 +11,14 @@ body{
     overflow: hidden;
 }
 
+.navbar li:hover{
+    color: #fbff00;
+}
+
+.navbar a:hover{
+    color: #fbff00;
+}
+
 .container{
     display: flex;
     justify-content: center;

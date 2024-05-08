@@ -13,6 +13,14 @@ body {
     margin-right: 150px;
 }
 
+.navbar li:hover{
+    color: #fbff00;
+}
+
+.navbar a:hover{
+    color: #fbff00;
+}
+
 .logo {
     margin-right: 0%;
     height: 50px;
