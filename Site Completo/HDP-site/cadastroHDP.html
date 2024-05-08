@@ -79,7 +79,7 @@
             var indiceComercialSenha = senha.indexOf('&');
 
             var indiceArrobaEmail = email.indexOf('@');
-            var terminaComPontoCom = email.endsWith('.com');
+            var indicePontoEmail = email.indexOf('.');
 
             var fazerCadastro = true;
 
@@ -105,8 +105,8 @@
                 div_mensagem.innerHTML = `<span style="color: yellow;"> - Senha inválida, tente novamente! (a senha precisa ter pelo menos 5 caracteres e no máximo 15 caracteres)</span><br><br>`;
                 fazerCadastro = false;
             }
-            if (indiceArrobaEmail < 0 || terminaComPontoCom == false) {
-                div_mensagem.innerHTML = `<span style="color: yellow;"> - Email inválido, tente novamente! (o email precisa ter "@" e ".com")</span><br><br>`;
+            if (indiceArrobaEmail < 0 || indicePontoEmail < 0) {
+                div_mensagem.innerHTML = `<span style="color: yellow;"> - Email inválido, tente novamente! (o email precisa ter "@" e ".")</span><br><br>`;
                 fazerCadastro = false;
             }
             if (caixaBaixaEmpresa != "museu do ipiranga") {

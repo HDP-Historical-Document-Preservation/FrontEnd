@@ -56,25 +56,126 @@ img{
   color: #ffffff;
 }
 
-.logo {
+.blocoGeral {
   display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  margin-top: 5%;
+}
+
+.blocoEspecifico {
+  display: flex;
+  width: 80vw;
+  height: 60vh;
+
+}
+
+.blocoEscrita {
+  width: 50vw;
+  height: 60vh;
+  margin-left: 5%;
+  margin-top: 3%;
+}
+
+.blocoEscrita h1 {
+  color: #DD940D;
+  font-family: 'Times New Roman';
+  font-size: 90px;
+  margin: 0;
+
+}
+
+.blocoEscrita h4 {
+  font-family: 'Arial';
+  font-size: 60px;
+  margin: 0;
+  -webkit-text-fill-color: (221, 148, 13, 0);
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: #DD940D;
+}
+
+.linha {
+  width: 4px;
+  height: 50vh;
+  background-color: #ffffff;
+  border-radius: 8px;
+  margin-left: 10%;
+}
+
+/* .logoPrincipal {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+  align-items: center;
+  width: 50vw;
+  height: 100vh;
+}
+
+.logoPrincipal h1 {
+  color: #DD940D;
+  font-family: 'Times New Roman';
+  font-size: 70px;
+  margin: 0;
+
+}
+
+.logoPrincipal h4 {
+  color: #DD940D;
+  font-family: 'League Spartan';
+  font-size: 50px;
+  margin: 0;
+
+}
+
+.escrita {
+  width: 70vw;
+  height: 50vh;
+  flex-direction: column;
   justify-content: center;
+  background-color: #0f1d0e;
+}
+
+.escrita-left {
+  height: 100%;
+  width: 10%;
+  border-right: solid 1px white;
+}
+
+.ecrita-right{
+  height: 100%;
+  width: 90%;
+} */
+
+/* .logo {
+  display: flex;
+  justify-content: flex-start;
   align-items: center;
   width: 100vw;
   height: 100vh;
 }
 
+.linha {
+  margin-left: 5%;
+  background-color: rgb(243, 238, 231);
+  width: 4px;
+  height: 50vh;
+  border-radius: 8px;
+}
+
 .texto1 {
-  font-family: Arial, sans-serif;
+  font-family: 'Times New Roman';
   letter-spacing: 1px;
-  text-align: center;
+  text-align: start;
   color: white;
-  margin-top: 50px;
   flex-direction: column;
   font-weight: 1000;
   color: #DD940D;
   font-size: 50px;
-}
+  width: 50vw;
+  margin-left: 35%;
+} */
 
 
 
@@ -284,3 +385,31 @@ img{
 
 }
 
+.footer {
+  background-color: #370505;
+  height: 115px;
+  color: #ffffff;
+  display: flex;
+  font-size: 15px;
+  align-items: center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 100;
+ }
+ 
+ .footer h4{
+  align-items: center;
+  align-self: center;
+  margin-left: 300px;
+  font-weight: 100;
+ }
+ 
+ 
+ .footer .container {
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+ }
+ 
+ .footer .container .version {
+  font-size: 12px;
+ }
