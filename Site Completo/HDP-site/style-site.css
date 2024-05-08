@@ -58,16 +58,26 @@ img{
 
 .logo {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   width: 100vw;
   height: 100vh;
 }
 
+.texto img{
+  width: 600px;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.navbar a:hover{
+  color: #dd940dad
+}
+
 .texto1 {
   font-family: Arial, sans-serif;
   letter-spacing: 1px;
-  text-align: center;
+  text-align: start;
   color: white;
   margin-top: 50px;
   flex-direction: column;
