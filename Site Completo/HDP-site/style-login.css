@@ -11,6 +11,14 @@ body{
     overflow: hidden;
 }
 
+.navbar li:hover{
+    color: #fbff00;
+}
+
+.navbar a:hover{
+    color: #fbff00;
+}
+
 .container{
     display: flex;
     justify-content: center;
@@ -44,6 +52,14 @@ body{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 18px;
     margin-left: 730px;
+}
+
+.navbar a:hover{
+    color: #fbff00;
+}
+
+.navbar li:hover{
+    color: #fbff00;
 }
 
 .navbar a {

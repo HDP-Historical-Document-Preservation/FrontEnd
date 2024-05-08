@@ -13,6 +13,14 @@ body {
     margin-right: 150px;
 }
 
+.navbar li:hover{
+    color: #fbff00;
+}
+
+.navbar a:hover{
+    color: #fbff00;
+}
+
 .logo {
     margin-right: 0%;
     height: 50px;
@@ -64,6 +72,14 @@ body {
     width: 300px;
     color: #ffffff;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.navbar a:hover{
+    color: #fbff00;
+}
+
+.navbar li:hover{
+    color: #fbff00;
 }
 
 .navbar li {
