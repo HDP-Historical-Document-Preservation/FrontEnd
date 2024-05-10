@@ -111,7 +111,7 @@
 
 
         div_mensagem.innerHTML += "<br><br><span style='font-weight: bold; font-size: 25px; color: #1e371b;'> Com a nossa solução</span>";
-        div_mensagem.innerHTML += "<br>Com a implementação das métricas de temperatura e umidade ideais, <span style='color: black; font-weight: bold;'>garantimos a preservação de 60% dos seus preciosos " + totallivro + " livros</span>, resultando em <span style='color: black; font-weight: bold;'>apenas " + totallivroSolucao + " livros em risco.</span> Nossa solução não apenas protege seu valioso acervo, mas também salvaguarda seu faturamento anual de <span style='color: green; font-weight: bold;'> " + lucroAnual.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL', }) + "</span>, proporcionando um lucro que pode ultrapassar os <span style='color: green; font-weight: bold;'> " + lucroSolucao.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL', }) + "</span>. Com nossa solução, você pode ficar tranquilo sabendo que seus <span style='color: black; font-weight: bold;'>livros estão protegidos e seu negócio continua a prosperar.</span>";
+        div_mensagem.innerHTML += "<br>Com a implementação das métricas de temperatura e umidade ideais, <span style='color: black; font-weight: bold;'>garantimos a preservação de 60% dos seus preciosos " + totallivro + " livros</span>, resultando em <span style='color: black; font-weight: bold;'>apenas " + totallivroSolucao + " livros em risco.</span> Nossa solução não apenas protege seu valioso acervo, mas também salvaguarda uma economia anual de <span style='color: green; font-weight: bold;'> " + lucroAnual.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL', }) + "</span>, proporcionando uma economia que pode ultrapassar os <span style='color: green; font-weight: bold;'> " + lucroSolucao.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL', }) + "</span>. Com nossa solução, você pode ficar tranquilo sabendo que seus <span style='color: black; font-weight: bold;'>livros estão protegidos e seu negócio continua a prosperar.</span>";
         div_mensagem.innerHTML += `<br><br><button onclick="mes()">Ver Solução Detalhada</button>`;
     }
 
@@ -126,11 +126,11 @@
         div_mensagem.innerHTML = " ";
 
         div_mensagem.innerHTML += "<span style='font-weight: bold; font-size: 35px; color: #1e371b;'> Com a nossa solução:</span>";
-        div_mensagem.innerHTML += "<br><br><span style='font-weight: bold;'>Você terá a possibilidade de aumentar o seu lucro em até 10% a cada mês!!!</span> <br >Veja o detalhamento de <span style='font-weight: bold;'>1 ano</span> com a nossa solução:<br><br>";
+        div_mensagem.innerHTML += "<br><br><span style='font-weight: bold;'>Você terá a possibilidade de aumentar a sua economia em até 10% a cada mês!!!</span> <br >Veja o detalhamento de <span style='font-weight: bold;'>1 ano</span> com a nossa solução:<br><br>";
 
         for (var cont = 1; cont <= 12; cont++) {
             faturamento = faturamento + (faturamento * 0.1)
-            div_mensagem.innerHTML += `<span style='font-weight: bold;'>${cont}º Mês - Seu Lucro será de:</span><span style='font-weight: bold; color:green '> ${faturamento.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL', })}<br></span>`;
+            div_mensagem.innerHTML += `<span style='font-weight: bold;'>${cont}º Mês - Sua poupança será de:</span><span style='font-weight: bold; color:green '> ${faturamento.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL', })}<br></span>`;
         }
     }
 
