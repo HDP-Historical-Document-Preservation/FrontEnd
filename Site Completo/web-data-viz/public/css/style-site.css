@@ -23,7 +23,7 @@ body {
   display: flex;
   width: 100vw;
   height: 100vh;
-  background-image: url("fundo-escuro.png");
+  background-image: url("../assets/imgs/fundo-escuro.png");
   background-size: cover;
 }
 
@@ -144,7 +144,7 @@ img{
 }
 
 .fundoSN {
-  background-image: url('imgSobreNos.webp');
+  background-image: url('../assets/imgs/imgSobreNos.webp');
   background-size: cover;
   width: 500px;
   height: 300px;

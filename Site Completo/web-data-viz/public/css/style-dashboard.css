@@ -336,12 +336,12 @@ a {
 
 @font-face {
     font-family: Be VietnamBold;  /* foram instaladas fontes externas, para isso foi necessário criar um nome(apelido) para a fonte e em seguida adicionar a sua url*/
-    src: url(BeVietnam-Bold.ttf);
+    src: url(../assets/font/BeVietnam-Bold.ttf);
 }
 
 @font-face {
     font-family: Be VietnamLight;
-    src: url(BeVietnam-Light.ttf);
+    src: url(../assets/font/BeVietnam-Light.ttf);
 }
 
 .avisoG {
