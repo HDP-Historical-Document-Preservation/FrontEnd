@@ -14,11 +14,11 @@ body {
 }
 
 .navbar li:hover{
-    color: #fbff00;
+    color: rgb(221, 148, 13);
 }
 
 .navbar a:hover{
-    color: #fbff00;
+    color: rgb(221, 148, 13);
 }
 
 .logo {
@@ -75,11 +75,11 @@ body {
 }
 
 .navbar a:hover{
-    color: #fbff00;
+    color: rgb(221, 148, 13);
 }
 
 .navbar li:hover{
-    color: #fbff00;
+    color: rgb(221, 148, 13);
 }
 
 .navbar li {
