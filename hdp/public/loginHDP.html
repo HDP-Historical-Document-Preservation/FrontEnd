@@ -36,24 +36,52 @@
     var tentativas = 3;
 
     function autenticar() {
-        var user = ipt_user.value;
+        var email = ipt_user.value;
         var senha = ipt_senha.value;
 
-        if (user == 'fernando.brandao@sptech.school' && senha == 'sprint2') {
-            div_mensagem.innerHTML = `Autenticação bem-sucedida!`;
-            window.location.href = 'dashInicio.html';
-            div_tentativa.innerHTML = ``;
-            tentativas = 3;
-        } else {
-            tentativas--;
-            if (tentativas <= 0) {
-                div_mensagem.innerHTML = ``;
-                div_tentativa.innerHTML = `Falha de autenticação: Usuário BLOQUEADO temporariamente!`;
-                document.getElementById("botao").disabled = true;
-            } else {
-                div_mensagem.innerHTML = ``;
-                div_tentativa.innerHTML = `Falha na autenticação!<br>Você ainda tem ${tentativas} tentativa(s)`;
-            }
+        if (email == "" || senha == "") {
+            div_mensagem.innerHTML = `<span style="color: yellow;"> - Todos os campos devem estar preenchidos!</span><br><br>`;
+            return false;
         }
+
+        console.log("FORM LOGIN: ", email);
+        console.log("FORM SENHA: ", senha);
+
+        fetch("/funcionario/autenticar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                emailServer: email,
+                senhaServer: senha
+            })
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO entrar()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+                    sessionStorage.EMAIL_USUARIO = json.email;
+                    sessionStorage.NOME_USUARIO = json.nome;
+                    sessionStorage.ID_USUARIO = json.id;
+                    sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
+
+                });
+
+            } else {
+
+                console.log("Houve um erro ao tentar realizar o login!");
+
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false;
     }
 </script>
