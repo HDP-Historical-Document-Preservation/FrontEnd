@@ -52,7 +52,6 @@
             </div>
     </div>
     <script>
-
         function cadastrar() {
             var nome = ipt_nome.value;
             var cpf = ipt_cpf.value;
@@ -80,54 +79,145 @@
 
             var indiceArrobaEmail = email.indexOf('@');
             var indicePontoEmail = email.indexOf('.');
-
+            
             var fazerCadastro = true;
 
             div_mensagem.innerHTML = ` `;
 
-            if (indiceArrobaSenha < 0 && indiceCifraoSenha < 0 && indiceComercialSenha < 0 && indiceHashtagSenha < 0) {
-                div_mensagem.innerHTML = `<span style="color: yellow;"> - Senha inválida, tente novamente! (a senha precisa ter pelo menos 1 caractere especial entre essas opções: (@ - # - $ - &))</span><br><br>`;
-                fazerCadastro = false;
-            }
-            if (cpfTamanho != 11) {
-                div_mensagem.innerHTML = `<span style="color: yellow;"> - CPF inválido, tente novamente! (quantidade de dígitos errada)</span><br><br>`;
-                fazerCadastro = false;
-            }
-            if (telefoneTamanho != 11) {
-                div_mensagem.innerHTML = `<span style="color: yellow;"> - Telefone inválido, tente novamente! (quantidade de dígitos errada)</span><br><br>`;
-                fazerCadastro = false;
-            }
-            if (senha != senhaConfirm) {
-                div_mensagem.innerHTML = `<span style="color: yellow;"> - Senha e senha de confirmação diferentes! Tente novamente</span><br><br>`;
-                fazerCadastro = false;
-            }
-            if (tamanhoSenha < 5 || tamanhoSenha > 15) {
-                div_mensagem.innerHTML = `<span style="color: yellow;"> - Senha inválida, tente novamente! (a senha precisa ter pelo menos 5 caracteres e no máximo 15 caracteres)</span><br><br>`;
-                fazerCadastro = false;
-            }
-            if (indiceArrobaEmail < 0 || indicePontoEmail < 0) {
-                div_mensagem.innerHTML = `<span style="color: yellow;"> - Email inválido, tente novamente! (o email precisa ter "@" e ".")</span><br><br>`;
-                fazerCadastro = false;
-            }
-            if (caixaBaixaEmpresa != "museu do ipiranga") {
-                div_mensagem.innerHTML = `<span style="color: yellow;"> - Empresa inválida! Essa empresa não está cadastrada em nosso sistema!</span><br><br>`;
-                fazerCadastro = false;
-            }
-            if (codEmpresa != 1) {
-                div_mensagem.innerHTML = `<span style="color: yellow;"> - Empresa inválida! Código de segurança errado!</span><br><br>`;
-                fazerCadastro = false;
-            }
-            if (nome == " " || cpf == " " || telefone == " " || email == " " || senha == " " || senhaConfirm == " " || nomeEmpresa == 0 || codEmpresa == " ") {
-                div_mensagem.innerHTML = `<span style="color: yellow;"> - Todos os campos devem estar preenchidos!</span><br><br>`;
-                fazerCadastro = false;
-            }
+            if (nome == "" ||
+                cpf == "" ||
+                telefone == "" ||
+                email == "" ||
+                senha == "" ||
+                senhaConfirm == "" ||
+                nomeEmpresa == 0 ||
+                codEmpresa == ""
+            ) {
+                div_mensagem.innerHTML =
+                `<span style="color: yellow;"> - Todos os campos devem estar preenchidos!</span><br><br>`;
+                finalizarAguardar();
+                    fazerCadastro = false;
+                } 
 
-            if (fazerCadastro == true) {
-                window.location.href = 'loginHDP.html';
+            if (indiceArrobaSenha < 0 && 
+                indiceCifraoSenha < 0 && 
+                indiceComercialSenha < 0 && 
+                indiceHashtagSenha < 0
+            ) {
+                div_mensagem.innerHTML = 
+                `<span style="color: yellow;"> - Senha inválida, tente novamente! (a senha precisa ter pelo menos 1 caractere especial entre essas opções: (@ - # - $ - &))</span><br><br>`;
+                finalizarAguardar();
+                    fazerCadastro = false;
+                } 
 
-            }
+            if (cpfTamanho != 11
+            ) {
+                div_mensagem.innerHTML = 
+                `<span style="color: yellow;"> - CPF inválido, tente novamente! (quantidade de dígitos errada)</span><br><br>`;
+                finalizarAguardar();
+                    fazerCadastro = false;
+                } 
+
+            if (telefoneTamanho != 11
+            ) {
+                div_mensagem.innerHTML = 
+                `<span style="color: yellow;"> - Telefone inválido, tente novamente! (quantidade de dígitos errada)</span><br><br>`;
+                finalizarAguardar();
+                    fazerCadastro = false;
+                } 
+
+            if (senha != senhaConfirm
+            ) {
+                div_mensagem.innerHTML = 
+                `<span style="color: yellow;"> - Senha e senha de confirmação diferentes! Tente novamente</span><br><br>`;
+                finalizarAguardar();
+                    fazerCadastro = false;
+                } 
+
+            if (tamanhoSenha < 5 || 
+            tamanhoSenha > 15
+            ) {
+                div_mensagem.innerHTML = 
+                `<span style="color: yellow;"> - Senha inválida, tente novamente! (a senha precisa ter pelo menos 5 caracteres e no máximo 15 caracteres)</span><br><br>`;
+                finalizarAguardar();
+                    fazerCadastro = false;
+                } 
+
+            if (indiceArrobaEmail < 0 || 
+                indicePontoEmail < 0
+            ) {
+                div_mensagem.innerHTML = 
+                `<span style="color: yellow;"> - Email inválido, tente novamente! (o email precisa ter "@" e ".")</span><br><br>`;
+                finalizarAguardar();
+                    fazerCadastro = false;
+                } 
+
+            if (caixaBaixaEmpresa != "museu do ipiranga"
+            ) {
+                div_mensagem.innerHTML = 
+                `<span style="color: yellow;"> - Empresa inválida! Essa empresa não está cadastrada em nosso sistema!</span><br><br>`;
+                finalizarAguardar();
+                    fazerCadastro = false;
+                } 
+
+            if (codEmpresa != 1
+            ) {
+                div_mensagem.innerHTML = 
+                `<span style="color: yellow;"> - Empresa inválida! Código de segurança errado!</span><br><br>`;
+                finalizarAguardar();
+                    fazerCadastro = false;
+                } 
+
+            
+            fetch("/funcionario/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+            // crie um atributo que recebe o valor recuperado aqui
+            // Agora vá para o arquivo routes/usuario.js
+            empresaServer: codEmpresa,
+            nomeServer: nome,
+            cpfServer: cpf,
+            telefoneServer: telefone,
+            emailServer: email,
+            senhaServer: senha,
+            }),
+        })
+        .then(function (resposta) {
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+          cardErro.style.display = "block";
+
+          mensagem_erro.innerHTML =
+            "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+          setTimeout(() => {
+            window.location = "login.html";
+          }, "2000");
+        } else {
+          throw "Houve um erro ao tentar realizar o cadastro!";
         }
+      })
+    }   
 
+  function listar() {
+    fetch("/empresas/listar", {
+      method: "GET",
+    })
+      .then(function (resposta) {
+        resposta.json().then((empresas) => {
+          empresas.forEach((empresa) => {
+            listaEmpresas.innerHTML += `<option value='${empresa.id}'>${empresa.cnpj}</option>`;
+          });
+        });
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+      });
+  }
     </script>
 </body>
 
