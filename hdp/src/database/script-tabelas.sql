@@ -11,6 +11,7 @@
 
 -- ----------------------------------------------------------------------------------------------------------------------------
 
+DROP DATABASE hdp;
 CREATE DATABASE hdp;
 USE hdp;
 
@@ -80,62 +81,28 @@ fkEmpresa INT,
 fkMetrica INT,
 CONSTRAINT pkSalaEmpresaMetrica PRIMARY KEY (idSala, fkEmpresa, fkMetrica),
 nome VARCHAR(80) NOT NULL,
-descricao VARCHAR(200) NOT NULL,
 CONSTRAINT fkSalaEmpresa FOREIGN KEY (fkEmpresa) REFERENCES empresa(idEmpresa),
 CONSTRAINT fkSalaMetrica FOREIGN KEY (fkMetrica) REFERENCES metrica(idMetrica)
 );
 
 INSERT INTO sala VALUES 
-(DEFAULT, 1,1, 'Leis Brasileiras', 'Sala onde se armazena documentos de leis brasileiras'),
-(DEFAULT, 1,1, 'Poemas Brasileiros','Sala onde se armazena importantes poemas brasileiros'),
-(DEFAULT, 2,1, 'Estados Unidos', 'Sala onde se armazena documentos de acontecimentos, pessoas ou histórias ficticías dos Estados Unidos'),
-(DEFAULT, 2,1, 'Poemas internacionais','Sala onde se armazena importantes poemas internacionais'),
-(DEFAULT, 3,1, 'Acontecimentos Brasileiros','Sala onde se armazena documentos narrando importantes acontecimentos do Brasil'),
-(DEFAULT, 3,1, 'Inglaterra','Sala onde se armazena documentos de acontecimentos, pessoas ou histórias ficticías da Inglaterra');
+(DEFAULT, 1,1, 'Acontecimentos Misteriosos'),
+(DEFAULT, 1,1, 'Livros Religiosos'),
+(DEFAULT, 1,1, 'Leis Brasileiras'),
+(DEFAULT, 1,1, 'Estados Unidos'),
+(DEFAULT, 1,1, 'Inglaterra'),
+(DEFAULT, 2,1, 'Matemáticos'),
+(DEFAULT, 2,1, 'Mediterrâneo'),
+(DEFAULT, 2,1, 'Escravidão'),
+(DEFAULT, 2,1, 'Galeria dos Impressionistas'),
+(DEFAULT, 2,1, 'Sala dos Mestres Antigos'),
+(DEFAULT, 3,1, 'Religião e Mitos'),
+(DEFAULT, 3,1, 'Mergulho na História'),
+(DEFAULT, 3,1, 'Raízes da Nossa Terra'),
+(DEFAULT, 3,1, 'História Local'),
+(DEFAULT, 3,1, 'Biodiversidade Regional');
 
 SELECT * FROM sala;
-
--- Tabela Livro ---------------------------------------------------------------------------------------------------------
-
-CREATE TABLE livro (
-idLivro INT AUTO_INCREMENT,
-fkSala INT,
-CONSTRAINT pkLivroSala PRIMARY KEY (idLivro, fkSala),
-nome VARCHAR(70) NOT NULL,
-categoria VARCHAR(70) NOT NULL,
-dataPublicacao DATE,
-integridade VARCHAR(5) NOT NULL,
-CONSTRAINT fkLivroSala FOREIGN KEY (fkSala) REFERENCES sala(idSala)
-);
-
-INSERT INTO livro VALUES 
-(DEFAULT, 1, 'Carta de Pero Vaz de Caminha', 'Manuscrito','1500-05-01', 'Boa'),
-(DEFAULT, 2, 'Os Lusíadas','Poesia','1572-03-12','Média'),
-(DEFAULT, 3, 'Constituição Imperial Brasileira ','Legislação','1824-03-25','Ruim'),
-(DEFAULT, 4, 'Lei Áurea','Legislação','1888-05-13','Boa'),
-(DEFAULT, 5, 'Livro de Kells', 'Manuscrito','1615-10-13', 'Média'),
-(DEFAULT, 6, 'Magna Carta','Manuscrito','1450-07-01','Ruim'),
-(DEFAULT, 1, 'Diário de Anne Frank ','Manuscrito','1770-02-14','Boa'),
-(DEFAULT, 2, 'Poemas de Safo','Poesia','1102-09-21','Média'),
-(DEFAULT, 3, 'Manuscritos da Guerra de Canudos', 'Manuscrito','1289-03-19', 'Ruim'),
-(DEFAULT, 4, 'Manifesto da Comuna de Canudos','Manuscrito','1347-11-24','Boa'),
-(DEFAULT, 5, 'A Moreninha ','Manuscrito','1899-03-30','Média'),
-(DEFAULT, 6, 'Os Sertões ','Manuscrito','1205-03-09','Ruim'),
-(DEFAULT, 1, 'Diário de Anchieta', 'Manuscrito','1752-05-20', 'Boa'),
-(DEFAULT, 2, 'Proclamação da República','Legislação','1481-12-12','Média'),
-(DEFAULT, 3, 'Diário de Hans Staden','Manuscrito','1799-02-25','Ruim'),
-(DEFAULT, 4, 'Auto da Pregação do Frade Bartolomeu de Gusmão','Poesia','1544-10-23','Boa'),
-(DEFAULT, 5, 'Inuíto','Poesia','1745-07-11','Média'),
-(DEFAULT, 6, 'Declaração da Independência dos Estados Unidos','Legislação','1890-08-07','Ruim');
-
-SELECT * FROM livro;
-
-ALTER TABLE livro ADD CONSTRAINT chkIntegridade CHECK(integridade IN('Ruim', 'Média', 'Boa'));
-
-SELECT idLivro AS 'ID do Documento', nome AS 'Nome do Documento', integridade AS 'Condição do Documento' FROM livro ORDER BY integridade;
-SELECT idLivro AS 'ID do Documento', nome AS 'Nome do Documento' FROM livro WHERE integridade='Boa';
-SELECT idLivro AS 'ID do Documento', nome AS 'Nome do Documento' FROM livro WHERE integridade='Média';
-SELECT idLivro AS 'ID do Documento', nome AS 'Nome do Documento' FROM livro WHERE integridade='Ruim';
 
 -- Tabela Sensor -----------------------------------------------------------------------------------------------------------------
 
@@ -159,12 +126,30 @@ INSERT INTO sensor VALUES
 (DEFAULT, 4,'Sensor8', 1),
 (DEFAULT, 5,'Sensor9', 0.9),
 (DEFAULT, 5,'Sensor10', 1.2),
-(DEFAULT, 6,'Sensor11', 1),
-(DEFAULT, 6,'Sensor12', 0.7);
+(DEFAULT, 6,'Sensor1', 1),
+(DEFAULT, 6,'Sensor2', 0.7),
+(DEFAULT, 7,'Sensor3', 0.5),
+(DEFAULT, 7,'Sensor4', 1),
+(DEFAULT, 8,'Sensor5', 0.6),
+(DEFAULT, 8,'Sensor6', 0.7),
+(DEFAULT, 9,'Sensor7', 0.4),
+(DEFAULT, 9,'Sensor8', 0.6),
+(DEFAULT, 10,'Sensor9', 0.8),
+(DEFAULT, 10,'Sensor10', 1),
+(DEFAULT, 11,'Sensor1', 0.9),
+(DEFAULT, 11,'Sensor2', 1.2),
+(DEFAULT, 12,'Sensor3', 1),
+(DEFAULT, 12,'Sensor4', 0.7),
+(DEFAULT, 13,'Sensor5', 0.6),
+(DEFAULT, 13,'Sensor6', 0.7),
+(DEFAULT, 14,'Sensor7', 0.4),
+(DEFAULT, 14,'Sensor8', 0.6),
+(DEFAULT, 15,'Sensor9', 0.8),
+(DEFAULT, 15,'Sensor10', 1);
 
 SELECT * FROM sensor;
 
-SELECT (r.umidade * s.fator) AS Umidade, (r.temperatura * s.fator) AS Temperatura, s.nome FROM registro AS r , sensor AS s;
+SELECT ROUND(r.umidade * s.fator) AS Umidade, ROUND(r.temperatura * s.fator) AS Temperatura, s.nome FROM registro AS r , sensor AS s;
  
 SELECT (r.umidade * s.fator) AS Umidade, (r.temperatura * s.fator) AS Temperatura, s.nome 
 FROM registro AS r , sensor AS s WHERE fkSala = 1; 

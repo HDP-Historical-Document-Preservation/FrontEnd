@@ -10,48 +10,52 @@
 
 <body>
     <div class="header">
-        <img src= "assets/imgs/logohdp1.png" alt="logo">
+        <img src="assets/imgs/logohdp1.png" alt="logo">
         <ul class="navbar">
-            <a href="index.html"><li>Home</li></a>
-            <a href="index.html #sobreNos"><li>Sobre Nós</li></a>
+            <a href="index.html">
+                <li>Home</li>
+            </a>
+            <a href="index.html#sobreNos">
+                <li>Sobre Nós</li>
+            </a>
             <li>|</li>
             <li class="agora">Cadastro</li>
-            <a href="loginHDP.html" style="text-decoration: none; cursor: pointer; color: beige;"><li>Login</li></a>
+            <a href="loginHDP.html" style="text-decoration: none; cursor: pointer; color: beige;">
+                <li>Login</li>
+            </a>
         </ul>
     </div>
     <div class="container">
-            <div class="cadastro">
-                <div class="card">
-                    <h2>Cadastre-se</h2>
-                    <div class="formulario">
-                        <div class="campo">
-                            <input type="text" id="ipt_nome" placeholder="Nome">
-                            <input type="email" id="ipt_email" placeholder="E-mail">
-                            <input type="password" id="ipt_senha" placeholder="Senha">
-                            <select id="select_empresaParceira">
-                                <option value="0" disabled selected>Selecione uma Empresa</option>
-                                <option value="Museu do Ipiranga">Museu do Ipiranga</option>
-                                <option value="Museu Nacional">Museu Nacional</option>
-                                <option value="Museu da Língua Portuguesa">Museu da Língua Portuguesa</option>
-                            </select>
-                        </div>
-                        <div class="campo">
-                            <input type="text" id="ipt_cpf" placeholder="CPF">
-                            <input type="text" id="ipt_telefone" placeholder="Telefone">
-                            <input type="password" id="ipt_confirmarSenha" placeholder="Confirmar Senha">
-                            <input type="text" id="ipt_codEmpresa" placeholder="Código da empresa">
-                        </div>
+        <div class="cadastro">
+            <div class="card">
+                <h2>Cadastre-se</h2>
+                <div class="formulario">
+                    <div class="campo">
+                        <input type="text" id="ipt_nome" placeholder="Nome">
+                        <input type="email" id="ipt_email" placeholder="E-mail">
+                        <input type="password" id="ipt_senha" placeholder="Senha">
+                        <select name="empresas" id="listaEmpresas">
+                            <option selected>Selecione uma Empresa</option>
+                        </select>
                     </div>
-                    <div class="botao">
-                        <button onclick="cadastrar()">Cadastrar</button>
-                        <button onclick="window.location.reload()">Limpar</button>
+                    <div class="campo">
+                        <input type="text" id="ipt_cpf" placeholder="CPF">
+                        <input type="text" id="ipt_telefone" placeholder="Telefone">
+                        <input type="password" id="ipt_confirmarSenha" placeholder="Confirmar Senha">
+                        <input type="text" id="ipt_codEmpresa" placeholder="Código da empresa">
                     </div>
-
-                    <div id="div_mensagem"></div>
                 </div>
+                <div class="botao">
+                    <button onclick="cadastrar()">Cadastrar</button>
+                    <button onclick="window.location.reload()">Limpar</button>
+                </div>
+
+                <div id="div_mensagem"></div>
             </div>
+        </div>
     </div>
     <script>
+
         function cadastrar() {
             var nome = ipt_nome.value;
             var cpf = ipt_cpf.value;
@@ -59,7 +63,7 @@
             var email = ipt_email.value;
             var senha = ipt_senha.value;
             var senhaConfirm = ipt_confirmarSenha.value;
-            var nomeEmpresa = select_empresaParceira.value;
+            var nomeEmpresa = listaEmpresas.value;
             var codEmpresa = ipt_codEmpresa.value;
 
             var caixaBaixaNome = nome.toLowerCase();
@@ -79,7 +83,7 @@
 
             var indiceArrobaEmail = email.indexOf('@');
             var indicePontoEmail = email.indexOf('.');
-            
+
             var fazerCadastro = true;
 
             div_mensagem.innerHTML = ` `;
@@ -94,117 +98,114 @@
                 codEmpresa == ""
             ) {
                 div_mensagem.innerHTML =
-                `<span style="color: yellow;"> - Todos os campos devem estar preenchidos!</span><br><br>`;
-                    fazerCadastro = false;
-                } 
+                    `<span style="color: yellow;"> - Todos os campos devem estar preenchidos!</span><br><br>`;
+                return false;
+            }
 
-            if (indiceArrobaSenha < 0 && 
-                indiceCifraoSenha < 0 && 
-                indiceComercialSenha < 0 && 
+            if (indiceArrobaSenha < 0 &&
+                indiceCifraoSenha < 0 &&
+                indiceComercialSenha < 0 &&
                 indiceHashtagSenha < 0
             ) {
-                div_mensagem.innerHTML = 
-                `<span style="color: yellow;"> - Senha inválida, tente novamente! (a senha precisa ter pelo menos 1 caractere especial entre essas opções: (@ - # - $ - &))</span><br><br>`;
-                    fazerCadastro = false;
-                } 
+                div_mensagem.innerHTML =
+                    `<span style="color: yellow;"> - Senha inválida, tente novamente! (a senha precisa ter pelo menos 1 caractere especial entre essas opções: (@ - # - $ - &))</span><br><br>`;
+                return false;
+            }
 
             if (cpfTamanho != 11
             ) {
-                div_mensagem.innerHTML = 
-                `<span style="color: yellow;"> - CPF inválido, tente novamente! (quantidade de dígitos errada)</span><br><br>`;
-                    fazerCadastro = false;
-                } 
+                div_mensagem.innerHTML =
+                    `<span style="color: yellow;"> - CPF inválido, tente novamente! (quantidade de dígitos errada)</span><br><br>`;
+                return false;
+            }
 
             if (telefoneTamanho != 11
             ) {
-                div_mensagem.innerHTML = 
-                `<span style="color: yellow;"> - Telefone inválido, tente novamente! (quantidade de dígitos errada)</span><br><br>`;
-                    fazerCadastro = false;
-                } 
+                div_mensagem.innerHTML =
+                    `<span style="color: yellow;"> - Telefone inválido, tente novamente! (quantidade de dígitos errada)</span><br><br>`;
+                return false;
+            }
 
             if (senha != senhaConfirm
             ) {
-                div_mensagem.innerHTML = 
-                `<span style="color: yellow;"> - Senha e senha de confirmação diferentes! Tente novamente</span><br><br>`;
-                    fazerCadastro = false;
-                } 
+                div_mensagem.innerHTML =
+                    `<span style="color: yellow;"> - Senha e senha de confirmação diferentes! Tente novamente</span><br><br>`;
+                return false;
+            }
 
-            if (tamanhoSenha < 5 || 
-            tamanhoSenha > 15
+            if (tamanhoSenha < 5 ||
+                tamanhoSenha > 15
             ) {
-                div_mensagem.innerHTML = 
-                `<span style="color: yellow;"> - Senha inválida, tente novamente! (a senha precisa ter pelo menos 5 caracteres e no máximo 15 caracteres)</span><br><br>`;
-                    fazerCadastro = false;
-                } 
+                div_mensagem.innerHTML =
+                    `<span style="color: yellow;"> - Senha inválida, tente novamente! (a senha precisa ter pelo menos 5 caracteres e no máximo 15 caracteres)</span><br><br>`;
+                return false;
+            }
 
-            if (indiceArrobaEmail < 0 || 
+            if (indiceArrobaEmail < 0 ||
                 indicePontoEmail < 0
             ) {
-                div_mensagem.innerHTML = 
-                `<span style="color: yellow;"> - Email inválido, tente novamente! (o email precisa ter "@" e ".")</span><br><br>`;
-                    fazerCadastro = false;
-                } 
+                div_mensagem.innerHTML =
+                    `<span style="color: yellow;"> - Email inválido, tente novamente! (o email precisa ter "@" e ".")</span><br><br>`;
+                return false;
+            }
 
-            if (caixaBaixaEmpresa != "museu do ipiranga"
+            if (nomeEmpresa != codEmpresa
             ) {
-                div_mensagem.innerHTML = 
-                `<span style="color: yellow;"> - Empresa inválida! Essa empresa não está cadastrada em nosso sistema!</span><br><br>`;
-                    fazerCadastro = false;
-                } 
+                div_mensagem.innerHTML =
+                    `<span style="color: yellow;"> - Empresa inválida! código de segurança errado!</span><br><br>`;
+                return false;
+            }
 
-            if (codEmpresa != 1
-            ) {
-                div_mensagem.innerHTML = 
-                `<span style="color: yellow;"> - Empresa inválida! Código de segurança errado!</span><br><br>`;
-                    fazerCadastro = false;
-                } 
 
-            
+
+
             fetch("/funcionario/cadastrar", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-            // crie um atributo que recebe o valor recuperado aqui
-            // Agora vá para o arquivo routes/usuario.js
-            empresaServer: codEmpresa,
-            nomeServer: nome,
-            cpfServer: cpf,
-            telefoneServer: telefone,
-            emailServer: email,
-            senhaServer: senha,
-            }),
-        })
-        .then(function (resposta) {
-        console.log("resposta: ", resposta);
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    // crie um atributo que recebe o valor recuperado aqui
+                    // Agora vá para o arquivo routes/usuario.js
+                    empresaServer: codEmpresa,
+                    nomeServer: nome,
+                    cpfServer: cpf,
+                    telefoneServer: telefone,
+                    emailServer: email,
+                    senhaServer: senha,
+                }),
+            })
+                .then(function (resposta) {
+                    console.log("resposta: ", resposta);
 
-        if (resposta.ok) {
+                    if (resposta.ok) {
 
-          div_mensagem.innerHTML =
-            "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+                        div_mensagem.innerHTML =
+                            "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
 
-            window.location.href = "loginHDP.html";
+                        window.location.href = "loginHDP.html";
 
-        } 
-      })
-    }   
+                    }
+                })
+        }
 
-  function listar() {
-    fetch("/empresas/listar", {
-      method: "GET",
-    })
-      .then(function (resposta) {
-        resposta.json().then((empresas) => {
-          empresas.forEach((empresa) => {
-            listaEmpresas.innerHTML += `<option value='${empresa.id}'>${empresa.cnpj}</option>`;
-          });
-        });
-      })
-      .catch(function (resposta) {
-        console.log(`#ERRO: ${resposta}`);
-      });
-  }
+        window.onload = function listar() {
+            fetch("/empresa/listar", {
+                method: "GET",
+            })
+                .then(function (resposta) {
+                    resposta.json().then((empresas) => {
+                        empresas.forEach((empresa) => {
+                            listaEmpresas.innerHTML += `<option value='${empresa.idEmpresa}'>${empresa.nome}</option>`;
+                        });
+                    });
+                })
+                .catch(function (resposta) {
+                    console.log(`#ERRO: ${resposta}`);
+                });
+        }
+
+
     </script>
 </body>
 

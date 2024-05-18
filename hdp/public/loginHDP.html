@@ -12,10 +12,16 @@
     <div class="header">
         <img src="assets/imgs/logohdp1.png" alt="logo">
         <ul class="navbar">
-            <a href="index.html"><li>Home</li></a>
-            <a href="index.html #sobreNos"><li>Sobre Nós</li></a>
+            <a href="index.html">
+                <li>Home</li>
+            </a>
+            <a href="index.html #sobreNos">
+                <li>Sobre Nós</li>
+            </a>
             <li>|</li>
-            <a href="cadastroHDP.html"  style="text-decoration: none; cursor: pointer; color: #ffffff;"><li >Cadastro</li></a>
+            <a href="cadastroHDP.html" style="text-decoration: none; cursor: pointer; color: #ffffff;">
+                <li>Cadastro</li>
+            </a>
             <li class="agora">Login</li>
         </ul>
     </div>
@@ -60,16 +66,18 @@
             console.log("ESTOU NO THEN DO entrar()!")
 
             if (resposta.ok) {
-                console.log(resposta);
+                resposta.json().then(function (resposta) {
+                    console.log(resposta);
 
-                resposta.json().then(json => {
-                    console.log(json);
-                    console.log(JSON.stringify(json));
-                    sessionStorage.EMAIL_USUARIO = json.email;
-                    sessionStorage.NOME_USUARIO = json.nome;
-                    sessionStorage.ID_USUARIO = json.id;
-                    sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
+                    var conteudo = resposta[0]
 
+                    console.log(conteudo);
+                    console.log(JSON.stringify(conteudo));
+                    sessionStorage.EMAIL_USUARIO = conteudo.email;
+                    sessionStorage.NOME_USUARIO = conteudo.nome;
+                    sessionStorage.ID_USUARIO = conteudo.idFuncionario;
+
+                    window.location = "./dashboard/dashInicio.html";
                 });
 
             } else {
