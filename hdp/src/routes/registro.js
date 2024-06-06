@@ -15,7 +15,7 @@ router.get("/qtdSalasDentro", function (req, res) {
     registroController.qtdSalasDentro(req, res);
 });
 
-router.get("/graficoPizza", function (req, res) {
+router.get("/graficoPizza/:fkEmpresa", function (req, res) {
     registroController.graficoPizza(req, res);
 });
 
@@ -29,6 +29,10 @@ router.get("/grafico1TempoReal/:fkEmpresa/:idSensor", function (req, res) {
 
 router.get("/grafico2/:fkEmpresa/:idSensor", function (req, res) {
     registroController.grafico2(req, res);
+});
+
+router.get("/grafico2TempoReal/:fkEmpresa/:idSensor", function (req, res) {
+    registroController.grafico1(req, res);
 });
 
 module.exports = router;

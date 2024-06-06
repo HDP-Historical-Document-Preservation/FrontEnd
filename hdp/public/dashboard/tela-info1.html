@@ -88,7 +88,6 @@
 
                 </div>
             </div>
-
         </div>
     </div>
 </body>
@@ -168,9 +167,9 @@
 
         alterarTitulo(idSensor)
 
-        // if (proximaAtualizacao != undefined) {
-        //     clearTimeout(proximaAtualizacao);
-        // }
+        if (proximaAtualizacao != undefined) {
+            clearTimeout(proximaAtualizacao);
+        }
 
         fetch(`/registro/grafico1/${fkEmpresa}/${idSensor}`, { cache: 'no-store' }).then(function (response) {
             if (response.ok) {

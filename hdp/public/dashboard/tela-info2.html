@@ -81,77 +81,262 @@
                 <div class="listaG">
                     <div id="listatu" class="listasTU">
                         <h3>Condição de Temperatura e Umidade nas salas</h3>
-                        <div class="scroll">
-                            <button style="color: red;" onclick="mudar3G()"><b style="color: black;">3 - </b> Sala da
-                                história
-                                dos
-                                sobrenomes</button>
-                            <button style="color: red;" onclick="mudar5G()"><b style="color: black;">5 - </b> Sala de
-                                Figuras Importantes no
-                                Brasil (Sensor 2)</button>
-                            <button style="color: red;" onclick="mudar6G()"><b style="color: black;">6 - </b> Sala da
-                                história da música
-                                Brasileira</button>
-                            <button style="color: red;" onclick="mudar8G()"><b style="color: black;">8 - </b> Sala de
-                                exposição de documentos
-                                de
-                                arte</button>
+                        <div class="scroll" id="btnSala">
+                            <!-- <button style="color: red;" onclick="mudar3G()"><b style="color: black;">3 - </b> Sala da história dos sobrenomes</button> -->
                         </div>
                     </div>
                     <div class="linha"></div>
 
-                    <div id="grafico" style="text-align: center;">
-                        <h3>Percentual de Salas com registros Inadequados</h3>
-                        <div class="graficoP" style="justify-content: center;
-                        ">
-                            <canvas id="graficoSalas" position=relative width="900" ; height="400"></canvas>
-                        </div>
-                    </div>
-                    <div id="grafico3G" style="text-align: center;">
-                        <h3 style="margin-top: 0%;">Métricas na Sala 3 - Sala da história dos sobrenomes</h3>
-                        <div class="graficoG">
-                            <canvas id="graficoSala3G" position="relative" width="3300" ; height="900"></canvas>
-                        </div>
-                        <p>Temperatura Ideal: 15°C a 25°C | Umidade Ideal: 55% a 65%</p>
+                    <div id="graficos" style="text-align: center;">
+
                     </div>
 
-                    <div id="grafico5G" style="text-align: center;">
-                        <h3 style="margin-top: 0%;">Métricas na Sala 5 - Sala de Figuras Importantes no Brasil (Sensor
-                            2)</h3>
-                        <div class="graficoG">
-                            <canvas id="graficoSala5G" position="relative" width="3300" ; height="900"></canvas>
-                        </div>
-                        <p>Temperatura Ideal: 15°C a 25°C | Umidade Ideal: 55% a 65%</p>
-                    </div>
-
-                    <div id="grafico6G" style="text-align: center;">
-                        <h3 style="margin-top: 0%;">Métricas na Sala 6 - Sala da história da música
-                            Brasileira</h3>
-                        <div class="graficoG">
-                            <canvas id="graficoSala6G" position="relative" width="3300" ; height="900"></canvas>
-                        </div>
-                        <p>Temperatura Ideal: 15°C a 25°C | Umidade Ideal: 55% a 65%</p>
-                    </div>
-
-                    <div id="grafico8G" style="text-align: center;">
-                        <h3 style="margin-top: 0%;">Métricas na Sala 8 - Sala de exposição de documentos de
-                            arte</h3>
-                        <div class="graficoG">
-                            <canvas id="graficoSala8G" position="relative" width="3300" ; height="900"></canvas>
-                        </div>
-                        <p>Temperatura Ideal: 15°C a 25°C | Umidade Ideal: 55% a 65%</p>
-                    </div>
                 </div>
-
-
             </div>
         </div>
+    </div>
 </body>
 
 <script>
 
     span_nomeUsuario.innerHTML = sessionStorage.NOME_USUARIO
     span_emailUsuario.innerHTML = sessionStorage.EMAIL_USUARIO
+
+    let proximaAtualizacao;
+
+
+    window.onload = exibirSensoresDoUsuario();
+
+    function exibirSensoresDoUsuario() {
+        var sensores = JSON.parse(sessionStorage.SENSOR);
+
+        // console.warn(sensores);
+
+        document.getElementById("graficos").innerHTML += `<canvas id="graficoPizza"></canvas>`;
+
+        sensores.forEach(item => {
+            console.warn(item)
+
+            document.getElementById("btnSala").innerHTML += `
+        <button style="color: red;" class="botoesDash" onclick="exibirSensores(${item.idSensor})" id="btnSala${item.idSensor}"><b style="color: black;">${item.idSensor} - </b>${item.nomeSala}</button><br>
+        `
+
+            document.getElementById("graficos").innerHTML += `
+            <div id="grafico${item.idSensor}" class="styleGraficos">
+                <h3 class="tituloGraficos">
+                    <span id="tituloSala${item.idSensor}">${item.nomeSala}</span>
+                </h3>
+                <div class="graph">
+                    <canvas id="myChartCanvas${item.idSensor}"></canvas>
+                </div>
+            </div>
+        `
+
+            obterDadosGrafico1(item.fkEmpresa, item.idSensor);
+            obterDadosGrafico2(item.fkEmpresa);
+        });
+
+        if (sensores.length > 0) {
+            console.log(sensores)
+            exibirSensores(sensores[0].idSensor)
+        }
+    }
+
+    function alterarTitulo(idSensor) {
+
+        console.log(idSensor)
+        var tituloSensor = document.getElementById(`tituloSala${idSensor}`)
+        var nomeSala = JSON.parse(sessionStorage.SENSOR).find(item => item.idSensor == idSensor).nomeSala
+        tituloSensor.innerHTML = `${nomeSala}`;
+    }
+
+    function exibirSensores(idSensor) {
+        let todosOsGraficos = JSON.parse(sessionStorage.SENSOR);
+
+        for (i = 0; i < todosOsGraficos.length; i++) {
+            // exibindo - ou não - o gráfico
+            if (todosOsGraficos[i].idSensor != idSensor) {
+                let elementoAtual = document.getElementById(`grafico${todosOsGraficos[i].idSensor}`)
+                if (elementoAtual.style.display == "block") {
+                    elementoAtual.style.display = "none"
+                }
+                elementoAtual.style.display = "none"
+
+            }
+        }
+
+        // exibindo - ou não - o gráfico
+        let graficoExibir = document.getElementById(`grafico${idSensor}`)
+        graficoExibir.style.display = "none"
+        graficoExibir.style.display = "block"
+
+    }
+
+    function obterDadosGrafico1(fkEmpresa, idSensor) {
+
+        alterarTitulo(idSensor)
+
+        if (proximaAtualizacao != undefined) {
+            clearTimeout(proximaAtualizacao);
+        }
+
+        fetch(`/registro/grafico2/${fkEmpresa}/${idSensor}`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    resposta.reverse();
+
+                    plotarGrafico(resposta, idSensor);
+
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+    }
+
+    function obterDadosGrafico2(fkEmpresa) {
+
+        fetch(`/registro/grafico2/${fkEmpresa}`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    resposta.reverse();
+
+                    plotarGrafico(resposta, fkEmpresa);
+
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+    }
+
+    function plotarGrafico(resposta, fkSensor) {
+
+        console.log('iniciando plotagem do gráfico...');
+
+        let labels = [];
+
+        let dados = {
+            labels: labels,
+            datasets: [{
+                
+                data: [],
+                backgroundColor: [
+                    '#3a522a',
+                    '#ada15f',
+                    '#5d7344'
+                ],
+                hoverOffset: 4
+
+            }]
+        };
+
+        console.log('----------------------------------------------')
+        console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
+        console.log(resposta)
+
+        // Inserindo valores recebidos em estrutura para plotar o gráfico
+        for (i = 0; i < resposta.length; i++) {
+            var registro = resposta[i];
+            console.warn(registro)
+            labels.push(registro.hora_insercao);
+            dados.datasets[0].data.push(registro.umidade_ajustada);
+            dados.datasets[1].data.push(registro.temperatura_ajustada);
+        }
+
+        console.log('----------------------------------------------')
+        console.log('O gráfico será plotado com os respectivos valores:')
+        console.log('Labels:')
+        console.log(labels)
+        console.log('Dados:')
+        console.log(dados.datasets[0].data)
+        console.log(dados.datasets[1].data)
+        console.log('----------------------------------------------')
+
+        // Criando estrutura para plotar gráfico - config
+        const config = {
+            type: 'line',
+            data: dados,
+        };
+
+        // Adicionando gráfico criado em div na tela
+        let myChart = new Chart(
+            document.getElementById(`myChartCanvas${fkSensor}`),
+            config
+        );
+
+        setTimeout(() => atualizarGrafico(fkSensor, dados, myChart), 10000);
+    }
+
+    function atualizarGrafico(fkSensor, dados, myChart) {
+
+        fetch(`/registro/grafico2TempoReal/1/${fkSensor}`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (novoRegistro) {
+
+                    // alertar(novoRegistro, idAquario);
+                    console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+                    console.log(`Dados atuais do gráfico:`);
+                    console.log(dados);
+
+
+                    // tirando e colocando valores no gráfico
+                    dados.labels.shift(); // apagar o primeiro
+                    dados.labels.push(novoRegistro[0].hora_insercao); // incluir um novo momento
+
+                    dados.datasets[0].data.shift();  // apagar o primeiro de umidade
+                    dados.datasets[0].data.push(novoRegistro[0].umidade_ajustada); // incluir uma nova medida de umidade
+
+                    dados.datasets[1].data.shift();  // apagar o primeiro de temperatura
+                    dados.datasets[1].data.push(novoRegistro[0].temperatura_ajustada); // incluir uma nova medida de temperatura
+
+                    myChart.update();
+
+
+                    // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+                    proximaAtualizacao = setTimeout(() => atualizarGrafico(fkSensor, dados, myChart), 10000);
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+                // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+                proximaAtualizacao = setTimeout(() => atualizarGrafico(fkSensor, dados, myChart), 10000);
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     const dataG = {
         labels: [
@@ -175,294 +360,6 @@
         data: dataG,
     };
 
-    // grafico da sala 3G do museu
-
-    const labels3G = [
-        '14:00',
-        '15:00',
-        '16:00',
-        '17:00',
-        '18:00',
-        '19:00',
-        '20:00',
-        '21:00',
-        '22:00',
-        '23:00',
-        '00:00',
-        '01:00',
-        '02:00',
-        '03:00',
-        '04:00',
-        '05:00',
-        '06:00',
-        '07:00',
-        '08:00',
-        '09:00',
-        '10:00',
-        '11:00',
-        '12:00',
-        '13:00',
-    ];
-
-    const data3G = {
-        labels: labels3G,
-        datasets: [{
-            label: 'Temperatura (°C)',
-            backgroundColor: '#B62727',
-            borderColor: '#B62727',
-            data: [24, 26, 25, 25, 26, 25, 24, 23, 23, 21, 17, 18, 16, 18, 20, 21, 22, 24, 24, 28, 33, 35, 33, 34],
-        },
-        {
-            label: 'Umidade (%)',
-            backgroundColor: '#ff8800',
-            borderColor: '#ff8800',
-            data: [55, 53, 53, 54, 52, 51, 50, 49, 49, 48, 52, 54, 53, 53, 54, 56, 57, 58, 65, 67, 68, 65, 66, 65],
-        }
-        ]
-    };
-    const config3G = {
-        type: 'line',
-        data: data3G,
-        options: {}
-    };
-
-    // grafico da sala 5G do museu
-
-    const labels5G = [
-        '14:00',
-        '15:00',
-        '16:00',
-        '17:00',
-        '18:00',
-        '19:00',
-        '20:00',
-        '21:00',
-        '22:00',
-        '23:00',
-        '00:00',
-        '01:00',
-        '02:00',
-        '03:00',
-        '04:00',
-        '05:00',
-        '06:00',
-        '07:00',
-        '08:00',
-        '09:00',
-        '10:00',
-        '11:00',
-        '12:00',
-        '13:00',
-
-    ];
-
-    const data5G = {
-        labels: labels5G,
-        datasets: [{
-            label: 'Temperatura (°C)',
-            backgroundColor: '#B62727',
-            borderColor: '#B62727',
-            data: [26, 24, 25, 25, 26, 25, 22, 19, 14, 13, 11, 11, 13, 12, 15, 18, 22, 24, 24, 25, 25, 25, 24, 24],
-        },
-        {
-            label: 'Umidade (%)',
-            backgroundColor: '#ff8800',
-            borderColor: '#ff8800',
-            data: [55, 53, 53, 54, 52, 51, 50, 43, 40, 41, 38, 36, 36, 35, 40, 49, 51, 51, 53, 52, 52, 51, 50, 50],
-        }
-        ]
-    };
-    const config5G = {
-        type: 'line',
-        data: data5G,
-        options: {}
-    };
-
-    // grafico da sala 6G do museu
-
-    const labels6G = [
-        '14:00',
-        '15:00',
-        '16:00',
-        '17:00',
-        '18:00',
-        '19:00',
-        '20:00',
-        '21:00',
-        '22:00',
-        '23:00',
-        '00:00',
-        '01:00',
-        '02:00',
-        '03:00',
-        '04:00',
-        '05:00',
-        '06:00',
-        '07:00',
-        '08:00',
-        '09:00',
-        '10:00',
-        '11:00',
-        '12:00',
-        '13:00',
-    ];
-
-    const data6G = {
-        labels: labels6G,
-        datasets: [{
-            label: 'Temperatura (°C)',
-            backgroundColor: '#B62727',
-            borderColor: '#B62727',
-            data: [26, 24, 25, 25, 26, 25, 22, 19, 19, 20, 18, 18, 17, 16, 17, 18, 17, 14, 14, 13, 11, 11, 10, 12],
-        },
-        {
-            label: 'Umidade (%)',
-            backgroundColor: '#ff8800',
-            borderColor: '#ff8800',
-            data: [55, 53, 53, 54, 52, 51, 50, 50, 50, 51, 53, 55, 56, 55, 53, 49, 46, 40, 40, 39, 40, 42, 42, 44],
-        }
-        ]
-    };
-    const config6G = {
-        type: 'line',
-        data: data6G,
-        options: {}
-    };
-
-    // grafico da sala 8G do museu
-
-    const labels8G = [
-        '14:00',
-        '15:00',
-        '16:00',
-        '17:00',
-        '18:00',
-        '19:00',
-        '20:00',
-        '21:00',
-        '22:00',
-        '23:00',
-        '00:00',
-        '01:00',
-        '02:00',
-        '03:00',
-        '04:00',
-        '05:00',
-        '06:00',
-        '07:00',
-        '08:00',
-        '09:00',
-        '10:00',
-        '11:00',
-        '12:00',
-        '13:00',
-    ];
-
-    const data8G = {
-        labels: labels8G,
-        datasets: [{
-            label: 'Temperatura (°C)',
-            backgroundColor: '#B62727',
-            borderColor: '#B62727',
-            data: [36, 34, 35, 35, 36, 29, 26, 25, 24, 24, 25, 23, 22, 22, 20, 21, 22, 24, 24, 25, 24, 30, 28, 28],
-        },
-        {
-            label: 'Umidade (%)',
-            backgroundColor: '#ff8800',
-            borderColor: '#ff8800',
-            data: [57, 58, 58, 60, 62, 58, 50, 46, 48, 48, 50, 49, 49, 45, 46, 49, 51, 49, 50, 52, 52, 51, 53, 52],
-        }
-        ]
-    };
-    const config8G = {
-        type: 'line',
-        data: data8G,
-        options: {}
-    };
-
-
-
-
-    const myChart = new Chart(
-        document.getElementById('graficoSalas'),
-        config
-    );
-
-    const myChart3G = new Chart(
-        document.getElementById('graficoSala3G'),
-        config3G
-    );
-
-    const myChart5G = new Chart(
-        document.getElementById('graficoSala5G'),
-        config5G
-    );
-
-    const myChart6G = new Chart(
-        document.getElementById('graficoSala6G'),
-        config6G
-    );
-
-    const myChart8G = new Chart(
-        document.getElementById('graficoSala8G'),
-        config8G
-    );
-
-    dadosGraficos.style.display = 'block';
-    grafico3G.style.display = 'none';
-    grafico5G.style.display = 'none';
-    grafico6G.style.display = 'none';
-    grafico8G.style.display = 'none';
-    voltar.style.display = 'none';
-
-
-    function mudar3G() {
-        grafico.style.display = 'none';
-        listatu.style.display = 'none';
-        grafico3G.style.display = 'block';
-        voltar.style.display = 'block';
-
-    }
-
-    function mudar5G() {
-        grafico.style.display = 'none';
-        listatu.style.display = 'none';
-        grafico3G.style.display = 'none';
-        grafico5G.style.display = 'block';
-        voltar.style.display = 'block';
-
-    }
-
-    function mudar6G() {
-        grafico.style.display = 'none';
-        listatu.style.display = 'none';
-        grafico3G.style.display = 'none';
-        grafico5G.style.display = 'none';
-        grafico6G.style.display = 'block';
-        voltar.style.display = 'block';
-
-    }
-
-    function mudar8G() {
-        grafico.style.display = 'none';
-        listatu.style.display = 'none';
-        grafico3G.style.display = 'none';
-        grafico5G.style.display = 'none';
-        grafico6G.style.display = 'none';
-        grafico8G.style.display = 'block';
-        voltar.style.display = 'block';
-    }
-
-    function voltarB() {
-        dadosGraficos.style.display = 'block';
-        listatu.style.display = 'block';
-        grafico.style.display = 'block';
-        grafico3G.style.display = 'none';
-        grafico5G.style.display = 'none';
-        grafico6G.style.display = 'none';
-        grafico8G.style.display = 'none';
-        voltar.style.display = 'none';
-    }
 </script>
 
 
