@@ -250,7 +250,7 @@
             config
         );
 
-        // setTimeout(() => atualizarGrafico(fkSensor, dados, myChart), 2000);
+        setTimeout(() => atualizarGrafico(fkSensor, dados, myChart), 2000);
     }
 
     function atualizarGrafico(fkSensor, dados, myChart) {
@@ -259,7 +259,6 @@
             if (response.ok) {
                 response.json().then(function (novoRegistro) {
 
-                    obterdados(fkSensor);
                     // alertar(novoRegistro, idAquario);
                     console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
                     console.log(`Dados atuais do gráfico:`);

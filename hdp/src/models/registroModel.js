@@ -108,15 +108,7 @@ JOIN registro AS r ON r.fkSensor = s.idSensor
 JOIN empresa AS e ON e.idEmpresa = sa.fkEmpresa
 WHERE e.idEmpresa = ${fkEmpresa}
   AND s.idSensor = ${idSensor}
-  AND (
-    SELECT COUNT(*)
-    FROM registro AS r2
-    WHERE r2.fkSensor = s.idSensor
-      AND ROUND(r2.umidade * s.fator) <= 65
-      AND ROUND(r2.umidade * s.fator) >= 55
-      AND ROUND(r2.temperatura * s.fator) <= 25
-      AND ROUND(r2.temperatura * s.fator) >= 15
-  ) LIMIT 7;
+  LIMIT 7;
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
@@ -136,15 +128,7 @@ JOIN registro AS r ON r.fkSensor = s.idSensor
 JOIN empresa AS e ON e.idEmpresa = sa.fkEmpresa
 WHERE e.idEmpresa = ${fkEmpresa}
 AND s.idSensor = ${idSensor}
-AND (
-  SELECT COUNT(*)
-  FROM registro AS r2
-  WHERE r2.fkSensor = s.idSensor
-    AND ROUND(r2.umidade * s.fator) <= 65
-    AND ROUND(r2.umidade * s.fator) >= 55
-    AND ROUND(r2.temperatura * s.fator) <= 25
-    AND ROUND(r2.temperatura * s.fator) >= 15
-) LIMIT 1;
+LIMIT 1;
   `;
   console.log("Executando a instrução SQL: \n" + instrucaoSql);
   return database.executar(instrucaoSql);

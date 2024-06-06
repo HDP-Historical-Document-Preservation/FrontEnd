@@ -82,6 +82,8 @@ function grafico1(req, res) {
 
     registroModel.grafico1(fkEmpresa, idSensor)
         .then(function (resultado) {
+            console.log('FKSENSOR', idSensor)
+            console.log(resultado)
 
             res.status(200).json(resultado);
 
