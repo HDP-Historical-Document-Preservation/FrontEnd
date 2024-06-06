@@ -205,7 +205,7 @@
                 data: [],
                 fill: false,
                 borderColor: 'rgb(75, 192, 192)',
-                tension: 0.1
+                tension: 0.1,
             },
             {
                 label: 'Temperatura',
@@ -250,12 +250,12 @@
             config
         );
 
-        setTimeout(() => atualizarGrafico(fkSensor, dados, myChart), 2000);
+        setTimeout(() => atualizarGrafico(fkSensor, dados, myChart), 10000);
     }
 
     function atualizarGrafico(fkSensor, dados, myChart) {
 
-        fetch(`/registro/grafico1TempoReal/${fkSensor}`, { cache: 'no-store' }).then(function (response) {
+        fetch(`/registro/grafico1TempoReal/1/${fkSensor}`, { cache: 'no-store' }).then(function (response) {
             if (response.ok) {
                 response.json().then(function (novoRegistro) {
 
@@ -279,12 +279,12 @@
 
 
                     // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-                    proximaAtualizacao = setTimeout(() => atualizarGrafico(fkSensor, dados, myChart), 5000);
+                    proximaAtualizacao = setTimeout(() => atualizarGrafico(fkSensor, dados, myChart), 10000);
                 });
             } else {
                 console.error('Nenhum dado encontrado ou erro na API');
                 // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-                proximaAtualizacao = setTimeout(() => atualizarGrafico(fkSensor, dados, myChart), 5000);
+                proximaAtualizacao = setTimeout(() => atualizarGrafico(fkSensor, dados, myChart), 10000);
             }
         })
             .catch(function (error) {

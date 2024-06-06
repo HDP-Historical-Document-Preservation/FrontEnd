@@ -108,7 +108,7 @@ JOIN registro AS r ON r.fkSensor = s.idSensor
 JOIN empresa AS e ON e.idEmpresa = sa.fkEmpresa
 WHERE e.idEmpresa = ${fkEmpresa}
   AND s.idSensor = ${idSensor}
-  LIMIT 7;
+ ORDER BY hora_insercao DESC LIMIT 7;
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
@@ -128,7 +128,7 @@ JOIN registro AS r ON r.fkSensor = s.idSensor
 JOIN empresa AS e ON e.idEmpresa = sa.fkEmpresa
 WHERE e.idEmpresa = ${fkEmpresa}
 AND s.idSensor = ${idSensor}
-LIMIT 1;
+ORDER BY hora_insercao DESC LIMIT 7;
   `;
   console.log("Executando a instrução SQL: \n" + instrucaoSql);
   return database.executar(instrucaoSql);
