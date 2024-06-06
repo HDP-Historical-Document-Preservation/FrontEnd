@@ -111,7 +111,7 @@
             console.warn(item)
 
             document.getElementById("btnSala").innerHTML += `
-        <button style="color: red;" onclick="exibirSensores(${item.idSensor})" id="btnSala${item.idSensor}"><b style="color: black;">${item.idSensor} - </b>${item.nomeSala} - ${item.nome}</button><br>
+        <button style="color: red;" onclick="exibirSensores(${item.idSensor})" id="btnSala${item.idSensor}"><b style="color: black;">${item.idSensor} - </b>${item.nomeSala}</button><br>
         `
 
             document.getElementById("graficos").innerHTML += `
@@ -149,18 +149,18 @@
             // exibindo - ou não - o gráfico
             if (todosOsGraficos[i].idSensor != idSensor) {
                 let elementoAtual = document.getElementById(`grafico${todosOsGraficos[i].idSensor}`)
-                if (elementoAtual.classList.contains("display-block")) {
-                    elementoAtual.classList.remove("display-block")
+                if (elementoAtual.style.display == "block") {
+                    elementoAtual.style.display = "none"
                 }
-                elementoAtual.classList.add("display-none")
+                elementoAtual.style.display = "none" 
 
             }
         }
 
         // exibindo - ou não - o gráfico
         let graficoExibir = document.getElementById(`grafico${idSensor}`)
-        graficoExibir.classList.remove("display-none")
-        graficoExibir.classList.add("display-block")
+        graficoExibir.style.display = "none"
+        graficoExibir.style.display = "block"
 
     }
 
