@@ -15,13 +15,12 @@ var HOST_APP = process.env.APP_HOST;
 
 var app = express();
 
+
 // var indexRouter = require("./src/routes/index");
 var empresaRouter = require("./src/routes/empresa");
 var funcionarioRouter = require("./src/routes/funcionario");
-// var metricaRouter = require("./src/routes/metrica");
-// var registroRouter = require("./src/routes/registro");
-// var salaRouter = require("./src/routes/sala");
-// var sensorRouter = require("./src/routes/sensor");
+var registroRouter = require("./src/routes/registro");
+var sensorRouter = require("./src/routes/sensor");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -32,10 +31,8 @@ app.use(cors());
 // app.use("/", indexRouter);
 app.use("/empresa", empresaRouter);
 app.use("/funcionario", funcionarioRouter);
-// app.use("/metrica", metricaRouter);
-// app.use("/registro", registroRouter);
-// app.use("/sala", salaRouter);
-// app.use("/sensor", sensorRouter);
+app.use("/registro", registroRouter);
+app.use("/sensor", sensorRouter);
 
 app.listen(PORTA_APP, function () {
     console.log(`

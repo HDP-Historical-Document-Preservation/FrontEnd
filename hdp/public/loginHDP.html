@@ -66,16 +66,18 @@
             console.log("ESTOU NO THEN DO entrar()!")
 
             if (resposta.ok) {
-                resposta.json().then(function (resposta) {
+                resposta.json().then(resposta => {
                     console.log(resposta);
 
-                    var conteudo = resposta[0]
+                    var conteudo = resposta;
 
                     console.log(conteudo);
                     console.log(JSON.stringify(conteudo));
                     sessionStorage.EMAIL_USUARIO = conteudo.email;
                     sessionStorage.NOME_USUARIO = conteudo.nome;
                     sessionStorage.ID_USUARIO = conteudo.idFuncionario;
+                    sessionStorage.FK_EMPRESA = JSON.stringify(conteudo.sensores[0].fkEmpresa);
+                    sessionStorage.SENSOR = JSON.stringify(conteudo.sensores);
 
                     window.location = "./dashboard/dashInicio.html";
                 });

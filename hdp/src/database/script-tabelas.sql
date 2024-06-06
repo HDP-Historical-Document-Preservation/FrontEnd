@@ -43,7 +43,7 @@ nome VARCHAR(80) NOT NULL,
 cpf CHAR(11) NOT NULL UNIQUE,
 telefone CHAR(11) NOT NULL UNIQUE,
 email VARCHAR(60) NOT NULL UNIQUE,
-senha VARCHAR(15) NOT NULL UNIQUE,
+senha VARCHAR(15) NOT NULL,
 CONSTRAINT fkFuncionarioEmpresa FOREIGN KEY (fkEmpresa) REFERENCES empresa(idEmpresa)
 );
 
@@ -116,36 +116,21 @@ CONSTRAINT fkSensorSala FOREIGN KEY (fkSala) REFERENCES sala(idSala)
 );
 
 INSERT INTO sensor VALUES
-(DEFAULT, 1,'Sensor1', 0.5),
-(DEFAULT, 1,'Sensor2', 1),
-(DEFAULT, 2,'Sensor3', 0.6),
-(DEFAULT, 2,'Sensor4', 0.7),
-(DEFAULT, 3,'Sensor5', 0.4),
-(DEFAULT, 3,'Sensor6', 0.6),
-(DEFAULT, 4,'Sensor7', 0.8),
-(DEFAULT, 4,'Sensor8', 1),
-(DEFAULT, 5,'Sensor9', 0.9),
-(DEFAULT, 5,'Sensor10', 1.2),
-(DEFAULT, 6,'Sensor1', 1),
-(DEFAULT, 6,'Sensor2', 0.7),
-(DEFAULT, 7,'Sensor3', 0.5),
-(DEFAULT, 7,'Sensor4', 1),
-(DEFAULT, 8,'Sensor5', 0.6),
-(DEFAULT, 8,'Sensor6', 0.7),
-(DEFAULT, 9,'Sensor7', 0.4),
-(DEFAULT, 9,'Sensor8', 0.6),
-(DEFAULT, 10,'Sensor9', 0.8),
-(DEFAULT, 10,'Sensor10', 1),
-(DEFAULT, 11,'Sensor1', 0.9),
-(DEFAULT, 11,'Sensor2', 1.2),
-(DEFAULT, 12,'Sensor3', 1),
-(DEFAULT, 12,'Sensor4', 0.7),
-(DEFAULT, 13,'Sensor5', 0.6),
-(DEFAULT, 13,'Sensor6', 0.7),
-(DEFAULT, 14,'Sensor7', 0.4),
-(DEFAULT, 14,'Sensor8', 0.6),
-(DEFAULT, 15,'Sensor9', 0.8),
-(DEFAULT, 15,'Sensor10', 1);
+(DEFAULT, 1, 'Sensor1', 0.5),
+(DEFAULT, 2, 'Sensor1', 1),
+(DEFAULT, 3, 'Sensor1', 1.2),
+(DEFAULT, 4, 'Sensor1', 0.7),
+(DEFAULT, 5, 'Sensor1', 0.4),
+(DEFAULT, 6, 'Sensor1', 0.6),
+(DEFAULT, 7, 'Sensor1', 0.8),
+(DEFAULT, 8, 'Sensor1', 1),
+(DEFAULT, 9, 'Sensor1', 0.9),
+(DEFAULT, 10, 'Sensor1', 1.2),
+(DEFAULT, 11, 'Sensor1', 1),
+(DEFAULT, 12, 'Sensor1', 0.7),
+(DEFAULT, 13, 'Sensor1', 0.5),
+(DEFAULT, 14, 'Sensor1', 1),
+(DEFAULT, 15, 'Sensor1', 0.6);
 
 SELECT * FROM sensor;
 
@@ -160,12 +145,204 @@ CREATE TABLE registro (
 idRegistro INT PRIMARY KEY AUTO_INCREMENT,
 umidade FLOAT,
 temperatura FLOAT,
-diaHora TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+diaHora TIME,
+fkSensor INT,
+CONSTRAINT registroSensor FOREIGN KEY (fkSensor) REFERENCES sensor(idSensor)
 );
 
-INSERT INTO registro (umidade, temperatura) VALUES
-(60,20),
-(86,15),
-(70,22);
+INSERT INTO registro (umidade, temperatura, diaHora, fkSensor) VALUES
+(60, 20, NOW(), 1),
+(60, 20, NOW(), 2),
+(60, 20, NOW(), 3),
+(60, 20, NOW(), 4),
+(60, 20, NOW(), 5),
+(60, 20, NOW(), 6),
+(60, 20, NOW(), 7),
+(60, 20, NOW(), 8),
+(60, 20, NOW(), 9),
+(60, 20, NOW(), 10),
+(60, 20, NOW(), 11),
+(60, 20, NOW(), 12),
+(60, 20, NOW(), 13),
+(60, 20, NOW(), 14),
+(60, 20, NOW(), 15),
+(86, 15, NOW(), 1),
+(86, 15, NOW(), 2),
+(86, 15, NOW(), 3),
+(86, 15, NOW(), 4),
+(86, 15, NOW(), 5),
+(86, 15, NOW(), 6),
+(86, 15, NOW(), 7),
+(86, 15, NOW(), 8),
+(86, 15, NOW(), 9),
+(86, 15, NOW(), 10),
+(86, 15, NOW(), 11),
+(86, 15, NOW(), 12),
+(86, 15, NOW(), 13),
+(86, 15, NOW(), 14),
+(86, 15, NOW(), 15),
+(70, 22, NOW(), 1),
+(70, 22, NOW(), 2),
+(70, 22, NOW(), 3),
+(70, 22, NOW(), 4),
+(70, 22, NOW(), 5),
+(70, 22, NOW(), 6),
+(70, 22, NOW(), 7),
+(70, 22, NOW(), 8),
+(70, 22, NOW(), 9),
+(70, 22, NOW(), 10),
+(70, 22, NOW(), 11),
+(70, 22, NOW(), 12),
+(70, 22, NOW(), 13),
+(70, 22, NOW(), 14),
+(70, 22, NOW(), 15),
+(61, 21, NOW(), 1),
+(61, 21, NOW(), 2),
+(61, 21, NOW(), 3),
+(61, 21, NOW(), 4),
+(61, 21, NOW(), 5),
+(61, 21, NOW(), 6),
+(61, 21, NOW(), 7),
+(61, 21, NOW(), 8),
+(61, 21, NOW(), 9),
+(61, 21, NOW(), 10),
+(61, 21, NOW(), 11),
+(61, 21, NOW(), 12),
+(61, 21, NOW(), 13),
+(61, 21, NOW(), 14),
+(61, 21, NOW(), 15);
 
 SELECT * FROM registro;
+
+SELECT ROUND(r.umidade * s.fator) AS Umidade, ROUND(r.temperatura * s.fator) AS Temperatura, s.nome FROM registro AS r , sensor AS s;
+
+-- SELECTS ----------------------------------------------------------------------------------------------------------------
+
+
+
+-- QUANTIDADE DE SALAS FORA DO IDEAL ------------------------------------------------------
+
+SELECT COUNT(DISTINCT sa.idSala) AS 'qtdSalasFora'
+FROM sala AS sa
+JOIN sensor AS s ON sa.idSala = s.fkSala
+JOIN (
+  SELECT r.fkSensor, r.umidade, r.temperatura, r.diaHora, r.idRegistro
+  FROM registro AS r
+  JOIN (
+    SELECT fkSensor, MAX(diaHora) AS max_diaHora
+    FROM registro
+    GROUP BY fkSensor ORDER BY max_diaHora DESC
+  ) AS lr ON r.fkSensor = lr.fkSensor AND r.diaHora = lr.max_diaHora
+) AS r ON s.idSensor = r.fkSensor
+JOIN empresa AS e ON e.idEmpresa = sa.fkEmpresa
+WHERE e.idEmpresa = 1
+  AND (ROUND(r.umidade * s.fator) >= 65 
+       OR ROUND(r.umidade * s.fator) <= 55 
+       OR ROUND(r.temperatura * s.fator) >= 25 
+       OR ROUND(r.temperatura * s.fator) <= 15);
+       
+-- QUANTIDADE DE SALAS DENTRO DO IDEAL -----------------------------------------------------------
+       
+SELECT COUNT(DISTINCT sa.idSala) AS 'qtdSalasDentro'
+FROM sala AS sa
+JOIN sensor AS s ON sa.idSala = s.fkSala
+JOIN (
+  SELECT r.fkSensor, r.umidade, r.temperatura, r.diaHora, r.idRegistro
+  FROM registro AS r
+  JOIN (
+    SELECT fkSensor, MAX(diaHora) AS max_diaHora
+    FROM registro
+    GROUP BY fkSensor ORDER BY max_diaHora DESC
+  ) AS lr ON r.fkSensor = lr.fkSensor AND r.diaHora = lr.max_diaHora
+) AS r ON s.idSensor = r.fkSensor
+JOIN empresa AS e ON e.idEmpresa = sa.fkEmpresa
+WHERE e.idEmpresa = 1
+  AND (ROUND(r.umidade * s.fator) <= 65 
+       AND ROUND(r.umidade * s.fator) >= 55 
+       AND ROUND(r.temperatura * s.fator) <= 25 
+       AND ROUND(r.temperatura * s.fator) >= 15);
+       
+-- GRÁFICO PIZZA-----------------------------------------------------------------
+       
+SELECT 
+  COUNT(DISTINCT CASE 
+                   WHEN ROUND(r.umidade * s.fator) > 65 
+                     OR ROUND(r.umidade * s.fator) < 55 
+                     OR ROUND(r.temperatura * s.fator) > 25 
+                     OR ROUND(r.temperatura * s.fator) < 15 
+                   THEN sa.idSala 
+                 END) AS 'qtdSalasFora',
+  COUNT(DISTINCT CASE 
+                   WHEN ROUND(r.umidade * s.fator) <= 65 
+                     AND ROUND(r.umidade * s.fator) >= 55 
+                     AND ROUND(r.temperatura * s.fator) <= 25 
+                     AND ROUND(r.temperatura * s.fator) >= 15 
+                   THEN sa.idSala 
+                 END) AS 'qtdSalasDentro'
+FROM sala AS sa
+JOIN sensor AS s ON sa.idSala = s.fkSala
+JOIN (
+  SELECT r.fkSensor, r.umidade, r.temperatura, r.diaHora, r.idRegistro
+  FROM registro AS r
+  JOIN (
+    SELECT fkSensor, MAX(diaHora) AS max_diaHora
+    FROM registro
+    GROUP BY fkSensor
+  ) AS lr ON r.fkSensor = lr.fkSensor AND r.diaHora = lr.max_diaHora
+) AS r ON s.idSensor = r.fkSensor
+JOIN empresa AS e ON e.idEmpresa = sa.fkEmpresa
+WHERE e.idEmpresa = 1;
+
+-- GRÁFICO 1 -------------------------------------------------------------------
+  
+SELECT 
+  s.idSensor,
+  sa.nome AS nome_sala,
+  ROUND(r.umidade * s.fator) AS umidade_ajustada,
+  ROUND(r.temperatura * s.fator) AS temperatura_ajustada,
+  r.diaHora AS hora_insercao
+FROM sala AS sa
+JOIN sensor AS s ON sa.idSala = s.fkSala
+JOIN registro AS r ON r.fkSensor = s.idSensor
+JOIN empresa AS e ON e.idEmpresa = sa.fkEmpresa
+WHERE e.idEmpresa = 1
+  AND s.idSensor = 3
+  AND NOT EXISTS (
+    SELECT 1
+    FROM registro AS r2
+    WHERE r2.fkSensor = s.idSensor
+      AND (
+        (ROUND(r2.umidade * s.fator) <= 65 
+        AND ROUND(r2.umidade * s.fator) >= 55 
+        AND ROUND(r2.temperatura * s.fator) <= 25 
+        AND ROUND(r2.temperatura * s.fator) >= 15)
+      )
+      LIMIT 7
+  );
+  
+  -- GRÁFICO 2 ------------------------------------------------------------------------
+  
+  SELECT 
+  s.idSensor,
+  sa.nome AS nome_sala,
+  ROUND(r.umidade * s.fator) AS umidade_ajustada,
+  ROUND(r.temperatura * s.fator) AS temperatura_ajustada,
+  r.diaHora AS hora_insercao
+FROM sala AS sa
+JOIN sensor AS s ON sa.idSala = s.fkSala
+JOIN registro AS r ON r.fkSensor = s.idSensor
+JOIN empresa AS e ON e.idEmpresa = sa.fkEmpresa
+WHERE e.idEmpresa = 1
+  AND s.idSensor = 1
+  AND NOT EXISTS (
+    SELECT 1
+    FROM registro AS r2
+    WHERE r2.fkSensor = s.idSensor
+      AND (
+        (ROUND(r2.umidade * s.fator) <= 65 
+        AND ROUND(r2.umidade * s.fator) >= 55 
+        AND ROUND(r2.temperatura * s.fator) <= 25 
+        AND ROUND(r2.temperatura * s.fator) >= 15)
+      )
+      LIMIT 24
+  );

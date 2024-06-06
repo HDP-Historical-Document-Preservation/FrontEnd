@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="../css/style-dashboard.css">
 </head>
 
-<body>
+<body >
     <div class="header">
         <div class="container">
             <div class="blocoNavbar">
@@ -29,11 +29,9 @@
     <div class="corpoGeral">
         <div class="blocoLateral">
             <div class="menu">
-                <div class="foto">
-                </div>
                 <div class="informacoes">
-                    <h5>Olá, Fernando Brandão</h5>
-                    <p>fernando.brandao@sptech.school</p>
+                    <h5>Olá,<span id="span_nomeUsuario"> </span></h5>
+                    <p><span id="span_emailUsuario"></span></p>
                 </div>
                 <div class="acesso">
                     <a href="../index.html" style="color: #ffffff;"><h3>HOME</h></a>
@@ -54,7 +52,7 @@
             <div class="cardGeral">
                 <div class="card">
                     <div class="cardInt">
-                        <h1>6/10</h1>
+                        <h1><h1 id="qtdFora"></h1>/<h1 id="qtdTotal"></h1></h1>
                         <h4 style="font-size: 120%;">Salas com registros</h4>
                         <h5>Fora do ideal</h5>
                     </div>
@@ -99,6 +97,33 @@
     </div>
 </body>
 <script>
+    span_nomeUsuario.innerHTML = sessionStorage.NOME_USUARIO
+    span_emailUsuario.innerHTML = sessionStorage.EMAIL_USUARIO
+
+    contarSalasTotais(sessionStorage.FK_EMPRESA)
+
+    function contarSalasTotais(fkEmpresa) {
+    fetch(`/registro/contarSalasTotais/${fkEmpresa}`, {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }).then(function (resposta) {
+        console.log("ESTOU NO THEN DO contarSalasTotais()!")
+
+        if (resposta.ok) {
+            console.log("Função Contar Usuarios(): ")
+
+            resposta.json().then(function (resposta) {
+                var dados = resposta[0];
+
+                console.log(dados);
+                qtdTotal.innerHTML = dados.salas;
+
+            })
+        }
+    })
+}
 
 </script>
 

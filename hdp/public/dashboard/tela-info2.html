@@ -14,8 +14,12 @@
         <div class="container">
             <div class="blocoNavbar">
                 <ul class="navbar">
-                    <a href="../index.html"><li>Home</li></a>
-                    <a href="../index.html #sobreNos"><li>Sobre nós</li></a>
+                    <a href="../index.html">
+                        <li>Home</li>
+                    </a>
+                    <a href="../index.html #sobreNos">
+                        <li>Sobre nós</li>
+                    </a>
                     <li>|</li>
                     <li style="color: rgb(221, 148, 13);">Dashboard</li>
                     </a>
@@ -33,15 +37,15 @@
     <div class="corpoGeral">
         <div class="blocoLateral">
             <div class="menu">
-                <div class="foto">
-                </div>
                 <div class="informacoes">
-                    <h5>Olá, Fernando Brandão</h5>
-                    <p>fernando.brandao@sptech.school</p>
+                    <h5>Olá,<span id="span_nomeUsuario"> </span></h5>
+                    <p><span id="span_emailUsuario"></span></p>
                 </div>
                 <div class="acesso">
-                    <a href="../index.html" style="color: #ffffff;"><h3>HOME</h></a>
-                        <h3 style="color: rgb(221, 148, 13);">DASHBOARD</h3>
+                    <a href="../index.html" style="color: #ffffff;">
+                        <h3>HOME</h>
+                    </a>
+                    <h3 style="color: rgb(221, 148, 13);">DASHBOARD</h3>
                 </div>
             </div>
         </div>
@@ -88,7 +92,8 @@
                             <button style="color: red;" onclick="mudar6G()"><b style="color: black;">6 - </b> Sala da
                                 história da música
                                 Brasileira</button>
-                            <button style="color: red;" onclick="mudar8G()"><b style="color: black;">8 - </b> Sala de exposição de documentos
+                            <button style="color: red;" onclick="mudar8G()"><b style="color: black;">8 - </b> Sala de
+                                exposição de documentos
                                 de
                                 arte</button>
                         </div>
@@ -107,15 +112,16 @@
                         <div class="graficoG">
                             <canvas id="graficoSala3G" position="relative" width="3300" ; height="900"></canvas>
                         </div>
-                        <p>Temperatura Ideal: 15°C a 25°C  |  Umidade Ideal: 55% a 65%</p>
+                        <p>Temperatura Ideal: 15°C a 25°C | Umidade Ideal: 55% a 65%</p>
                     </div>
 
                     <div id="grafico5G" style="text-align: center;">
-                        <h3 style="margin-top: 0%;">Métricas na Sala 5 - Sala de Figuras Importantes no Brasil (Sensor 2)</h3>
+                        <h3 style="margin-top: 0%;">Métricas na Sala 5 - Sala de Figuras Importantes no Brasil (Sensor
+                            2)</h3>
                         <div class="graficoG">
                             <canvas id="graficoSala5G" position="relative" width="3300" ; height="900"></canvas>
                         </div>
-                        <p>Temperatura Ideal: 15°C a 25°C  |  Umidade Ideal: 55% a 65%</p>
+                        <p>Temperatura Ideal: 15°C a 25°C | Umidade Ideal: 55% a 65%</p>
                     </div>
 
                     <div id="grafico6G" style="text-align: center;">
@@ -124,7 +130,7 @@
                         <div class="graficoG">
                             <canvas id="graficoSala6G" position="relative" width="3300" ; height="900"></canvas>
                         </div>
-                        <p>Temperatura Ideal: 15°C a 25°C  |  Umidade Ideal: 55% a 65%</p>
+                        <p>Temperatura Ideal: 15°C a 25°C | Umidade Ideal: 55% a 65%</p>
                     </div>
 
                     <div id="grafico8G" style="text-align: center;">
@@ -133,7 +139,7 @@
                         <div class="graficoG">
                             <canvas id="graficoSala8G" position="relative" width="3300" ; height="900"></canvas>
                         </div>
-                        <p>Temperatura Ideal: 15°C a 25°C  |  Umidade Ideal: 55% a 65%</p>
+                        <p>Temperatura Ideal: 15°C a 25°C | Umidade Ideal: 55% a 65%</p>
                     </div>
                 </div>
 
@@ -143,6 +149,10 @@
 </body>
 
 <script>
+
+    span_nomeUsuario.innerHTML = sessionStorage.NOME_USUARIO
+    span_emailUsuario.innerHTML = sessionStorage.EMAIL_USUARIO
+
     const dataG = {
         labels: [
             'Métricas inadequadas',
@@ -243,7 +253,7 @@
         '11:00',
         '12:00',
         '13:00',
-    
+
     ];
 
     const data5G = {
@@ -444,14 +454,14 @@
     }
 
     function voltarB() {
-    dadosGraficos.style.display = 'block';
-    listatu.style.display = 'block';
-    grafico.style.display = 'block';
-    grafico3G.style.display = 'none';
-    grafico5G.style.display = 'none';
-    grafico6G.style.display = 'none';
-    grafico8G.style.display = 'none';
-    voltar.style.display = 'none';
+        dadosGraficos.style.display = 'block';
+        listatu.style.display = 'block';
+        grafico.style.display = 'block';
+        grafico3G.style.display = 'none';
+        grafico5G.style.display = 'none';
+        grafico6G.style.display = 'none';
+        grafico8G.style.display = 'none';
+        voltar.style.display = 'none';
     }
 </script>
 
