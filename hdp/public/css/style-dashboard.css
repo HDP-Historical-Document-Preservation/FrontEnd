@@ -598,4 +598,13 @@ a {
     
 }
 
+.styleGraficos {
+    width: 30vw;
+    margin-top: 5%;
+}
+
+#btnSala {
+    width: 100%;
+}
+
 

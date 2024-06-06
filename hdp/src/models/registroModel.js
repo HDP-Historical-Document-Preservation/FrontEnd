@@ -116,10 +116,38 @@ WHERE e.idEmpresa = ${fkEmpresa}
       AND ROUND(r2.umidade * s.fator) >= 55
       AND ROUND(r2.temperatura * s.fator) <= 25
       AND ROUND(r2.temperatura * s.fator) >= 15
-  ) < 7;
+  ) LIMIT 7;
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
+}
+
+function grafico1TempoReal(fkEmpresa, idSensor){
+  var instrucaoSql = `
+  SELECT 
+s.idSensor,
+sa.nome AS nome_sala,
+ROUND(r.umidade * s.fator) AS umidade_ajustada,
+ROUND(r.temperatura * s.fator) AS temperatura_ajustada,
+r.diaHora AS hora_insercao
+FROM sala AS sa
+JOIN sensor AS s ON sa.idSala = s.fkSala
+JOIN registro AS r ON r.fkSensor = s.idSensor
+JOIN empresa AS e ON e.idEmpresa = sa.fkEmpresa
+WHERE e.idEmpresa = ${fkEmpresa}
+AND s.idSensor = ${idSensor}
+AND (
+  SELECT COUNT(*)
+  FROM registro AS r2
+  WHERE r2.fkSensor = s.idSensor
+    AND ROUND(r2.umidade * s.fator) <= 65
+    AND ROUND(r2.umidade * s.fator) >= 55
+    AND ROUND(r2.temperatura * s.fator) <= 25
+    AND ROUND(r2.temperatura * s.fator) >= 15
+) LIMIT 1;
+  `;
+  console.log("Executando a instrução SQL: \n" + instrucaoSql);
+  return database.executar(instrucaoSql);
 }
 
 function grafico2(fkEmpresa, idSensor){
@@ -159,5 +187,6 @@ module.exports = {
     qtdSalasDentro,
     graficoPizza,
     grafico1,
+    grafico1TempoReal,
     grafico2
 }
