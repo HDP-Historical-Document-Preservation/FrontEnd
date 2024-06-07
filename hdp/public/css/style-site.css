@@ -334,8 +334,8 @@ img{
  .footer h4{
   align-items: center;
   align-self: center;
-  margin-left: 300px;
   font-weight: 100;
+  margin: 110px;
  }
  
  
@@ -348,3 +348,16 @@ img{
  .footer .container .version {
   font-size: 12px;
  }
+
+ body::-webkit-scrollbar {
+  width: 5px;
+}
+
+body::-webkit-scrollbar-track {
+  background: white;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #DD940D;
+  border-radius: 20px;
+}
