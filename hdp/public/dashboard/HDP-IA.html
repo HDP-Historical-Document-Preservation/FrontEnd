@@ -8,6 +8,8 @@
     <title>HDP | IA</title>
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="../css/style-dashboard.css">
+
     <link
         href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
@@ -18,20 +20,69 @@
 
 <body>
 
-    <!-- HTML para plotar o resultado da chamada da IA -->
-    <div id="container" style="width:30%; background-color: #370505; color: #ffffff; margin-top: 10%;">
-        <center>
-            <h1>HDP-IA</h1>
-            <textarea id="pergunta" type="text" placeholder="Digite a pergunta..."></textarea>
-            <br><br>
-            <button onclick="gerarResposta()">Gerar Resposta</button>
-            <h3>Resposta da IA:</h3>
-            <div id="resposta"></div>
-        </center>
+    <div class="header">
+        <div class="container">
+            <div class="blocoNavbar">
+                <ul class="navbar">
+                    <a href="../index.html"><li>Home</li></a>
+                    <a href="../index.html #sobreNos"><li>Sobre nós</li></a>
+                    <li>|</li>
+                    <li style="color: rgb(221, 148, 13);">Dashboard</li>
+                    <a href="../loginHDP.html"><li>Sair</li></a>
+                </ul>
+
+            </div>
+            <div class="trianguloDireita"></div>
+            <div class="logo"></div>
+        </div>
+    </div>
+    <div class="corpoGeral">
+        <div class="blocoLateral">
+            <div class="menu">
+                <div class="informacoes">
+                    <h4>Olá,<span id="span_nomeUsuario"> </span></h4>
+                    <p><span id="span_emailUsuario"></span></p>
+                </div>
+                <div class="acesso">
+                    <a href="../index.html" style="color: #ffffff;">
+                        <h3>HOME</h3>
+                    </a>
+                    <a href="dashInicio.html" style="color: #ffffff;">
+                        <h3 style="color: #DD940D;">DASHBOARD</h3>
+                    </a>                    
+                    <a href="../dashboard/HDP-IA.html">
+                        <h3>AJUDA</h3>
+                    </a>
+
+                </div>
+            </div>
+        </div>
+        <div class="conteudo">
+            <div class="boxTitulo2">
+                <div class="titulo2">
+                    <h4><strong>HELP DESK</strong></h4>
+                    <p>HDP</p>
+                </div>
+            </div>
+            <div class="ajuda">
+                <div id="container" class="container2">
+                    <center>
+                        <h1 style="margin-top: 0%; margin-bottom: 2%;">Ferramenta de Ajuda - HDP</h1>
+
+                        <textarea id="pergunta" type="text" placeholder="Faça sua pergunta"></textarea>
+                        <br><br>
+                        <button onclick="gerarResposta()">Gerar Resposta</button>
+                        <div id="resposta"></div>
+                        <br>
+                        <div id="div_ajuda"></div>
+                    </center>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
     </div>
 
-    </div>
-    </div>
 
 
 </body>
@@ -39,12 +90,16 @@
 </html>
 
 <script>
-    
+
+span_nomeUsuario.innerHTML = sessionStorage.NOME_USUARIO
+span_emailUsuario.innerHTML = sessionStorage.EMAIL_USUARIO
+
     // fazer a chamada do BobIA
     async function gerarResposta() {
+        div_ajuda.innerHTML = '';
         const pergunta = document.getElementById('pergunta').value;
 
-        const response = await fetch('http://localhost:3333/perguntar', {
+        const response = await fetch('http://localhost:3340/perguntar', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -56,7 +111,12 @@
 
         resposta.style.display = 'block';
         document.getElementById('resposta').innerText = data.resultado;
+        div_ajuda.innerHTML += `<b>Não resolveu? Mande um email aqui: <span style= "color: red">support@hdp-ti.atlassian.net</span></b>`;
+
     }
 
 
 </script>
+
+<!-- Lembrete:
+ Dar o npm start tanto na Architronict quando na própria do projeto -->
