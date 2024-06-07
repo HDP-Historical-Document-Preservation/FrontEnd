@@ -5,6 +5,18 @@ body {
 
 }
 
+body::-webkit-scrollbar {
+    width: 5px;
+  }
+  
+  body::-webkit-scrollbar-track {
+    background: white;
+  }
+  
+  body::-webkit-scrollbar-thumb {
+    background-color: #DD940D;
+    border-radius: 20px;
+  }
 .container {
     display: flex;
     flex-direction: row;
@@ -124,11 +136,13 @@ a {
     display: flex;
     color: #ffffff;
     flex-direction: column;
-    font-size: x-large;
+    font-size: larger;
     justify-content: center;
     align-items: center;
     margin-top: 22%;
-
+    text-align: center;
+    font-family: 'Be VietnamLight';
+    padding: 3%;
 }
 
 .informacoes p {
@@ -146,11 +160,11 @@ a {
 
 .acesso {
     display: flex;
-    margin-top: 140px;
+    margin-top: 120px;
     margin-bottom: 120px;
     flex-direction: column;
     align-items: flex-start;
-    margin-left: 13%;
+    margin-left: 23%;
 }
 
 
@@ -235,7 +249,7 @@ a {
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 700%;
+    height: 38vh;
     width: 73%;
     background-color: #D9D9D9;
     border-radius: 20px;
@@ -631,15 +645,14 @@ a {
 }
 
 .container2 {
-    background-color: #D9D9D9;
+    background-color: #f5f3f3;
     color: #1b0909;
     font-family: "Be VietnamLight";
     width: 60%;
     height: fit-content;
     border-radius: 30px;
     padding: 3%;
-    box-shadow: inset #370505;
-
+    border: 2px solid #370505;
 }
 
 .boxTitulo2 {
@@ -678,6 +691,7 @@ a {
 }
 #pergunta {
     width: 60%;
+    margin-top: 3%;
     border-radius: 10px;
     font-family: "Be VietnamLight";
 
@@ -694,10 +708,13 @@ a {
     height: 5vh;
     border-radius: 30px;
     border: none;
+    background-color: #DD940D;
+    transition: 0.3s;
 }
 
 .container2 button:hover{
-    background-color: rgb(221, 148, 13);
+    background-color: #370505;
+    color: #ffffff;
     cursor: pointer;
 }
 

@@ -172,7 +172,7 @@ ORDER BY hora_insercao DESC LIMIT 24;
   `;
   console.log("Executando a instrução SQL: \n" + instrucaoSql);
   return database.executar(instrucaoSql);
-} F
+} 
 
 module.exports = {
   contarSalasTotais,

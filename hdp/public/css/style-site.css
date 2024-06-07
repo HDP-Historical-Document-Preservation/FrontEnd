@@ -121,8 +121,8 @@ img{
   align-items: center;
   justify-content: space-around;
   background-color: white;
-  width: 96vw;
-  height: 90vh;
+  width: 100vw;
+  height: 85vh;
 }
 
 .sobre {
@@ -173,15 +173,14 @@ img{
   background-color: transparent;
   width: 300px;
   height: 220px;
-  
+  margin-bottom: 5%;
   perspective: 1000px;
-  /* Remove this if you don't want the 3D effect */
   margin: 50px;
   margin-bottom: 10%;
   border: 1px solid black;
 }
 
-/* This container is needed to position the front and back side */
+
 .flip-card-inner {
   border-radius: 15px;
   position: relative;
@@ -216,9 +215,12 @@ img{
 
 /* Style the front side (fallback if image is missing) */
 .flip-card-front {
-  background-color: #999;
+  background-color: #c9c6c6;
   color: black;
   height: 220px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* Style the back side */
@@ -237,14 +239,16 @@ img{
   background-color: white;
   display: flex;
   flex-direction: column;
-  height: 52vh;
-  align-items: center;
+  height: 48vh;
+  justify-content: space-evenly;
   width: 100vw;
 }
 
 .caixas {
   display: flex;
   flex-direction: row;
+  justify-content: space-evenly;
+  height: 48vh;
 }
 
 .container {
