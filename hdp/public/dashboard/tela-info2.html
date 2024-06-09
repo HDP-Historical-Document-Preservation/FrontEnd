@@ -18,7 +18,7 @@
                     <a href="../index.html #sobreNos"><li>Sobre nós</li></a>
                     <li>|</li>
                     <li style="color: rgb(221, 148, 13);">Dashboard</li>
-                    <a href="../loginHDP.html"><li>Sair</li></a>
+                    <a href="dashInicio.html"><li>Voltar</li></a>
                 </ul>
 
             </div>
@@ -59,7 +59,7 @@
                     <div class="blocoInterno">
                         <div class="cardInt2">
                             <h1 style="margin-bottom: 5%;">+2hrs</h1>
-                            <h4>4 | 6 </h4>
+                            <h4><span id="qtdFora"></span></h4>
                             <h4>Salas fora do Ideal</h4>
                         </div>
                     </div>
@@ -75,7 +75,6 @@
 
             </div>
             <div id="dadosGraficos" class="dados">
-                <button id="voltar" class="botaoVoltar" onclick="voltarB()">Voltar</button>
                 <div class="listaG">
                     <div id="listatu" class="listasTU">
                         <h3>Condição de Temperatura e Umidade nas salas</h3>
@@ -110,7 +109,6 @@
 
         // console.warn(sensores);
 
-        document.getElementById("graficos").innerHTML += `<canvas id="graficoPizza"></canvas>`;
 
         sensores.forEach(item => {
             console.warn(item)
@@ -130,8 +128,7 @@
             </div>
         `
 
-            obterDadosGrafico1(item.fkEmpresa, item.idSensor);
-            obterDadosGrafico2(item.fkEmpresa);
+            obterDadosGrafico(item.fkEmpresa, item.idSensor);
         });
 
         if (sensores.length > 0) {
@@ -170,7 +167,7 @@
 
     }
 
-    function obterDadosGrafico1(fkEmpresa, idSensor) {
+    function obterDadosGrafico(fkEmpresa, idSensor) {
 
         alterarTitulo(idSensor)
 
@@ -196,26 +193,6 @@
             });
     }
 
-    function obterDadosGrafico2(fkEmpresa) {
-
-        fetch(`/registro/grafico2/${fkEmpresa}`, { cache: 'no-store' }).then(function (response) {
-            if (response.ok) {
-                response.json().then(function (resposta) {
-                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-                    resposta.reverse();
-
-                    plotarGrafico(resposta, fkEmpresa);
-
-                });
-            } else {
-                console.error('Nenhum dado encontrado ou erro na API');
-            }
-        })
-            .catch(function (error) {
-                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
-            });
-    }
-
     function plotarGrafico(resposta, fkSensor) {
 
         console.log('iniciando plotagem do gráfico...');
@@ -225,15 +202,18 @@
         let dados = {
             labels: labels,
             datasets: [{
-                
+                label: 'Umidade',
                 data: [],
-                backgroundColor: [
-                    '#3a522a',
-                    '#ada15f',
-                    '#5d7344'
-                ],
-                hoverOffset: 4
-
+                fill: false,
+                borderColor: 'rgb(75, 192, 192)',
+                tension: 0.1,
+            },
+            {
+                label: 'Temperatura',
+                data: [],
+                fill: false,
+                borderColor: 'rgb(199, 52, 52)',
+                tension: 0.1
             }]
         };
 
@@ -312,6 +292,31 @@
                 console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
             });
 
+    }
+
+    qtdSalasFora(sessionStorage.FK_EMPRESA)
+
+    function qtdSalasFora(fkEmpresa) {
+        fetch(`/registro/qtdSalasFora/${fkEmpresa}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO qtdSalasFora()!")
+
+            if (resposta.ok) {
+                console.log("Função Contar Usuarios(): ")
+
+                resposta.json().then(function (resposta) {
+                    var dados = resposta[0];
+
+                    console.log(dados);
+                    qtdFora.innerHTML = dados.qtdSalasFora;
+
+                })
+            }
+        })
     }
 
 

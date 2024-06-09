@@ -59,7 +59,7 @@
                     <h4><strong>DASHBOARD</strong></h4>
                     <p>OVERVIEW</p>
                 </div>
-                <div><img src="https://cdn-icons-png.flaticon.com/512/5626/5626190.png" alt=""></div>
+                <div><img src="gif-alert.gif" alt=""></div>
             </div>
 
 
@@ -67,7 +67,7 @@
                 <div class="card">
                     <div class="cardInt">
                         <div style="display: flex; flex-direction: row; height: 18vh; align-items: center;">
-                            <h1 id="qtdFora"></h1><h1>/</h1><h1 id="qtdTotal"></h1>
+                            <h1 id="qtdFora" style="color:#B62727;"></h1><h1 style="color:#B62727;">/</h1><h1 id="qtdTotal" style="color:#B62727;"></h1>
                         </div>
                         <h4 style="font-size: 120%;">Salas com registros</h4>
                         <h5>Fora do ideal</h5>
@@ -87,7 +87,7 @@
                 <div class="card">
                     <div class="cardInt">
                         <h1 style="color: #B62727;">+2 hrs</h1>
-                        <h4>4 | 6</h4>
+                        <h4 id="qtdFora2"></h4>
                         <h5>Salas fora do Ideal</h5>
                     </div>
                     <div><a href="tela-info2.html"><button>SAIBA MAIS</button></a></div>
@@ -117,6 +117,7 @@
     span_emailUsuario.innerHTML = sessionStorage.EMAIL_USUARIO
 
     contarSalasTotais(sessionStorage.FK_EMPRESA)
+    qtdSalasFora(sessionStorage.FK_EMPRESA)
 
     function contarSalasTotais(fkEmpresa) {
         fetch(`/registro/contarSalasTotais/${fkEmpresa}`, {
@@ -135,6 +136,30 @@
 
                     console.log(dados);
                     qtdTotal.innerHTML = dados.salas;
+
+                })
+            }
+        })
+    }
+
+    function qtdSalasFora(fkEmpresa) {
+        fetch(`/registro/qtdSalasFora/${fkEmpresa}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO qtdSalasFora()!")
+
+            if (resposta.ok) {
+                console.log("Função Contar Usuarios(): ")
+
+                resposta.json().then(function (resposta) {
+                    var dados = resposta[0];
+
+                    console.log(dados);
+                    qtdFora.innerHTML = dados.qtdSalasFora;
+                    qtdFora2.innerHTML = dados.qtdSalasFora;
 
                 })
             }

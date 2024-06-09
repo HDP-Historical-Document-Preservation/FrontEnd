@@ -243,6 +243,19 @@ a {
     border-radius: 20px 20px 0px 0px;
     align-items: center; 
     justify-content: center;
+    animation: colorLoop 2s infinite;
+}
+
+@keyframes colorLoop {
+    0% {
+        background-color: red;
+    }
+    50% {
+        background-color: rgb(99, 18, 18);
+    }
+    100% {
+        background-color: red;
+    }
 }
 
 .cardInt {

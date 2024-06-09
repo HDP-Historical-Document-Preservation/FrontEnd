@@ -56,7 +56,7 @@
 
                     <div class="blocoInterno">
                         <div class="cardInt2">
-                            <h1>6/10</h1>
+                        <h3><span id="qtdFora"></span><span>/</span><span id="qtdTotal"></span></h3>
                             <h4>Salas com registros fora do Ideal</h4>
                         </div>
                     </div>
@@ -288,6 +288,55 @@
                 console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
             });
 
+    }
+
+    contarSalasTotais(sessionStorage.FK_EMPRESA)
+    qtdSalasFora(sessionStorage.FK_EMPRESA)
+
+    function contarSalasTotais(fkEmpresa) {
+        fetch(`/registro/contarSalasTotais/${fkEmpresa}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO contarSalasTotais()!")
+
+            if (resposta.ok) {
+                console.log("Função Contar Usuarios(): ")
+
+                resposta.json().then(function (resposta) {
+                    var dados = resposta[0];
+
+                    console.log(dados);
+                    qtdTotal.innerHTML = dados.salas;
+
+                })
+            }
+        })
+    }
+
+    function qtdSalasFora(fkEmpresa) {
+        fetch(`/registro/qtdSalasFora/${fkEmpresa}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO qtdSalasFora()!")
+
+            if (resposta.ok) {
+                console.log("Função Contar Usuarios(): ")
+
+                resposta.json().then(function (resposta) {
+                    var dados = resposta[0];
+
+                    console.log(dados);
+                    qtdFora.innerHTML = dados.qtdSalasFora;
+
+                })
+            }
+        })
     }
 
 </script>

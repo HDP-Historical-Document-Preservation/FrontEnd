@@ -22,55 +22,19 @@ function contarSalasTotais(req, res) {
 }
 
 function qtdSalasFora(req, res) {
-    registroModel.qtdSalasFora()
-        .then(
-            function (resultado) {
-                res.json(resultado);
-            }
-        ).catch(
-            function (erro) {
-                console.log(erro);
-                console.log(
-                    "\nHouve um erro ao realizar o cadastro! Erro: ",
-                    erro.sqlMessage
-                );
-                res.status(500).json(erro.sqlMessage);
-            }
-        )
-}
-
-function qtdSalasDentro(req, res) {
-    registroModel.qtdSalasDentro()
-        .then(
-            function (resultado) {
-                res.json(resultado);
-            }
-        ).catch(
-            function (erro) {
-                console.log(erro);
-                console.log(
-                    "\nHouve um erro ao realizar o cadastro! Erro: ",
-                    erro.sqlMessage
-                );
-                res.status(500).json(erro.sqlMessage);
-            }
-        )
-}
-
-function graficoPizza(req, res) {
 
     var fkEmpresa = req.params.fkEmpresa;
 
-    registroModel.graficoPizza(fkEmpresa)
+    registroModel.qtdSalasFora(fkEmpresa)
         .then(
             function (resultado) {
-                res.status(200).json(resultado);
+                res.json(resultado);
             }
         ).catch(
             function (erro) {
                 console.log(erro);
                 console.log(
-                    "\nHouve um erro ao realizar a contagem de kpis! Erro: ",
+                    "\nHouve um erro ao realizar o cadastro! Erro: ",
                     erro.sqlMessage
                 );
                 res.status(500).json(erro.sqlMessage);
@@ -126,8 +90,10 @@ function grafico1TempoReal(req, res) {
 
 function grafico2(req, res) {
 
+    var fkEmpresa = req.params.fkEmpresa;
+    var idSensor = req.params.idSensor;
 
-    registroModel.grafico2()
+    registroModel.grafico2(fkEmpresa, idSensor)
         .then(
             function (resultado) {
                 res.json(resultado);
@@ -169,8 +135,6 @@ function grafico2TempoReal(req, res) {
 module.exports = {
     contarSalasTotais,
     qtdSalasFora,
-    qtdSalasDentro,
-    graficoPizza,
     grafico1,
     grafico1TempoReal,
     grafico2,
