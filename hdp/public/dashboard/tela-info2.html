@@ -14,11 +14,17 @@
         <div class="container">
             <div class="blocoNavbar">
                 <ul class="navbar">
-                    <a href="../index.html"><li>Home</li></a>
-                    <a href="../index.html #sobreNos"><li>Sobre nós</li></a>
+                    <a href="../index.html">
+                        <li>Home</li>
+                    </a>
+                    <a href="../index.html #sobreNos">
+                        <li>Sobre nós</li>
+                    </a>
                     <li>|</li>
                     <li style="color: rgb(221, 148, 13);">Dashboard</li>
-                    <a href="dashInicio.html"><li>Voltar</li></a>
+                    <a href="dashInicio.html">
+                        <li>Voltar</li>
+                    </a>
                 </ul>
 
             </div>
@@ -39,7 +45,7 @@
                     </a>
                     <a href="dashInicio.html" style="color: #ffffff;">
                         <h3 style="color: #DD940D;">DASHBOARD</h3>
-                    </a>                    
+                    </a>
                     <a href="../dashboard/HDP-IA.html">
                         <h3>AJUDA</h3>
                     </a>
@@ -82,7 +88,7 @@
                             <!-- <button style="color: red;" onclick="mudar3G()"><b style="color: black;">3 - </b> Sala da história dos sobrenomes</button> -->
                         </div>
                     </div>
-                    <div class="linha"></div>
+                    <div id="linha" class="linha"></div>
 
                     <div id="graficos" style="text-align: center;">
 
@@ -105,6 +111,7 @@
     window.onload = exibirSensoresDoUsuario();
 
     function exibirSensoresDoUsuario() {
+
         var sensores = JSON.parse(sessionStorage.SENSOR);
 
         // console.warn(sensores);
@@ -133,9 +140,30 @@
 
         if (sensores.length > 0) {
             console.log(sensores)
-            exibirSensores(sensores[0].idSensor)
+            // exibirSensores(sensores[0].idSensor)
+            limparGrafico()
+            
+        }
+
+
+    }
+
+    function limparGrafico() {
+        let todosOsGraficos = JSON.parse(sessionStorage.SENSOR);
+
+        for (i = 0; i < todosOsGraficos.length; i++) {
+
+            let elementoAtual = document.getElementById(`grafico${todosOsGraficos[i].idSensor}`)
+
+            if (elementoAtual.style.display == "block") {
+                elementoAtual.style.display = "none"
+                document.getElementById(`listatu`).style.display = "none"
+                document.getElementById(`linha`).style.display = "none"
+            }
+            elementoAtual.style.display = "none"
         }
     }
+
 
     function alterarTitulo(idSensor) {
 
@@ -155,8 +183,9 @@
                 if (elementoAtual.style.display == "block") {
                     elementoAtual.style.display = "none"
                 }
+                document.getElementById(`linha`).style.display = "none"
+                document.getElementById(`listatu`).style.display = "none"
                 elementoAtual.style.display = "none"
-
             }
         }
 
@@ -164,7 +193,6 @@
         let graficoExibir = document.getElementById(`grafico${idSensor}`)
         graficoExibir.style.display = "none"
         graficoExibir.style.display = "block"
-
     }
 
     function obterDadosGrafico(fkEmpresa, idSensor) {
