@@ -2,7 +2,7 @@ body {
     padding: 0;
     margin: 0;
     background-color: white;
-
+    overflow-x: hidden;
 }
 
 body::-webkit-scrollbar {
@@ -438,15 +438,17 @@ a {
 
 }
 
-.cardInt2 h1 {
+.cardInt2 h3 {
     margin: 5%;
     color: #ffffff;
-    font-size: 200%;
+    font-size: 180%;
     font-weight: bold;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     text-align: center;
 
 }
+
+
 
 .cardInt2 h4 {
     margin-top: 2%;
@@ -455,9 +457,17 @@ a {
     font-size: 100%;
     font-family: Helvetica;
     text-align: center;
-
 }
 
+.cardInt2 h1 {
+    margin: 5%;
+    color: #ffffff;
+    font-size: 190%;
+    font-weight: bold;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-align: center;
+
+}
 
 .listaG {
     display: flex;
