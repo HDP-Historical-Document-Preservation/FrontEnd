@@ -91,7 +91,7 @@
                     </div>
                     <div id="linha" class="linha"></div>
 
-                    <div id="graficos" style="text-align: center;">
+                    <div id="graficos2" style="text-align: center;">
 
                     </div>
 
@@ -125,13 +125,13 @@ span_nomeUsuario.innerHTML = sessionStorage.NOME_USUARIO
         <button style="color: red;" class="botoesDash" onclick="exibirSensores(${item.idSensor})" id="btnSala${item.idSensor}"><b style="color: black;">${item.idSensor} - </b>${item.nomeSala}</button><br>
         `
 
-            document.getElementById("graficos").innerHTML += `
-            <div id="grafico${item.idSensor}" class="styleGraficos">
+            document.getElementById("graficos2").innerHTML += `
+            <div id="grafico${item.idSensor}" class="styleGraficos2">
                 <h3 class="tituloGraficos">
                     <span id="tituloSala${item.idSensor}">${item.nomeSala}</span>
                 </h3>
                 <div class="graph">
-                    <canvas id="myChartCanvas${item.idSensor}"></canvas>
+                    <canvas id="myChartCanvas${item.idSensor}" position="center"; width= "3500"; height= "900"; margin-left= "5%" ></canvas>
                 </div>
             </div>
         `

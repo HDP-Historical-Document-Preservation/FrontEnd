@@ -649,8 +649,29 @@ a {
     margin-top: 5%;
 }
 
+.styleGraficos2 {
+    width: 67vw;
+    margin-top: 5%;
+}
+
+#graficos2 {
+    width: 30vw;
+}
+
 #btnSala {
     width: 100%;
+}
+
+.graph {
+    width: 100vw;
+    height: 35vh;
+    margin-left: 5%;
+}
+
+
+#myChartCanvas {
+    width: 80vw;
+    height: 20vh;
 }
 
 
