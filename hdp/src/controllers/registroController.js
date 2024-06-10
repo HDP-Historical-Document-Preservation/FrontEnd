@@ -1,26 +1,5 @@
 var registroModel = require("../models/registroModel");
 
-function contarSalasTotais(req, res) {
-
-    var fkEmpresa = req.params.fkEmpresa;
-
-    registroModel.contarSalasTotais(fkEmpresa)
-        .then(
-            function (resultado) {
-                res.json(resultado);
-            }
-        ).catch(
-            function (erro) {
-                console.log(erro);
-                console.log(
-                    "\nHouve um erro ao realizar o cadastro! Erro: ",
-                    erro.sqlMessage
-                );
-                res.status(500).json(erro.sqlMessage);
-            }
-        )
-}
-
 function qtdSalasFora(req, res) {
 
     var fkEmpresa = req.params.fkEmpresa;
@@ -132,11 +111,32 @@ function grafico2TempoReal(req, res) {
         )
 }
 
+// function graficoPizza(req, res) {
+
+//     var fkEmpresa = req.params.fkEmpresa;
+
+//     registroModel.grafico2(fkEmpresa)
+//         .then(
+//             function (resultado) {
+//                 res.json(resultado);
+//             }
+//         ).catch(
+//             function (erro) {
+//                 console.log(erro);
+//                 console.log(
+//                     "\nHouve um erro ao realizar o cadastro! Erro: ",
+//                     erro.sqlMessage
+//                 );
+//                 res.status(500).json(erro.sqlMessage);
+//             }
+//         )
+// }
+
 module.exports = {
-    contarSalasTotais,
     qtdSalasFora,
     grafico1,
     grafico1TempoReal,
     grafico2,
-    grafico2TempoReal
+    grafico2TempoReal,
+    // graficoPizza
 }

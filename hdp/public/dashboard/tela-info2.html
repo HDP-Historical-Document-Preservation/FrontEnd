@@ -81,6 +81,7 @@
 
             </div>
             <div id="dadosGraficos" class="dados">
+                <button id="voltar" class="botaoVoltar" onclick="window.location.reload()">Voltar</button>
                 <div class="listaG">
                     <div id="listatu" class="listasTU">
                         <h3>Condição de Temperatura e Umidade nas salas</h3>
@@ -102,7 +103,7 @@
 
 <script>
 
-    span_nomeUsuario.innerHTML = sessionStorage.NOME_USUARIO
+span_nomeUsuario.innerHTML = sessionStorage.NOME_USUARIO
     span_emailUsuario.innerHTML = sessionStorage.EMAIL_USUARIO
 
     let proximaAtualizacao;

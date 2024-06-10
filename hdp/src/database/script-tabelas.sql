@@ -274,3 +274,47 @@ JOIN empresa AS e ON e.idEmpresa = sa.fkEmpresa
 WHERE e.idEmpresa = ${fkEmpresa}
   AND s.idSensor = ${idSensor}
  ORDER BY hora_insercao DESC LIMIT 24;
+
+ -- GRÁFICO PIZZA ------------------------------------------------------------------------
+  
+  SELECT 
+  'Salas Fora do Ideal' AS tipo,
+  COUNT(DISTINCT sa.idSala) AS quantidade
+FROM sala AS sa
+JOIN sensor AS s ON sa.idSala = s.fkSala
+JOIN (
+  SELECT r.fkSensor, r.umidade, r.temperatura, r.diaHora, r.idRegistro
+  FROM registro AS r
+  JOIN (
+    SELECT fkSensor, MAX(diaHora) AS max_diaHora
+    FROM registro
+    GROUP BY fkSensor
+  ) AS lr ON r.fkSensor = lr.fkSensor AND r.diaHora = lr.max_diaHora
+) AS r ON s.idSensor = r.fkSensor
+JOIN empresa AS e ON e.idEmpresa = sa.fkEmpresa
+WHERE e.idEmpresa = 1
+  AND (ROUND(r.umidade * s.fator) >= 65 
+       OR ROUND(r.umidade * s.fator) <= 55 
+       OR ROUND(r.temperatura * s.fator) >= 25 
+       OR ROUND(r.temperatura * s.fator) <= 15)
+UNION ALL
+SELECT 
+  'Salas Dentro do Ideal' AS tipo,
+  COUNT(DISTINCT sa.idSala) AS quantidade
+FROM sala AS sa
+JOIN sensor AS s ON sa.idSala = s.fkSala
+JOIN (
+  SELECT r.fkSensor, r.umidade, r.temperatura, r.diaHora, r.idRegistro
+  FROM registro AS r
+  JOIN (
+    SELECT fkSensor, MAX(diaHora) AS max_diaHora
+    FROM registro
+    GROUP BY fkSensor
+  ) AS lr ON r.fkSensor = lr.fkSensor AND r.diaHora = lr.max_diaHora
+) AS r ON s.idSensor = r.fkSensor
+JOIN empresa AS e ON e.idEmpresa = sa.fkEmpresa
+WHERE e.idEmpresa = 1
+  AND (ROUND(r.umidade * s.fator) <= 65 
+       AND ROUND(r.umidade * s.fator) >= 55 
+       AND ROUND(r.temperatura * s.fator) <= 25 
+       AND ROUND(r.temperatura * s.fator) >= 15);
