@@ -136,10 +136,7 @@ JOIN (
 ) AS r ON s.idSensor = r.fkSensor
 JOIN empresa AS e ON e.idEmpresa = sa.fkEmpresa
 WHERE e.idEmpresa = 1
-  AND (ROUND(r.umidade * s.fator) <= 65 
-       AND ROUND(r.umidade * s.fator) >= 55 
-       AND ROUND(r.temperatura * s.fator) <= 25 
-       AND ROUND(r.temperatura * s.fator) >= 15);
+  AND sa.nome = "Acontecimentos Misteriosos";
   `;
   console.log("Executando a instrução SQL: \n" + instrucaoSql);
   return database.executar(instrucaoSql);
