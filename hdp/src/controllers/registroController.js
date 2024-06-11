@@ -111,26 +111,24 @@ function grafico2TempoReal(req, res) {
         )
 }
 
-// function graficoPizza(req, res) {
+function graficoPizza(req, res) {
 
-//     var fkEmpresa = req.params.fkEmpresa;
-
-//     registroModel.grafico2(fkEmpresa)
-//         .then(
-//             function (resultado) {
-//                 res.json(resultado);
-//             }
-//         ).catch(
-//             function (erro) {
-//                 console.log(erro);
-//                 console.log(
-//                     "\nHouve um erro ao realizar o cadastro! Erro: ",
-//                     erro.sqlMessage
-//                 );
-//                 res.status(500).json(erro.sqlMessage);
-//             }
-//         )
-// }
+    registroModel.graficoPizza()
+        .then(
+            function (resultado) {
+                res.json(resultado);
+            }
+        ).catch(
+            function (erro) {
+                console.log(erro);
+                console.log(
+                    "\nHouve um erro ao realizar o cadastro! Erro: ",
+                    erro.sqlMessage
+                );
+                res.status(500).json(erro.sqlMessage);
+            }
+        )
+}
 
 module.exports = {
     qtdSalasFora,
@@ -138,5 +136,5 @@ module.exports = {
     grafico1TempoReal,
     grafico2,
     grafico2TempoReal,
-    // graficoPizza
+    graficoPizza
 }

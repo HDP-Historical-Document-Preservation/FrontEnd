@@ -103,7 +103,7 @@
 
 <script>
 
-span_nomeUsuario.innerHTML = sessionStorage.NOME_USUARIO
+    span_nomeUsuario.innerHTML = sessionStorage.NOME_USUARIO
     span_emailUsuario.innerHTML = sessionStorage.EMAIL_USUARIO
 
     let proximaAtualizacao;
@@ -115,8 +115,9 @@ span_nomeUsuario.innerHTML = sessionStorage.NOME_USUARIO
 
         var sensores = JSON.parse(sessionStorage.SENSOR);
 
-        // console.warn(sensores);
-
+        document.getElementById("graficos2").innerHTML += `
+        <canvas id="myChartCanvasPizza"></canvas>
+        `;
 
         sensores.forEach(item => {
             console.warn(item)
@@ -137,19 +138,21 @@ span_nomeUsuario.innerHTML = sessionStorage.NOME_USUARIO
         `
 
             obterDadosGrafico(item.fkEmpresa, item.idSensor);
+            obterDadosGrafico2();
+
         });
 
         if (sensores.length > 0) {
             console.log(sensores)
             // exibirSensores(sensores[0].idSensor)
             limparGrafico()
-            
+
         }
-
-
     }
 
     function limparGrafico() {
+
+        document.getElementById(`myChartCanvasPizza`).style.display = "block"
         let todosOsGraficos = JSON.parse(sessionStorage.SENSOR);
 
         for (i = 0; i < todosOsGraficos.length; i++) {
@@ -161,10 +164,10 @@ span_nomeUsuario.innerHTML = sessionStorage.NOME_USUARIO
                 document.getElementById(`listatu`).style.display = "none"
                 document.getElementById(`linha`).style.display = "none"
             }
+            document.getElementById(`voltar`).style.display = "none"
             elementoAtual.style.display = "none"
         }
     }
-
 
     function alterarTitulo(idSensor) {
 
@@ -175,6 +178,8 @@ span_nomeUsuario.innerHTML = sessionStorage.NOME_USUARIO
     }
 
     function exibirSensores(idSensor) {
+
+        document.getElementById(`myChartCanvasPizza`).style.display = "none"
         let todosOsGraficos = JSON.parse(sessionStorage.SENSOR);
 
         for (i = 0; i < todosOsGraficos.length; i++) {
@@ -186,6 +191,10 @@ span_nomeUsuario.innerHTML = sessionStorage.NOME_USUARIO
                 }
                 document.getElementById(`linha`).style.display = "none"
                 document.getElementById(`listatu`).style.display = "none"
+                document.getElementById(`myChartCanvasPizza`).style.display = "none"
+                document.getElementById(`voltar`).style.display = "block"
+
+
                 elementoAtual.style.display = "none"
             }
         }
@@ -211,6 +220,26 @@ span_nomeUsuario.innerHTML = sessionStorage.NOME_USUARIO
                     resposta.reverse();
 
                     plotarGrafico(resposta, idSensor);
+
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+    }
+
+    function obterDadosGrafico2() {
+
+        fetch(`/registro/graficoPizza`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    resposta.reverse();
+
+                    plotarGrafico2(resposta);
 
                 });
             } else {
@@ -281,6 +310,58 @@ span_nomeUsuario.innerHTML = sessionStorage.NOME_USUARIO
         );
 
         setTimeout(() => atualizarGrafico(fkSensor, dados, myChart), 10000);
+    }
+
+    function plotarGrafico2(resposta) {
+
+        console.log('iniciando plotagem do gráfico...');
+
+        let labels = [];
+
+        let dados = {
+            labels: labels,
+            datasets: [{
+                data: [],
+                backgroundColor: [
+                    '#370505',
+                    '#800000'
+                ],
+                hoverOffset: 4
+            }]
+        };
+
+        console.log('----------------------------------------------')
+        console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
+        console.log(resposta)
+
+        // Inserindo valores recebidos em estrutura para plotar o gráfico
+        for (i = 0; i < resposta.length; i++) {
+            var registro = resposta[i];
+            console.warn(registro)
+            labels.push(registro.tipo);
+            dados.datasets[0].data.push(registro.quantidade);
+        }
+
+        console.log('----------------------------------------------')
+        console.log('O gráfico será plotado com os respectivos valores:')
+        console.log('Labels:')
+        console.log(labels)
+        console.log('Dados:')
+        console.log(dados.datasets[0].data)
+        console.log('----------------------------------------------')
+
+        // Criando estrutura para plotar gráfico - config
+        const config = {
+            type: 'pie',
+            data: dados,
+        };
+
+        // Adicionando gráfico criado em div na tela
+        let myChart = new Chart(
+            document.getElementById(`myChartCanvasPizza`),
+            config
+        );
+
     }
 
     function atualizarGrafico(fkSensor, dados, myChart) {

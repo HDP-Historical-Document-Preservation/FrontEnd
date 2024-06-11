@@ -23,8 +23,8 @@ router.get("/grafico2TempoReal/:fkEmpresa/:idSensor", function (req, res) {
     registroController.grafico1(req, res);
 });
 
-// router.get("/graficoPizza/:fkEmpresa", function (req, res) {
-//     registroController.graficoPizza(req, res);
-// });
+router.get("/graficoPizza", function (req, res) {
+    registroController.graficoPizza(req, res);
+});
 
 module.exports = router;
