@@ -43,17 +43,15 @@ nome VARCHAR(80) NOT NULL,
 cpf CHAR(11) NOT NULL UNIQUE,
 telefone CHAR(11) NOT NULL UNIQUE,
 email VARCHAR(60) NOT NULL UNIQUE,
-senha VARCHAR(15) NOT NULL,
+senha VARCHAR(200) NOT NULL,
 CONSTRAINT fkFuncionarioEmpresa FOREIGN KEY (fkEmpresa) REFERENCES empresa(idEmpresa)
 );
 
 INSERT INTO funcionario VALUES
-(DEFAULT, 1, 'Eduardo da Silva Lima', '41381092268', '11935685087', 'edu.Silva@gmail.com', '042$16756'),
-(DEFAULT, 1, 'Fabíola Santos Monteiro', '14835098714', '11948286002', 'fabiola2456@hotmail.com', '04241829&'),
-(DEFAULT, 2, 'Carlos Roberto Figueiredo', '03220101254', '11972785070', 'carlosfigueiredo@yahoo.com', '0424@9094'),
-(DEFAULT, 2, 'Alexandre Alves Reis', '24833018154', '11928282202', 'alexandre@hotmail.com', '022#18292'),
-(DEFAULT, 3, 'Danilo Lopez Faria', '00260104251', '11942445040', 'danilo@yahoo.com', '0323&9394'),
-(DEFAULT, 3, 'Ana Bela Costa', '19311694234', '11963732481', 'ana.bela@outlook.com', '04241&678');
+(DEFAULT, 1, 'Eduardo', '41381092268', '11935685087', 'eduardo@gmail.com', '1234567#');
+
+-- INSERT INTO funcionario VALUES
+-- (DEFAULT, 1, 'Eduardo', '41381092268', '11935685087', 'eduardo@gmail.com', MD5('1234567#'));
 
 SELECT * FROM funcionario;
 SELECT nome AS 'Nome do Funcionário', senha AS 'Senha do Funcionário' FROM funcionario;
@@ -237,11 +235,11 @@ JOIN (
   ) AS lr ON r.fkSensor = lr.fkSensor AND r.diaHora = lr.max_diaHora
 ) AS r ON s.idSensor = r.fkSensor
 JOIN empresa AS e ON e.idEmpresa = sa.fkEmpresa
-WHERE e.idEmpresa = ${fkEmpresa}
+WHERE e.idEmpresa = 1
   AND (ROUND(r.umidade * s.fator) >= 65 
        OR ROUND(r.umidade * s.fator) <= 55 
        OR ROUND(r.temperatura * s.fator) >= 25 
-       OR ROUND(r.temperatura * s.fator) <= 15);
+       OR ROUND(r.temperatura * s.fator) <= 15); 
        
 -- GRÁFICO 1 -------------------------------------------------------------------
   
@@ -274,8 +272,8 @@ JOIN empresa AS e ON e.idEmpresa = sa.fkEmpresa
 WHERE e.idEmpresa = ${fkEmpresa}
   AND s.idSensor = ${idSensor}
  ORDER BY hora_insercao DESC LIMIT 24;
-
- -- GRÁFICO PIZZA ------------------------------------------------------------------------
+ 
+  -- GRÁFICO PIZZA ------------------------------------------------------------------------
   
   SELECT 
   'Salas Fora do Ideal' AS tipo,
@@ -318,3 +316,4 @@ WHERE e.idEmpresa = 1
        AND ROUND(r.umidade * s.fator) >= 55 
        AND ROUND(r.temperatura * s.fator) <= 25 
        AND ROUND(r.temperatura * s.fator) >= 15);
+  
