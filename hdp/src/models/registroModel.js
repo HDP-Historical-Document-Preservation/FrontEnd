@@ -15,11 +15,7 @@ JOIN (
   ) AS lr ON r.fkSensor = lr.fkSensor AND r.diaHora = lr.max_diaHora
 ) AS r ON s.idSensor = r.fkSensor
 JOIN empresa AS e ON e.idEmpresa = sa.fkEmpresa
-WHERE e.idEmpresa = ${fkEmpresa}
-  AND (ROUND(r.umidade * s.fator) >= 65 
-       OR ROUND(r.umidade * s.fator) <= 55 
-       OR ROUND(r.temperatura * s.fator) >= 25 
-       OR ROUND(r.temperatura * s.fator) <= 15);
+WHERE e.idEmpresa = ${fkEmpresa};
     `;
   console.log("Executando a instrução SQL: \n" + instrucaoSql);
   return database.executar(instrucaoSql);
@@ -123,10 +119,6 @@ JOIN (
 ) AS r ON s.idSensor = r.fkSensor
 JOIN empresa AS e ON e.idEmpresa = sa.fkEmpresa
 WHERE e.idEmpresa = 1
-  AND (ROUND(r.umidade * s.fator) >= 65 
-       OR ROUND(r.umidade * s.fator) <= 55 
-       OR ROUND(r.temperatura * s.fator) >= 25 
-       OR ROUND(r.temperatura * s.fator) <= 15)
 UNION ALL
 SELECT 
   'Salas Dentro do Ideal' AS tipo,

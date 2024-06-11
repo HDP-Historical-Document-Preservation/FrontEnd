@@ -68,7 +68,7 @@ body::-webkit-scrollbar {
 
 .trianguloBaixo {
     display: flex;
-    margin-top: 10%;
+    margin-top: 8.5%;
     width: 0; 
     height: 0; 
     border-left: 190px solid transparent;
@@ -430,7 +430,7 @@ a {
     align-items: center;
     justify-content: center;
     width: 20vw;
-    height: 16vh;
+    height: 16.5vh;
     border-radius: 25px;
     border-width: 1mm;
     background-color: #D11313;
@@ -439,7 +439,6 @@ a {
 }
 
 .cardInt2 h3 {
-    margin: 5%;
     color: #ffffff;
     font-size: 180%;
     font-weight: bold;
@@ -451,16 +450,18 @@ a {
 
 
 .cardInt2 h4 {
-    margin-top: 2%;
-    margin-bottom: 0%;
+    margin-top: 0.5%;
+    margin-bottom: 5%;
     color: #D9D9D9;
     font-size: 100%;
     font-family: Helvetica;
     text-align: center;
 }
 
+
+
 .cardInt2 h1 {
-    margin: 5%;
+    margin: 6%;
     color: #ffffff;
     font-size: 190%;
     font-weight: bold;
@@ -658,6 +659,20 @@ a {
     width: 30vw;
 }
 
+#graficos3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 21vw;
+    margin-left: 14%;
+}
+
+#myChartCanvasPizza {
+    display: flex;
+    flex-direction: row;
+    margin-top: 3%;
+    margin-left: 10%;
+}
 #btnSala {
     width: 100%;
 }

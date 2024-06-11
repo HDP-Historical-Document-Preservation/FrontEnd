@@ -48,10 +48,10 @@
                         <h3>HOME</h3>
                     </a>
                     <a href="dashInicio.html" style="color: #ffffff;">
-                        <h3 style="color: #DD940D;">DASHBOARD</h3>
+                        <h3>DASHBOARD</h3>
                     </a>                    
                     <a href="../dashboard/HDP-IA.html">
-                        <h3>AJUDA</h3>
+                        <h3 style="color: #DD940D;">AJUDA</h3>
                     </a>
 
                 </div>
@@ -99,7 +99,7 @@ span_emailUsuario.innerHTML = sessionStorage.EMAIL_USUARIO
         div_ajuda.innerHTML = '';
         const pergunta = document.getElementById('pergunta').value;
 
-        const response = await fetch('http://localhost:3340/perguntar', {
+        const response = await fetch('http://10.18.32.44:3340/perguntar', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

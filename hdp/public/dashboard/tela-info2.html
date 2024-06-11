@@ -64,9 +64,9 @@
 
                     <div class="blocoInterno">
                         <div class="cardInt2">
-                            <h1 style="margin-bottom: 5%;">+2hrs</h1>
+                            <h1 style="margin: 0%;">+2hrs</h1>
                             <h4><span id="qtdFora"></span></h4>
-                            <h4>Salas fora do Ideal</h4>
+                            <h4 style="margin-bottom: 3%;">Salas fora do Ideal</h4>
                         </div>
                     </div>
                 </div>
@@ -92,12 +92,14 @@
                     <div id="linha" class="linha"></div>
 
                     <div id="graficos2" style="text-align: center;">
+                        <div id="graficos3" style="text-align: center;">
 
                     </div>
 
                 </div>
             </div>
         </div>
+        
     </div>
 </body>
 
@@ -115,7 +117,7 @@
 
         var sensores = JSON.parse(sessionStorage.SENSOR);
 
-        document.getElementById("graficos2").innerHTML += `
+        document.getElementById("graficos3").innerHTML += `
         <canvas id="myChartCanvasPizza"></canvas>
         `;
 
@@ -132,7 +134,7 @@
                     <span id="tituloSala${item.idSensor}">${item.nomeSala}</span>
                 </h3>
                 <div class="graph">
-                    <canvas id="myChartCanvas${item.idSensor}" position="center"; width= "3500"; height= "900"; margin-left= "5%" ></canvas>
+                    <canvas id="myChartCanvas${item.idSensor}" position="center"; width= "3750"; height= "900"; margin-left= "15%" ></canvas>
                 </div>
             </div>
         `
