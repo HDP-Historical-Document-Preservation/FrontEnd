@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login | HDP</title>
     <link rel="stylesheet" href="css/style-login.css">
+
+    <script src="./js/sessao.js"></script>
 </head>
 
 <body>
@@ -32,8 +34,14 @@
             <input type="password" id="ipt_senha" placeholder="Senha"><br>
             <button id="botao" onclick="autenticar()">Login</button><br><br>
             <div id="div_mensagem"></div>
-            <div id="div_tentativa"></div>
+            <div id="div_tentativa">
+                <div id="div_aguardar" class="loading-div">
+                    <img src="./assets/imgs/loadingGif.gif" id="loading-gif">
+                </div>
+            </div>
+            
         </div>
+
     </div>
 </body>
 
@@ -42,11 +50,14 @@
     var tentativas = 3;
 
     function autenticar() {
+        aguardar();
+
         var email = ipt_user.value;
         var senha = ipt_senha.value;
 
         if (email == "" || senha == "") {
             div_mensagem.innerHTML = `<span style="color: yellow;"> - Todos os campos devem estar preenchidos!</span><br><br>`;
+            finalizarAguardar();
             return false;
         }
 
@@ -79,7 +90,10 @@
                     sessionStorage.FK_EMPRESA = JSON.stringify(conteudo.sensores[0].fkEmpresa);
                     sessionStorage.SENSOR = JSON.stringify(conteudo.sensores);
 
-                    window.location = "./dashboard/dashInicio.html";
+                    setTimeout(function () {
+                        window.location = "./dashboard/dashInicio.html";
+                    }, 1000); // apenas para exibir o loading
+
                 });
 
             } else {

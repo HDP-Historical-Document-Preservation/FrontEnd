@@ -109,3 +109,15 @@ h2{
     text-align: center;
     color: #ffbf00;
 }
+
+.loading-div {
+    width: 100%;
+    display: none;
+  }
+  
+  .loading-div img {
+    height: 70px;
+    width: 70px;
+    margin-left: 40%;
+    
+  }
